@@ -1,0 +1,90 @@
+.page {
+    &__team {
+        margin-top: rem(13);
+        margin-bottom: rem(34);
+
+        @media (min-width: $mobile) {
+            margin-bottom: rem(-130);
+        }
+    }
+}
+.card-team {
+    font-weight: 600;
+
+    &__work {
+        font-family: Montserrat;
+        font-size: rem(10);
+        line-height: math.div(12, 10);
+        text-transform: uppercase;
+        color: #335ef8;
+    }
+
+    &__name {
+        font-size: rem(12);
+        line-height: math.div(15, 12);
+        text-transform: uppercase;
+    }
+    &__text {
+        margin-left: rem(-30);
+        margin-bottom: rem(13);
+    }
+}
+
+.team {
+    &__container {
+        max-width: rem(1142);
+    }
+
+    &__header {
+    }
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(rem(263), auto));
+        justify-items: center;
+        gap: rem(30);
+        margin-top: rem(30);
+    }
+
+    &__card {
+        position: relative;
+        height: rem(340);
+        display: flex;
+        width: 100%;
+
+        flex-direction: column;
+        justify-content: flex-end;
+        margin: 0 auto;
+        align-items: center;
+        &::before {
+            content: "";
+            position: absolute;
+            background: url(@img/team/01.svg) center/contain no-repeat;
+            width: 100%;
+            z-index: -1;
+            height: 100%;
+        }
+    }
+    &__title {
+        margin-bottom: rem(30);
+        &._decor-title {
+            &::before {
+                background: url(@img/team/title-top.svg) center 100% no-repeat;
+            }
+            &::after {
+                background: url(@img/team/title-bottom.svg) center 100% no-repeat;
+            }
+        }
+    }
+
+    &__text-box {
+        margin: 0 auto;
+        max-width: rem(747);
+        text-align: center;
+        color: #b6bcd1;
+        p {
+            &:not(:last-child) {
+                margin-bottom: rem(20);
+            }
+        }
+    }
+}

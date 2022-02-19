@@ -1,0 +1,84 @@
+.collection {
+    &__container {
+        background: linear-gradient(0deg, rgba(9, 9, 9, 0.6), rgba(9, 9, 9, 0.6)),
+            radial-gradient(50% 50% at 50% 50%, #232121 0%, rgba(19, 19, 19, 0) 100%);
+        border: 2.03788px solid #ca003b;
+        box-sizing: border-box;
+        backdrop-filter: blur(30px);
+        /* Note: backdrop-filter has minimal browser support */
+
+        border-radius: 30px;
+
+        padding: rem(50) rem(84);
+
+        background: url(@img/collection/bg.svg) no-repeat;
+        min-height: rem(617);
+        display: flex;
+        flex-direction: column;
+        @media (max-width: $tablet) {
+            background-size: cover;
+            background-position: center;
+            padding: rem(20);
+            min-height: fit-content;
+        }
+        &::after {
+            content: "";
+            background: url(@img/collection/01.png) right 100% no-repeat;
+            width: 100%;
+            height: rem(721);
+            display: block;
+            position: absolute;
+            right: 0;
+            top: rem(-109);
+            z-index: -1;
+
+            @media (max-width: $tablet) {
+                display: none;
+            }
+        }
+    }
+
+    &_red-btn {
+    }
+    &__text-box {
+        max-width: rem(734);
+        @include adaptiveValue("margin-bottom", 130, 45);
+    }
+    &__title {
+        margin-bottom: rem(37);
+    }
+
+    &__text {
+    }
+
+    &__info {
+        display: flex;
+        gap: rem(50);
+    }
+
+    &__info-item {
+    }
+
+    &__info-title {
+        font-weight: bold;
+        @include adaptiveValue("font-size", 50, 18);
+        line-height: 100%;
+    }
+
+    &__info-text {
+        font-family: Montserrat;
+        font-weight: normal;
+        font-size: rem(16);
+        line-height: math.div(20, 16);
+        @include adaptiveValue("font-size", 16, 14);
+    }
+
+    &__button {
+        background: #d40234;
+        margin-top: auto;
+
+        @media (max-width: $tablet) {
+            margin-top: rem(17);
+        }
+    }
+}

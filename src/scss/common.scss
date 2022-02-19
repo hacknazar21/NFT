@@ -1,0 +1,45 @@
+// Заголовки, общие БЄМ блоки и проче...
+.button {
+    width: 100%;
+    border-radius: rem(12);
+    display: block;
+    font-size: rem(18);
+    line-height: math.div(60, 18);
+    min-height: rem(60);
+    text-align: center;
+    letter-spacing: 0.016em;
+}
+.title {
+    font-weight: bold;
+    line-height: math.div(50, 30);
+    @include adaptiveValue("font-size", 30, 16);
+    text-transform: uppercase;
+}
+.text {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 300;
+    line-height: math.div(20, 18);
+    @include adaptiveValue("font-size", 18, 12);
+
+    letter-spacing: 0.02em;
+
+    color: #e8e8ff;
+}
+._decor-title {
+    text-align: center;
+    &::before {
+        content: "";
+        background: url(@img/main-slider/title-top.svg) center 100% no-repeat;
+        width: 100%;
+        height: rem(7);
+        display: block;
+    }
+    &::after {
+        content: "";
+        background: url(@img/main-slider/title-bottom.svg) center 100% no-repeat;
+        width: 100%;
+        height: rem(7);
+        display: block;
+    }
+}

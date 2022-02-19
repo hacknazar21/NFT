@@ -1,0 +1,158 @@
+//====================================================================================================
+.header {
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		min-height: rem(710);
+		gap: rem(20);
+		position: relative;
+		background: url(@img/header-bg.svg) 100% 100% no-repeat;
+
+		z-index: 3;
+		overflow: hidden;
+
+		&::before {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			transform: rotate(9.62deg);
+			background: url(@img/Topology.svg) left/contain no-repeat;
+		}
+		&::after {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: rem(710);
+			top: 0;
+			right: 0;
+			z-index: 0;
+			background: url(@img/kanion.png) 100% 100% no-repeat;
+		}
+		@media (max-width: $tablet) {
+			max-height: none;
+			min-height: rem(380);
+			clip-path: polygon(0% 0%, 0% 85%, 50% 100%, 100% 85%, 100% 0%);
+		}
+	}
+
+	&__image-ibg {
+		padding-bottom: rem(710);
+		width: 100%;
+		position: absolute;
+		z-index: 0;
+		top: 0;
+		img {
+			object-fit: cover;
+		}
+	}
+
+	&__main {
+		width: 52%;
+		@include adaptiveValue("margin-left", 150, 15);
+	}
+
+	&__text-block {
+		max-width: rem(420);
+		position: relative;
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: -50%;
+			left: rem(20);
+			width: rem(250);
+			height: rem(100);
+			background: url(@img/NFT.svg) 100% 100% no-repeat;
+		}
+	}
+
+	&__title {
+		font-size: 40px;
+		line-height: 50px;
+		text-transform: uppercase;
+		margin-bottom: rem(15);
+	}
+
+	&__text {
+		font-family: Montserrat;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 20px;
+		margin-bottom: rem(30);
+	}
+
+	&__button {
+		width: rem(420);
+		font-size: 15px;
+		line-height: 19px;
+		letter-spacing: 0.016em;
+		padding: rem(17) 0;
+		color: #ffffff;
+		background: #9102d5;
+		box-shadow: 0px 3.74372px 22.4623px rgba(145, 2, 212, 0.2);
+		border-radius: 12px;
+	}
+
+	&__social-media {
+	}
+
+	&__social-item {
+	}
+}
+
+//====================================================================================================
+
+//Burger
+/*
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		width: rem(30);
+		height: rem(18);
+		cursor: pointer;
+		z-index: 5;
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(2);
+			background-color: #000;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - rem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - rem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
+*/

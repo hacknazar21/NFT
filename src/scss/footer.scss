@@ -1,0 +1,102 @@
+//====================================================================================================
+.footer {
+    position: relative;
+    &__head-img-ibg {
+        padding-bottom: percent(576, 1920);
+        @media (min-width: $mobile) {
+            margin-bottom: rem(-90);
+            img {
+                object-fit: contain;
+            }
+        }
+        img {
+            max-width: 100%;
+        }
+    }
+
+    &__container {
+        position: relative;
+        &::before {
+            content: "";
+            background: url(@img/footer/right-bg.png) right/contain no-repeat;
+            width: percent(1027, 1680);
+            height: rem(622);
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 2;
+            @media (max-width: $mobile) {
+                display: none;
+            }
+        }
+    }
+
+    &__text-box {
+        background: linear-gradient(0deg, rgba(9, 9, 9, 0.6), rgba(9, 9, 9, 0.6)),
+            radial-gradient(50% 50% at 50% 50%, #232121 0%, rgba(19, 19, 19, 0) 100%);
+        border: rem(2) solid #9a43b9;
+        box-sizing: border-box;
+        backdrop-filter: blur(30px);
+
+        border-radius: 30px;
+
+        @include adaptiveValue("max-width", 1614, 330);
+        position: relative;
+        z-index: 1;
+
+        @include adaptiveValue("height", 617, 450);
+    }
+
+    &__text-block {
+        max-width: rem(730);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 3;
+
+        @include adaptiveValue("padding", 50, 23);
+    }
+
+    &__title {
+        margin-bottom: rem(40);
+    }
+
+    &__text {
+    }
+
+    &__button {
+        background: #8b3db7;
+        @media (min-width: $mobile) {
+            margin-top: auto;
+        }
+        margin-top: rem(10);
+        &._email {
+            display: none;
+            @media (max-width: $mobile) {
+                margin-top: auto;
+                background-color: #17152a;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                display: block;
+            }
+        }
+    }
+
+    &__head-mobile {
+        @media (max-width: $mobile) {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        display: none;
+    }
+
+    &__authors {
+        padding: rem(14) rem(15);
+        background: #17152a;
+        font-size: rem(14);
+        line-height: math.div(18, 14);
+    }
+}
+
+//====================================================================================================
