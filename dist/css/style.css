@@ -514,26 +514,21 @@ body {
     }
   }
 }
-@media (min-width: 105em) {
+@media (min-width: 120em) {
   .header__main {
     margin-left: 5rem;
   }
 }
-@media (min-width: 20em) and (max-width: 105em) {
-  @supports (margin-left: clamp( 0.00000625rem , -1.1764628676rem  +  5.8823455882vw , 5rem )) {
+@media (min-width: 60em) and (max-width: 120em) {
+  @supports (margin-left: clamp( 0.625rem , -3.75rem  +  7.2916666667vw , 5rem )) {
     .header__main {
-      margin-left: clamp( 0.00000625rem , -1.1764628676rem  +  5.8823455882vw , 5rem );
+      margin-left: clamp( 0.625rem , -3.75rem  +  7.2916666667vw , 5rem );
     }
   }
-  @supports not (margin-left: clamp( 0.00000625rem , -1.1764628676rem  +  5.8823455882vw , 5rem )) {
+  @supports not (margin-left: clamp( 0.625rem , -3.75rem  +  7.2916666667vw , 5rem )) {
     .header__main {
-      margin-left: calc(0.00000625rem + 5 * (100vw - 20rem) / 85);
+      margin-left: calc(0.625rem + 4.375 * (100vw - 60rem) / 60);
     }
-  }
-}
-@media (max-width: 20em) {
-  .header__main {
-    margin-left: 0.00000625rem;
   }
 }
 @media (max-width: 61.99875em) {
@@ -631,6 +626,7 @@ body {
   right: 0;
   z-index: 0;
   background: url(../img/kanion.png) 0%/cover no-repeat;
+  animation: mobile-header 15s linear infinite;
   mix-blend-mode: screen;
 }
 @media (max-width: 61.99875em) {
@@ -647,6 +643,17 @@ body {
   }
 }
 
+@keyframes mobile-header {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
 /*
 .icon-menu {
 	display: none;
@@ -881,6 +888,7 @@ body {
 .main-slider__img-ibg::before {
   content: "";
   background: url(../img/main-slider/sheep.png) center/contain no-repeat;
+  animation: slider-anim 5s linear infinite;
   width: 158.6330935252%;
   height: 146.8051118211%;
   position: absolute;
@@ -950,6 +958,17 @@ body {
   mix-blend-mode: overlay;
 }
 
+@keyframes slider-anim {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 .collection__container {
   background: linear-gradient(0deg, rgba(9, 9, 9, 0.6), rgba(9, 9, 9, 0.6)), radial-gradient(50% 50% at 50% 50%, #232121 0%, rgba(19, 19, 19, 0) 100%);
   border: 2.03788px solid #ca003b;

@@ -64,11 +64,11 @@
 	}
 
 	&__main {
-		@include adaptiveValue("max-width", 420, 320, 1920, 960);
+		@include adaptiveValue("max-width", 420, 320, 1920, 990);
 
-		@include adaptiveValue("margin-top", 100, 20, 1920, 960);
+		@include adaptiveValue("margin-top", 100, 20, 1920, 990);
 		width: 100%;
-		@include adaptiveValue("margin-left", 80, 0);
+		@include adaptiveValue("margin-left", 80, 10, 1920, 990);
 		@media (max-width: $tablet) {
 			width: 100%;
 			max-width: rem(294);
@@ -135,6 +135,7 @@
 			right: 0;
 			z-index: 0;
 			background: url(@img/kanion.png) 0% / cover no-repeat;
+			animation: mobile-header 15s linear infinite;
 			mix-blend-mode: screen;
 
 			@media (max-width: $tablet) {
@@ -149,7 +150,17 @@
 		}
 	}
 }
-
+@keyframes mobile-header {
+	0% {
+		background-position: 0%;
+	}
+	50% {
+		background-position: 100%;
+	}
+	100% {
+		background-position: 0%;
+	}
+}
 //====================================================================================================
 
 //Burger

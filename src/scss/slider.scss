@@ -24,6 +24,7 @@
         &::before {
             content: "";
             background: url(@img/main-slider/sheep.png) center/contain no-repeat;
+            animation: slider-anim 5s linear infinite;
 
             width: percent(882, 556);
             height: percent(919, 626);
@@ -104,4 +105,18 @@
         }
     }
 }
+//========================================================================================================================================================
+
+@keyframes slider-anim {
+    0% {
+        transform: translateY(00px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
 //========================================================================================================================================================
