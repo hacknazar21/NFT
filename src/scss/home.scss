@@ -1,7 +1,7 @@
 //====================================================================================================
 .page {
     &__main-slider {
-        margin-top: rem(84);
+        @include adaptiveValue("margin-top", 84, 20);
     }
     &__collection {
         margin-top: rem(120);
