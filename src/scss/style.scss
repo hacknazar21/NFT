@@ -68,13 +68,11 @@ body {
 	flex-direction: column;
 	overflow: hidden;
 	// Прижимаем footer
-	background: url(@img/background.png) center / cover no-repeat #111518;
-	background-attachment: scroll;
+	background: url(@img/background.png) scroll center / cover no-repeat;
 
 	@media (max-width: $tablet) {
-		background: url(@img/bg-mobile.png) center / cover no-repeat #111518;
+		background: url(@img/bg-mobile.png) scroll center / cover no-repeat;
 	}
-	mix-blend-mode: inherit;
 	position: relative;
 	z-index: -1;
 	> main {

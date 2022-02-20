@@ -182,15 +182,13 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: url(../img/background.png) center/cover no-repeat #111518;
-  background-attachment: scroll;
-  mix-blend-mode: inherit;
+  background: url(../img/background.png) scroll center/cover no-repeat;
   position: relative;
   z-index: -1;
 }
 @media (max-width: 61.99875em) {
   .wrapper {
-    background: url(../img/bg-mobile.png) center/cover no-repeat #111518;
+    background: url(../img/bg-mobile.png) scroll center/cover no-repeat;
   }
 }
 .wrapper > main {
@@ -333,7 +331,7 @@ input {
   position: relative;
   clip-path: url(#header);
   transform: translateY(-20px);
-  background-color: #131111;
+  background-color: #0e0d0d;
   z-index: 3;
 }
 @media (max-width: 61.99875em) {
@@ -372,12 +370,13 @@ input {
   content: "";
   position: absolute;
   width: 100%;
+  max-width: 59.875rem;
   height: 100%;
   top: 0;
   left: 0;
-  transform: rotate(9.62deg);
-  background: url(../img/Topology.svg) left/contain no-repeat;
-  z-index: -1;
+  transform: rotate(9.62deg) translateX(-20%);
+  background: url(../img/Topology.svg) left/cover no-repeat;
+  z-index: 5;
 }
 @media (max-width: 61.99875em) {
   .header__container::before {
@@ -391,9 +390,8 @@ input {
   height: 100%;
   top: 0;
   right: 0;
-  z-index: 0;
-  background: url(../img/kanion.png) right/contain no-repeat;
-  mix-blend-mode: screen;
+  z-index: -1;
+  background: url(../img/kanion.png) scroll top/contain no-repeat;
 }
 @media (max-width: 61.99875em) {
   .header__container::after {
@@ -412,6 +410,7 @@ input {
 }
 .header__main {
   width: 100%;
+  position: relative;
 }
 @media (min-width: 120em) {
   .header__main {
@@ -432,18 +431,18 @@ input {
 }
 @media (min-width: 120em) {
   .header__main {
-    margin-top: 6.25rem;
+    padding-top: 6.25rem;
   }
 }
 @media (min-width: 61.875em) and (max-width: 120em) {
-  @supports (margin-top: clamp( 1.25rem , -4.0725806452rem  +  8.6021505376vw , 6.25rem )) {
+  @supports (padding-top: clamp( 1.25rem , -4.0725806452rem  +  8.6021505376vw , 6.25rem )) {
     .header__main {
-      margin-top: clamp( 1.25rem , -4.0725806452rem  +  8.6021505376vw , 6.25rem );
+      padding-top: clamp( 1.25rem , -4.0725806452rem  +  8.6021505376vw , 6.25rem );
     }
   }
-  @supports not (margin-top: clamp( 1.25rem , -4.0725806452rem  +  8.6021505376vw , 6.25rem )) {
+  @supports not (padding-top: clamp( 1.25rem , -4.0725806452rem  +  8.6021505376vw , 6.25rem )) {
     .header__main {
-      margin-top: calc(1.25rem + 5 * (100vw - 61.875rem) / 58.125);
+      padding-top: calc(1.25rem + 5 * (100vw - 61.875rem) / 58.125);
     }
   }
 }
@@ -472,10 +471,22 @@ input {
     overflow: hidden;
   }
 }
+.header__main::after {
+  content: "";
+  width: 11.8125rem;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  height: 100%;
+  background: url(../img/header-border.svg) 100% 100% no-repeat;
+  display: block;
+  z-index: 4;
+}
 .header__text-block {
   max-width: 26.25rem;
   position: relative;
   margin-top: 3.125rem;
+  z-index: 5;
 }
 @media (min-width: 120em) {
   .header__text-block {
@@ -546,6 +557,8 @@ input {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 6;
 }
 @media (min-width: 105em) {
   .header__button {
@@ -623,13 +636,13 @@ input {
 }
 @keyframes tablet-header {
   0% {
-    background-position: 0%;
+    background-position: 10%;
   }
   50% {
-    background-position: 120%;
+    background-position: 60%;
   }
   100% {
-    background-position: 0%;
+    background-position: 10%;
   }
 }
 /*
@@ -876,7 +889,7 @@ input {
   position: absolute;
   top: -10.625rem;
   left: -9.375rem;
-  z-index: 2;
+  z-index: 4;
 }
 @media (max-width: 61.99875em) {
   .main-slider__img-ibg::before {

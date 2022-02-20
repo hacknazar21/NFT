@@ -20,22 +20,24 @@
 			clip-path: url(#header-mobile);
 		}
 
-		background-color: #131111;
+		background-color: #0e0d0d;
 		z-index: 3;
 
 		&::before {
 			content: "";
 			position: absolute;
 			width: 100%;
+			max-width: rem(958);
 			height: 100%;
 			top: 0;
 			left: 0;
-			transform: rotate(9.62deg);
-			background: url(@img/Topology.svg) left/contain no-repeat;
+			transform: rotate(9.62deg) translateX(-20%);
+			background: url(@img/Topology.svg) left / cover no-repeat;
+
 			@media (max-width: $tablet) {
 				display: none;
 			}
-			z-index: -1;
+			z-index: 5;
 		}
 		&::after {
 			content: "";
@@ -44,9 +46,8 @@
 			height: 100%;
 			top: 0;
 			right: 0;
-			z-index: 0;
-			background: url(@img/kanion.png) right / contain no-repeat;
-			mix-blend-mode: screen;
+			z-index: -1;
+			background: url(@img/kanion.png) scroll top / contain no-repeat;
 
 			@media (max-width: $tablet) {
 				display: none;
@@ -68,7 +69,7 @@
 	&__main {
 		@include adaptiveValue("max-width", 420, 320, 1920, 990);
 
-		@include adaptiveValue("margin-top", 100, 20, 1920, 990);
+		@include adaptiveValue("padding-top", 100, 20, 1920, 990);
 		width: 100%;
 		@include adaptiveValue("margin-left", 80, 10, 1920, 990);
 		@media (max-width: $tablet) {
@@ -77,13 +78,26 @@
 			margin: 0 auto;
 			overflow: hidden;
 		}
+		position: relative;
+		&::after {
+			content: "";
+			width: rem(189);
+			position: absolute;
+			top: 0;
+			left: 100%;
+
+			height: 100%;
+			background: url(@img/header-border.svg) 100% 100% no-repeat;
+			display: block;
+			z-index: 4;
+		}
 	}
 
 	&__text-block {
 		max-width: rem(420);
 		position: relative;
 		margin-top: rem(50);
-
+		z-index: 5;
 		@include adaptiveValue("margin-top", 90, 20, 1920, 990);
 		&::before {
 			content: "";
@@ -123,6 +137,8 @@
 		align-items: center;
 
 		justify-content: space-between;
+		position: relative;
+		z-index: 6;
 
 		&::after {
 			@extend %ic;
@@ -184,13 +200,13 @@
 }
 @keyframes tablet-header {
 	0% {
-		background-position: 0%;
+		background-position: 10%;
 	}
 	50% {
-		background-position: 120%;
+		background-position: 60%;
 	}
 	100% {
-		background-position: 0%;
+		background-position: 10%;
 	}
 }
 //====================================================================================================
