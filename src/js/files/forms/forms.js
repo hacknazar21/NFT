@@ -32,8 +32,12 @@ export function formFieldsInit(options = { viewPass: false }) {
 			if (!formField.hasAttribute('data-placeholder-nohide')) {
 				formField.dataset.placeholder = formField.placeholder;
 			}
+			formField.oninput = function () {
+				formValidate.validateInput(formField);
+			}
 		});
 	}
+
 	document.body.addEventListener("focusin", function (e) {
 		const targetElement = e.target;
 		if ((targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA')) {
@@ -80,6 +84,7 @@ export function formFieldsInit(options = { viewPass: false }) {
 export let formValidate = {
 	getErrors(form) {
 		let error = 0;
+
 		let formRequiredItems = form.querySelectorAll('*[data-required]');
 		if (formRequiredItems.length) {
 			formRequiredItems.forEach(formRequiredItem => {
@@ -91,6 +96,8 @@ export let formValidate = {
 		return error;
 	},
 	validateInput(formRequiredItem) {
+
+		console.log("hi")
 		let error = 0;
 		if (formRequiredItem.dataset.required === "email") {
 			formRequiredItem.value = formRequiredItem.value.replace(" ", "");

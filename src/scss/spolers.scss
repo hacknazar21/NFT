@@ -60,6 +60,7 @@
     &__container {
         position: relative;
         margin: 0;
+        padding: 0;
         &::before {
             content: "";
 
@@ -96,18 +97,39 @@
                 color: #a80df1;
             }
         }
+
         display: flex;
-        gap: rem(41);
+
         align-items: center;
         &::before {
             content: "";
             flex: 0 0 rem(16);
             height: rem(16);
             border-radius: 50%;
-
+            margin-right: rem(14);
+            @include adaptiveValue("margin-right", 41, 14, 1920, 390);
             background-color: #9102d4;
 
             display: inline-block;
+        }
+
+        &::after {
+            @extend %ic;
+            content: "\e907";
+            @include adaptiveValue("font-size", 30, 21, 1920, 390);
+            transition: transform 0.3s ease 0s;
+            padding-right: rem(10);
+            margin-left: rem(10);
+
+            @include adaptiveValue("margin-left", 20, 10, 1920, 390);
+        }
+        &._spoller-active::after {
+            transform: rotate(180deg);
+        }
+        @media (any-hover: none) {
+            &._spoller-active {
+                color: #a80df1;
+            }
         }
     }
 
