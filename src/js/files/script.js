@@ -16,9 +16,10 @@ window.onload = function () {
     }
     else if (w < 992) {
         minus = (w - 370) / 2;
-        console.log(minus);
         pathMobile.style.transform = `translateX(${minus}px)`;
     }
+
+
 }
 window.onresize = function () {
     const containerWidth = 1680;
@@ -30,7 +31,9 @@ window.onresize = function () {
     }
     else if (w < 992) {
         minus = (w - 370) / 2;
-        console.log(minus);
         pathMobile.style.transform = `translateX(${minus}px)`;
+
     }
 }
+
+

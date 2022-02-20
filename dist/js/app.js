@@ -3460,7 +3460,6 @@
         let divide = w / containerWidth;
         if (divide < 1 && w > 992) path.style.transform = `scale(${divide})`; else if (w < 992) {
             minus = (w - 370) / 2;
-            console.log(minus);
             pathMobile.style.transform = `translateX(${minus}px)`;
         }
     };
@@ -3470,7 +3469,6 @@
         let divide = w / containerWidth;
         if (divide < 1 && w > 992) path.style.transform = `scale(${divide})`; else if (w < 992) {
             minus = (w - 370) / 2;
-            console.log(minus);
             pathMobile.style.transform = `translateX(${minus}px)`;
         }
     };

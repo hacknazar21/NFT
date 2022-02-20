@@ -393,6 +393,11 @@ body {
   display: block;
 }
 
+@media (max-width: 376px) {
+  .header {
+    margin: 0 10px;
+  }
+}
 .header__container {
   display: flex;
   justify-content: space-between;
@@ -485,15 +490,15 @@ body {
     max-width: 26.25rem;
   }
 }
-@media (min-width: 60em) and (max-width: 120em) {
-  @supports (max-width: clamp( 20rem , 13.75rem  +  10.4166666667vw , 26.25rem )) {
+@media (min-width: 61.875em) and (max-width: 120em) {
+  @supports (max-width: clamp( 20rem , 13.3467741935rem  +  10.752688172vw , 26.25rem )) {
     .header__main {
-      max-width: clamp( 20rem , 13.75rem  +  10.4166666667vw , 26.25rem );
+      max-width: clamp( 20rem , 13.3467741935rem  +  10.752688172vw , 26.25rem );
     }
   }
-  @supports not (max-width: clamp( 20rem , 13.75rem  +  10.4166666667vw , 26.25rem )) {
+  @supports not (max-width: clamp( 20rem , 13.3467741935rem  +  10.752688172vw , 26.25rem )) {
     .header__main {
-      max-width: calc(20rem + 6.25 * (100vw - 60rem) / 60);
+      max-width: calc(20rem + 6.25 * (100vw - 61.875rem) / 58.125);
     }
   }
 }
@@ -502,15 +507,15 @@ body {
     margin-top: 6.25rem;
   }
 }
-@media (min-width: 60em) and (max-width: 120em) {
-  @supports (margin-top: clamp( 1.25rem , -3.75rem  +  8.3333333333vw , 6.25rem )) {
+@media (min-width: 61.875em) and (max-width: 120em) {
+  @supports (margin-top: clamp( 1.25rem , -4.0725806452rem  +  8.6021505376vw , 6.25rem )) {
     .header__main {
-      margin-top: clamp( 1.25rem , -3.75rem  +  8.3333333333vw , 6.25rem );
+      margin-top: clamp( 1.25rem , -4.0725806452rem  +  8.6021505376vw , 6.25rem );
     }
   }
-  @supports not (margin-top: clamp( 1.25rem , -3.75rem  +  8.3333333333vw , 6.25rem )) {
+  @supports not (margin-top: clamp( 1.25rem , -4.0725806452rem  +  8.6021505376vw , 6.25rem )) {
     .header__main {
-      margin-top: calc(1.25rem + 5 * (100vw - 60rem) / 60);
+      margin-top: calc(1.25rem + 5 * (100vw - 61.875rem) / 58.125);
     }
   }
 }
@@ -519,15 +524,15 @@ body {
     margin-left: 5rem;
   }
 }
-@media (min-width: 60em) and (max-width: 120em) {
-  @supports (margin-left: clamp( 0.625rem , -3.75rem  +  7.2916666667vw , 5rem )) {
+@media (min-width: 61.875em) and (max-width: 120em) {
+  @supports (margin-left: clamp( 0.625rem , -4.0322580645rem  +  7.5268817204vw , 5rem )) {
     .header__main {
-      margin-left: clamp( 0.625rem , -3.75rem  +  7.2916666667vw , 5rem );
+      margin-left: clamp( 0.625rem , -4.0322580645rem  +  7.5268817204vw , 5rem );
     }
   }
-  @supports not (margin-left: clamp( 0.625rem , -3.75rem  +  7.2916666667vw , 5rem )) {
+  @supports not (margin-left: clamp( 0.625rem , -4.0322580645rem  +  7.5268817204vw , 5rem )) {
     .header__main {
-      margin-left: calc(0.625rem + 4.375 * (100vw - 60rem) / 60);
+      margin-left: calc(0.625rem + 4.375 * (100vw - 61.875rem) / 58.125);
     }
   }
 }
@@ -625,9 +630,19 @@ body {
   top: 0;
   right: 0;
   z-index: 0;
-  background: url(../img/kanion.png) 0%/cover no-repeat;
-  animation: mobile-header 15s linear infinite;
   mix-blend-mode: screen;
+}
+@media (max-width: 61.99875em) {
+  .header__mobile-img::after {
+    background: url(../img/kanion.png) 0%/contain no-repeat;
+    animation: tablet-header 25s linear infinite;
+  }
+}
+@media (max-width: 47.99875em) {
+  .header__mobile-img::after {
+    background: url(../img/kanion.png) 0%/cover no-repeat;
+    animation: mobile-header 25s linear infinite;
+  }
 }
 @media (max-width: 61.99875em) {
   .header__mobile-img::after {
@@ -649,6 +664,17 @@ body {
   }
   50% {
     background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
+@keyframes tablet-header {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 120%;
   }
   100% {
     background-position: 0%;
@@ -1407,7 +1433,30 @@ body {
   }
 }
 .page__collection {
-  margin-top: 7.5rem;
+  margin-top: 1.25rem;
+}
+@media (min-width: 105em) {
+  .page__collection {
+    margin-top: 7.5rem;
+  }
+}
+@media (min-width: 24.375em) and (max-width: 105em) {
+  @supports (margin-top: clamp( 1.25rem , -0.6395348837rem  +  7.7519379845vw , 7.5rem )) {
+    .page__collection {
+      margin-top: clamp( 1.25rem , -0.6395348837rem  +  7.7519379845vw , 7.5rem );
+    }
+  }
+  @supports not (margin-top: clamp( 1.25rem , -0.6395348837rem  +  7.7519379845vw , 7.5rem )) {
+    .page__collection {
+      margin-top: calc(1.25rem + 6.25 * (100vw - 24.375rem) / 80.625);
+    }
+  }
+}
+@media (max-width: 61.99875em) {
+  .page__collection {
+    margin-left: 0.625rem;
+    margin-right: 0.625rem;
+  }
 }
 .swiper {
   overflow: hidden;

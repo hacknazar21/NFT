@@ -1,6 +1,7 @@
 //====================================================================================================
 .header {
-	path {
+	@media (max-width: 376px) {
+		margin: 0 10px;
 	}
 	&__container {
 		@media (max-width: $tablet) {
@@ -134,8 +135,16 @@
 			top: 0;
 			right: 0;
 			z-index: 0;
-			background: url(@img/kanion.png) 0% / cover no-repeat;
-			animation: mobile-header 15s linear infinite;
+
+			@media (max-width: $tablet) {
+				background: url(@img/kanion.png) 0% / contain no-repeat;
+
+				animation: tablet-header 25s linear infinite;
+			}
+			@media (max-width: $mobile) {
+				background: url(@img/kanion.png) 0% / cover no-repeat;
+				animation: mobile-header 25s linear infinite;
+			}
 			mix-blend-mode: screen;
 
 			@media (max-width: $tablet) {
@@ -156,6 +165,17 @@
 	}
 	50% {
 		background-position: 100%;
+	}
+	100% {
+		background-position: 0%;
+	}
+}
+@keyframes tablet-header {
+	0% {
+		background-position: 0%;
+	}
+	50% {
+		background-position: 120%;
 	}
 	100% {
 		background-position: 0%;
