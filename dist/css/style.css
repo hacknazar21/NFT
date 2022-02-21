@@ -824,6 +824,11 @@ input {
     display: none;
   }
 }
+@media (max-width: 61.99875em) {
+  .footer__container {
+    margin: 0 0.625rem;
+  }
+}
 .footer__text-box {
   background: linear-gradient(0deg, rgba(9, 9, 9, 0.6), rgba(9, 9, 9, 0.6)), radial-gradient(50% 50% at 50% 50%, #232121 0%, rgba(19, 19, 19, 0) 100%);
   border: 0.125rem solid #9a43b9;
