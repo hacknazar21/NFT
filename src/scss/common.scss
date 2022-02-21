@@ -29,7 +29,8 @@
 ._decor-title {
     text-align: center;
     @media (max-width: $tablet) {
-        margin: 0 rem(10);
+        margin-left: rem(10);
+        margin-right: rem(10);
     }
     &::before {
         content: "";

@@ -305,7 +305,8 @@ input {
 }
 @media (max-width: 61.99875em) {
   ._decor-title {
-    margin: 0 0.625rem;
+    margin-left: 0.625rem;
+    margin-right: 0.625rem;
   }
 }
 ._decor-title::before {
