@@ -739,7 +739,7 @@ input {
 .icon-menu {
   display: none;
 }
-@media (max-width: 47.99875em) {
+@media (max-width: 61.99875em) {
   .icon-menu {
     display: block;
     right: 0;

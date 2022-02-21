@@ -250,7 +250,7 @@
 
 .icon-menu {
 	display: none;
-	@media (max-width: $mobile) {
+	@media (max-width: $tablet) {
 		display: block;
 		right: 0;
 		top: rem(30);
