@@ -303,6 +303,11 @@ input {
 ._decor-title {
   text-align: center;
 }
+@media (max-width: 61.99875em) {
+  ._decor-title {
+    margin: 0 0.625rem;
+  }
+}
 ._decor-title::before {
   content: "";
   background: url(../img/main-slider/title-top.svg) center 100% no-repeat;
@@ -514,6 +519,7 @@ input {
   width: 9.375rem;
   height: 6.25rem;
   background: url(../img/NFT.svg) center/contain no-repeat;
+  animation: header-hft-anim 12s linear infinite;
 }
 @media (min-width: 120em) {
   .header__text-block::before {
@@ -734,6 +740,17 @@ input {
   }
   100% {
     background-position: 10%;
+  }
+}
+@keyframes header-hft-anim {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
   }
 }
 .icon-menu {
@@ -1023,9 +1040,12 @@ input {
   position: relative;
   z-index: 4;
   border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: #0c0c0c;
+  mix-blend-mode: inherit;
 }
 .main-slider__slide img {
-  z-index: 3;
+  position: relative;
+  z-index: 5;
 }
 .main-slider__slide::before {
   content: "";
@@ -1049,8 +1069,21 @@ input {
   top: 0;
   left: 0;
   z-index: 2;
+}
+.main-slider_green::after {
   background: linear-gradient(180deg, rgba(121, 255, 16, 0.5) 0%, rgba(126, 231, 44, 0.3) 0.01%, rgba(16, 16, 21, 0.5) 100%);
-  mix-blend-mode: overlay;
+}
+.main-slider_orange::after {
+  background: linear-gradient(180deg, rgba(255, 190, 24, 0.5) 0%, rgba(33, 33, 33, 0.1) 100%);
+}
+.main-slider_blue::after {
+  background: linear-gradient(180deg, rgba(119, 176, 73, 0.5) 0%, rgba(7, 153, 236, 0.3) 0.01%, rgba(16, 16, 21, 0.5) 100%);
+}
+.main-slider_red::after {
+  background: linear-gradient(180deg, rgba(255, 16, 16, 0.5) 0%, rgba(16, 16, 21, 0.5) 100%);
+}
+.main-slider_green-light::after {
+  background: linear-gradient(180deg, rgba(16, 255, 140, 0.5) 0%, rgba(16, 16, 21, 0.5) 100%);
 }
 
 @keyframes slider-anim {
@@ -1378,9 +1411,26 @@ input {
   }
 }
 .spollers__body {
-  margin-left: 5rem;
+  margin-left: 1.875rem;
   margin-top: 1.25rem;
   max-width: 42.125rem;
+}
+@media (min-width: 120em) {
+  .spollers__body {
+    margin-left: 5rem;
+  }
+}
+@media (min-width: 24.375em) and (max-width: 120em) {
+  @supports (margin-left: clamp( 1.875rem , 1.0784313725rem  +  3.2679738562vw , 5rem )) {
+    .spollers__body {
+      margin-left: clamp( 1.875rem , 1.0784313725rem  +  3.2679738562vw , 5rem );
+    }
+  }
+  @supports not (margin-left: clamp( 1.875rem , 1.0784313725rem  +  3.2679738562vw , 5rem )) {
+    .spollers__body {
+      margin-left: calc(1.875rem + 3.125 * (100vw - 24.375rem) / 95.625);
+    }
+  }
 }
 
 @keyframes cards-anim {

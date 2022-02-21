@@ -70,8 +70,12 @@
         position: relative;
         z-index: 4;
         border: 1px solid rgba(255, 255, 255, 0.4);
+        background-color: #0c0c0c;
+        mix-blend-mode: inherit;
+
         img {
-            z-index: 3;
+            position: relative;
+            z-index: 5;
         }
         &::before {
             content: "";
@@ -95,13 +99,43 @@
             top: 0;
             left: 0;
             z-index: 2;
+        }
+    }
+
+    //========================================================================================================================================================
+    &_green {
+        &::after {
             background: linear-gradient(
                 180deg,
                 rgba(121, 255, 16, 0.5) 0%,
                 rgba(126, 231, 44, 0.3) 0.01%,
                 rgba(16, 16, 21, 0.5) 100%
             );
-            mix-blend-mode: overlay;
+        }
+    }
+    &_orange {
+        &::after {
+            background: linear-gradient(180deg, rgba(255, 190, 24, 0.5) 0%, rgba(33, 33, 33, 0.1) 100%);
+        }
+    }
+    &_blue {
+        &::after {
+            background: linear-gradient(
+                180deg,
+                rgba(119, 176, 73, 0.5) 0%,
+                rgba(7, 153, 236, 0.3) 0.01%,
+                rgba(16, 16, 21, 0.5) 100%
+            );
+        }
+    }
+    &_red {
+        &::after {
+            background: linear-gradient(180deg, rgba(255, 16, 16, 0.5) 0%, rgba(16, 16, 21, 0.5) 100%);
+        }
+    }
+    &_green-light {
+        &::after {
+            background: linear-gradient(180deg, rgba(16, 255, 140, 0.5) 0%, rgba(16, 16, 21, 0.5) 100%);
         }
     }
 }

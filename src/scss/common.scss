@@ -28,6 +28,9 @@
 }
 ._decor-title {
     text-align: center;
+    @media (max-width: $tablet) {
+        margin: 0 rem(10);
+    }
     &::before {
         content: "";
         background: url(@img/main-slider/title-top.svg) center 100% no-repeat;

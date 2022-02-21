@@ -3577,7 +3577,7 @@
             modules: [ Autoplay ],
             observer: true,
             observeParents: true,
-            slidesPerView: 3.1,
+            slidesPerView: 3,
             spaceBetween: 20,
             autoHeight: false,
             speed: 800,
@@ -3591,11 +3591,8 @@
                 320: {
                     slidesPerView: "auto"
                 },
-                992: {
-                    slidesPerView: 2
-                },
                 1268: {
-                    slidesPerView: 3.1
+                    slidesPerView: 3
                 }
             },
             on: {}

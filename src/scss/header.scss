@@ -110,6 +110,8 @@
 			@include adaptiveValue("width", 250, 150, 1920, 390);
 			height: rem(100);
 			background: url(@img/NFT.svg) center / contain no-repeat;
+
+			animation: header-hft-anim 12s linear infinite;
 		}
 	}
 
@@ -242,6 +244,18 @@
 	}
 	100% {
 		background-position: 10%;
+	}
+}
+
+@keyframes header-hft-anim {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+	100% {
+		transform: translateY(0px);
 	}
 }
 //====================================================================================================
