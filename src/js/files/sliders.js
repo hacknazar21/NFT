@@ -7,7 +7,7 @@
 // Подключаем слайдер Swiper из node_modules
 // При необходимости подключаем дополнительные модули слайдера, указывая их в {} через запятую
 // Пример: { Navigation, Autoplay }
-import Swiper, { Autoplay, Navigation } from 'swiper';
+import Swiper, { Autoplay, Navigation, EffectFade, EffectCreative } from 'swiper';
 /*
 Основниые модули слайдера:
 Navigation, Pagination, Autoplay, 
@@ -32,7 +32,7 @@ function initSliders() {
 		new Swiper('.main-slider-swiper', { // Указываем скласс нужного слайдера
 			// Подключаем модули слайдера
 			// для конкретного случая
-			modules: [Autoplay],
+			modules: [Autoplay, EffectCreative],
 			observer: true,
 			observeParents: true,
 			slidesPerView: 3,
@@ -47,7 +47,20 @@ function initSliders() {
 			//lazy: true,
 
 			// Эффекты
-			effect: 'fade',
+			effect: 'creative',
+			creativeEffect: {
+				prev: {
+					// will set `translateZ(-400px)` on previous slides
+					translate: ['200%', 0, 0],
+					scale: 0.7,
+				},
+				next: {
+					// will set `translateX(100%)` on next slides
+					translate: ['110%', 0, 0],
+					scale: 0.85
+				},
+				limitProgress: 1
+			},
 			autoplay: {
 				delay: 3000,
 				disableOnInteraction: false,
@@ -97,7 +110,7 @@ function initSliders() {
 		new Swiper('.gallery-swiper', { // Указываем скласс нужного слайдера
 			// Подключаем модули слайдера
 			// для конкретного случая
-			modules: [Autoplay, Navigation],
+			modules: [Autoplay, Navigation, EffectFade],
 			observer: true,
 			observeParents: true,
 			slidesPerView: 1,
@@ -110,9 +123,10 @@ function initSliders() {
 			loop: true,
 			//preloadImages: false,
 			//lazy: true,
-
+			direction: 'horizontal',
 			// Эффекты
 			effect: 'fade',
+
 			autoplay: {
 				delay: 3000,
 				disableOnInteraction: false,
