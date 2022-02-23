@@ -8,7 +8,9 @@
         /* Note: backdrop-filter has minimal browser support */
 
         border-radius: 30px;
-
+        @media (max-width: 1680px) {
+            margin: 0 rem(10);
+        }
         padding: rem(50) rem(84);
 
         background: url(@img/collection/bg.svg) no-repeat;

@@ -6,11 +6,6 @@
     &__collection {
         margin-top: rem(20);
         @include adaptiveValue("margin-top", 120, 20, 1680, 390);
-
-        @media (max-width: $tablet) {
-            margin-left: rem(10);
-            margin-right: rem(10);
-        }
     }
 }
 //====================================================================================================

@@ -35,7 +35,11 @@
 			background: url(@img/Topology.svg) left / cover no-repeat;
 
 			@media (max-width: $tablet) {
-				display: none;
+				transform: rotate(9.62deg) translateX(0%);
+				background: url(@img/Topology.svg) 0% 50% no-repeat;
+				.menu-open & {
+					display: none;
+				}
 			}
 			z-index: 5;
 		}

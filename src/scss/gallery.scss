@@ -1,0 +1,78 @@
+.page {
+    &__gallery {
+        @include adaptiveValue("margin-bottom", 141, 37);
+    }
+}
+.gallery {
+    &__container {
+        overflow: hidden;
+        padding: 0 rem(15);
+        box-sizing: border-box;
+        @media (max-width: $mobile) {
+            padding: 0;
+        }
+    }
+    &__title {
+        color: #ffffff;
+        font-weight: bold;
+        @include adaptiveValue("font-size", 200, 50);
+        line-height: math.div(257, 200);
+        text-align: center;
+        opacity: 0.2;
+
+        margin-bottom: percent(-67, 1470);
+        @media (max-width: $mobile) {
+            display: none;
+        }
+    }
+    &__slider {
+        position: relative;
+    }
+
+    &__wrapper {
+    }
+
+    &__slide {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+        img {
+            width: 100%;
+            border: 1px solid #b9fd02;
+            filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.25));
+            border-radius: 5px;
+        }
+        @media (max-width: $mobile) {
+            img {
+                border: none;
+                border-radius: 0;
+            }
+        }
+    }
+
+    &__buttons {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: rem(30);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        @media (max-width: $mobile) {
+            display: none;
+        }
+    }
+}
+.swiper-button {
+    min-width: rem(200);
+    background: #000000;
+    border-radius: 5px;
+    box-shadow: 0px 3.74372px 22.4623px rgba(145, 2, 212, 0.2);
+    color: #b9fd02;
+    padding: rem(16) 0;
+}
+.swiper-button-prev {
+}
+.swiper-button-next {
+}
