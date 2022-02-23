@@ -51,12 +51,12 @@ function initSliders() {
 			creativeEffect: {
 				prev: {
 					// will set `translateZ(-400px)` on previous slides
-					translate: ['200%', 0, 0],
+					translate: ['185%', 0, 0],
 					scale: 0.7,
 				},
 				next: {
 					// will set `translateX(100%)` on next slides
-					translate: ['110%', 0, 0],
+					translate: ['100%', 0, 0],
 					scale: 0.85
 				},
 				limitProgress: 1

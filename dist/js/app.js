@@ -3938,11 +3938,11 @@
             effect: "creative",
             creativeEffect: {
                 prev: {
-                    translate: [ "200%", 0, 0 ],
+                    translate: [ "185%", 0, 0 ],
                     scale: .7
                 },
                 next: {
-                    translate: [ "110%", 0, 0 ],
+                    translate: [ "100%", 0, 0 ],
                     scale: .85
                 },
                 limitProgress: 1
