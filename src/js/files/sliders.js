@@ -32,12 +32,12 @@ function initSliders() {
 		new Swiper('.main-slider-swiper', { // Указываем скласс нужного слайдера
 			// Подключаем модули слайдера
 			// для конкретного случая
-			modules: [Autoplay, EffectCreative],
+			modules: [Autoplay, Navigation, EffectCreative],
 			observer: true,
 			observeParents: true,
 			slidesPerView: 3,
-			spaceBetween: 20,
-			autoHeight: false,
+			spaceBetween: 0,
+			autoHeight: true,
 			speed: 800,
 
 			//touchRatio: 0,
@@ -47,19 +47,25 @@ function initSliders() {
 			//lazy: true,
 
 			// Эффекты
+			/*effect: 'creative',
+			creativeEffect: {
+				prev: {
+
+				},
+				next: {
+					scale: 0.76
+				}
+			},*/
 			effect: 'creative',
 			creativeEffect: {
 				prev: {
-					// will set `translateZ(-400px)` on previous slides
-					translate: ['185%', 0, 0],
-					scale: 0.7,
+					translate: ['95%', 0, 0],
+					scale: 0.76
 				},
 				next: {
-					// will set `translateX(100%)` on next slides
-					translate: ['100%', 0, 0],
-					scale: 0.85
-				},
-				limitProgress: 1
+					translate: ['180%', 0, 0],
+					scale: 0.76
+				}
 			},
 			autoplay: {
 				delay: 3000,
@@ -81,19 +87,32 @@ function initSliders() {
 				draggable: true,
 			},
 			*/
-			/*
+
 			// Кнопки "влево/вправо"
 			navigation: {
 				prevEl: '.swiper-button-prev',
 				nextEl: '.swiper-button-next',
 			},
-			*/
+
 			// Брейкпоинты
 
 			breakpoints: {
 				320: {
-					slidesPerView: 'auto',
+					slidesPerView: 1,
 
+					creativeEffect: {
+						prev: {
+							translate: ['10%', '5px', 0],
+							scale: 0.913
+						},
+						next: {
+							translate: ['-10%', '5px', 0],
+							scale: 0.913
+						}
+					}
+				},
+				768: {
+					slidesPerView: 2,
 				},
 				1268: {
 					slidesPerView: 3,

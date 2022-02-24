@@ -3927,33 +3927,49 @@
     }
     function initSliders() {
         if (document.querySelector(".main-slider-swiper")) new core(".main-slider-swiper", {
-            modules: [ Autoplay, EffectCreative ],
+            modules: [ Autoplay, Navigation, EffectCreative ],
             observer: true,
             observeParents: true,
             slidesPerView: 3,
-            spaceBetween: 20,
-            autoHeight: false,
+            spaceBetween: 0,
+            autoHeight: true,
             speed: 800,
             loop: true,
             effect: "creative",
             creativeEffect: {
                 prev: {
-                    translate: [ "185%", 0, 0 ],
-                    scale: .7
+                    translate: [ "95%", 0, 0 ],
+                    scale: .76
                 },
                 next: {
-                    translate: [ "100%", 0, 0 ],
-                    scale: .85
-                },
-                limitProgress: 1
+                    translate: [ "180%", 0, 0 ],
+                    scale: .76
+                }
             },
             autoplay: {
                 delay: 3e3,
                 disableOnInteraction: false
             },
+            navigation: {
+                prevEl: ".swiper-button-prev",
+                nextEl: ".swiper-button-next"
+            },
             breakpoints: {
                 320: {
-                    slidesPerView: "auto"
+                    slidesPerView: 1,
+                    creativeEffect: {
+                        prev: {
+                            translate: [ "10%", "5px", 0 ],
+                            scale: .913
+                        },
+                        next: {
+                            translate: [ "-10%", "5px", 0 ],
+                            scale: .913
+                        }
+                    }
+                },
+                768: {
+                    slidesPerView: 2
                 },
                 1268: {
                     slidesPerView: 3

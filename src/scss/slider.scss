@@ -2,14 +2,13 @@
 .main-slider {
     &__container {
         display: flex;
-        gap: rem(88);
 
         @media (max-width: $tablet) {
             display: block;
         }
     }
     &__img-ibg {
-        flex: 0 0 percent(566, 1680);
+        flex: 1 1 auto;
         margin-bottom: rem(130);
         @media (max-width: $tablet) {
             padding-bottom: rem(302);
@@ -25,7 +24,7 @@
             content: "";
             background: url(@img/main-slider/sheep.png) center/contain no-repeat;
             animation: slider-anim 5s linear infinite;
-
+            pointer-events: none;
             width: percent(882, 556);
             height: percent(919, 626);
             position: absolute;
@@ -43,11 +42,29 @@
         }
     }
 
-    &__slider {
+    &__slider-box {
+        position: relative;
+        flex: 0 0 percent(975, 1680);
+        z-index: 4;
         min-width: 0;
-        z-index: 3;
-        overflow: hidden;
-        width: 100vw;
+        margin: 0 rem(10);
+        @media (min-width: $mobile) {
+            overflow: hidden;
+        }
+    }
+
+    &__slider {
+        position: relative;
+        @media (min-width: $mobile) {
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        max-width: percent(870, 975);
+        @media (max-width: $mobile) {
+            @include adaptiveValue("padding-left", 70, 50);
+            @include adaptiveValue("padding-right", 70, 50);
+            margin: 0 auto;
+        }
     }
 
     &__title {
@@ -56,6 +73,11 @@
 
     &__text {
         margin-bottom: rem(72);
+        font-family: Montserrat;
+        font-weight: 300;
+        font-size: rem(18);
+        line-height: math.div(20, 18);
+        letter-spacing: 0.02em;
 
         @media (max-width: $tablet) {
             padding: 0 rem(10);
@@ -63,10 +85,12 @@
     }
 
     &__wrapper {
+        @media (min-width: $mobile) {
+            transform: translateX(5%);
+        }
     }
 
     &__slide {
-        max-height: rem(386);
         position: relative;
         z-index: 4;
         border: 1px solid rgba(255, 255, 255, 0.4);
@@ -91,54 +115,28 @@
             border: 20px solid transparent;
             border-image: url(@img/main-slider/border.svg);
             border-image-slice: 20;
-            z-index: 1;
-        }
-        &::after {
-            content: "";
-            width: 100%;
-            height: 100%;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 2;
+            z-index: 6;
         }
     }
 
     //========================================================================================================================================================
-    &_green {
-        &::after {
-            background: linear-gradient(
-                180deg,
-                rgba(121, 255, 16, 0.5) 0%,
-                rgba(126, 231, 44, 0.3) 0.01%,
-                rgba(16, 16, 21, 0.5) 100%
-            );
+
+    &__buttons {
+        display: flex;
+        position: absolute;
+        width: 100%;
+
+        bottom: calc(50% - rem(24));
+        left: 0;
+        justify-content: space-between;
+        font-size: rem(24);
+        z-index: 10;
+
+        .swiper-button-prev {
+            transform: rotate(90deg);
         }
-    }
-    &_orange {
-        &::after {
-            background: linear-gradient(180deg, rgba(255, 190, 24, 0.5) 0%, rgba(33, 33, 33, 0.1) 100%);
-        }
-    }
-    &_blue {
-        &::after {
-            background: linear-gradient(
-                180deg,
-                rgba(119, 176, 73, 0.5) 0%,
-                rgba(7, 153, 236, 0.3) 0.01%,
-                rgba(16, 16, 21, 0.5) 100%
-            );
-        }
-    }
-    &_red {
-        &::after {
-            background: linear-gradient(180deg, rgba(255, 16, 16, 0.5) 0%, rgba(16, 16, 21, 0.5) 100%);
-        }
-    }
-    &_green-light {
-        &::after {
-            background: linear-gradient(180deg, rgba(16, 255, 140, 0.5) 0%, rgba(16, 16, 21, 0.5) 100%);
+        .swiper-button-next {
+            transform: rotate(-90deg);
         }
     }
 }
