@@ -1829,46 +1829,46 @@ input {
   }
 }
 
-.page {
+.page-second {
   display: flex;
   align-items: center;
 }
 @media (min-width: 61.99875em) {
-  .page {
+  .page-second {
     width: 100vw;
   }
 }
 @media (max-width: 61.99875em) {
-  .page {
+  .page-second {
     flex-direction: column;
     gap: 1.25rem;
   }
 }
-.page__logo {
+.page-second__logo {
   font-weight: bold;
   font-size: 1.25rem;
   line-height: 2.5;
 }
 @media (min-width: 61.99875em) {
-  .page__logo {
+  .page-second__logo {
     display: none;
   }
 }
-.page__side {
+.page-second__side {
   flex: 1 1 50%;
 }
 @media (max-width: 61.99875em) {
-  .page__side {
+  .page-second__side {
     flex: 1 1 auto;
     margin: 0 0.625rem;
   }
 }
-.page__social {
+.page-second__social {
   width: 100%;
   z-index: 2;
 }
 @media (min-width: 61.99875em) {
-  .page__social {
+  .page-second__social {
     position: absolute;
     bottom: 0;
     left: calc(50% - 18.5rem);
