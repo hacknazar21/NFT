@@ -1,0 +1,150 @@
+.page {
+    display: flex;
+    align-items: center;
+    @media (min-width: $tablet) {
+        width: 100vw;
+    }
+    @media (max-width: $tablet) {
+        flex-direction: column;
+        gap: rem(20);
+    }
+    &__logo {
+        font-weight: bold;
+        font-size: rem(20);
+        line-height: math.div(50, 20);
+        @media (min-width: $tablet) {
+            display: none;
+        }
+    }
+    &__side {
+        flex: 1 1 50%;
+        @media (max-width: $tablet) {
+            flex: 1 1 auto;
+            margin: 0 rem(10);
+        }
+    }
+    &__social {
+        width: 100%;
+        @media (min-width: $tablet) {
+            position: absolute;
+            bottom: 0;
+            left: calc(50% - rem(296));
+        }
+        z-index: 2;
+    }
+}
+.side {
+    height: 100vh;
+    display: flex;
+    @media (min-width: $tablet) {
+        align-items: center;
+    }
+    background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+    @media (max-width: $tablet) {
+        border-radius: 5px;
+
+        overflow: hidden;
+    }
+    &__center {
+        @media (min-width: $tablet) {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+        }
+
+        width: 100%;
+        @media (min-width: $tablet) {
+            max-height: rem(354);
+        }
+    }
+
+    &__text-box {
+        max-width: rem(594);
+        margin: 0 auto;
+        @media (min-width: $tablet) {
+            padding: rem(50) rem(20) rem(37) rem(20);
+        }
+        height: 100%;
+        @media (max-width: $tablet) {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+
+    &__title {
+        font-family: Pilat Extended;
+        font-weight: bold;
+        @include adaptiveValue("font-size", 40, 20);
+        line-height: math.div(50, 40);
+        @include adaptiveValue("margin-bottom", 20, 0);
+        @media (max-width: $tablet) {
+            padding: 0 rem(47);
+            padding-top: rem(20);
+            line-height: math.div(50, 20);
+        }
+        @media (max-width: $mobile) {
+            padding: rem(20);
+            padding-bottom: 0;
+        }
+        text-align: center;
+    }
+
+    &__text {
+        font-family: Montserrat;
+        font-weight: 300;
+        @include adaptiveValue("font-size", 16, 14);
+        line-height: math.div(20, 16);
+        margin-bottom: rem(47);
+        @include adaptiveValue("margin-bottom", 47, 0);
+
+        @media (max-width: $tablet) {
+            padding: 0 rem(47);
+            max-height: rem(200);
+            overflow: auto;
+        }
+        @media (max-width: $mobile) {
+            padding: 0 rem(20);
+        }
+    }
+    &__button {
+        background: #9102d5;
+        box-shadow: 0px 3.74372px 22.4623px rgba(145, 2, 212, 0.2);
+        border-radius: 5px;
+        @media (max-width: $tablet) {
+            margin-top: rem(20);
+        }
+    }
+    &_left {
+        background: url(@img/nohoomans/left.png) center/cover no-repeat;
+    }
+    &_right {
+        background: url(@img/nohoomans/right.png) center/cover no-repeat;
+        .side__button {
+            background: #2e2d2d;
+        }
+    }
+}
+.social-media {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    @media (min-width: $tablet) {
+        width: rem(592);
+        background: url(@img/nohoomans/social.svg) bottom/contain no-repeat;
+        padding-bottom: rem(10);
+    }
+    height: rem(70);
+
+    @media (max-width: $tablet) {
+        align-items: center;
+    }
+    &__item {
+        font-size: rem(25);
+        transition: color 0.3s ease 0s;
+        @media (any-hover: hover) {
+            &:hover {
+                color: #ae00ff;
+            }
+        }
+    }
+}
