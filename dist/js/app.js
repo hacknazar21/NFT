@@ -3965,8 +3965,17 @@
     const path = document.querySelector("#header path");
     const pathMobile = document.querySelector("#header-mobile path");
     const svgTeam = document.querySelectorAll(".team__card");
+    const wrapper = document.querySelector(".wrapper");
     let minus;
     document.documentElement.classList.add("loading");
+    window.onscroll = function() {
+        let scrollTopProcent = window.pageYOffset / document.documentElement.offsetHeight * 100;
+        if (scrollTopProcent > 100) scrollTopProcent = 100 - (scrollTopProcent - 100 * Math.floor(scrollTopProcent / 100));
+        setParallaxItemsStyle(scrollTopProcent);
+    };
+    function setParallaxItemsStyle(scrollTopProcent) {
+        wrapper.style.backgroundPosition = `${scrollTopProcent}%`;
+    }
     window.onload = function() {
         document.documentElement.classList.remove("loading");
         const containerWidth = 1680;

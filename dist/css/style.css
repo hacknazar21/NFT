@@ -264,7 +264,9 @@ body .loading-text {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
   background: url(../img/background.png) center/cover no-repeat;
+  transition: background-position 0.9s ease 0s;
   position: relative;
   z-index: -1;
 }
@@ -687,6 +689,7 @@ input {
   justify-content: space-between;
   position: relative;
   z-index: 6;
+  animation: header-btn-anim 5s linear infinite;
 }
 @media (min-width: 105em) {
   .header__button {
@@ -713,12 +716,6 @@ input {
 .header__button::after {
   content: "\e900";
   font-size: 1.5rem;
-}
-@media (any-hover: hover) {
-  .header__button:hover {
-    background-color: #b9fd02;
-    color: #000000;
-  }
 }
 .header__social-media {
   display: flex;
@@ -847,6 +844,20 @@ input {
     transform: translateY(0px);
   }
 }
+@keyframes header-btn-anim {
+  0% {
+    color: #ffffff;
+    background-color: #9102d5;
+  }
+  50% {
+    background-color: #b9fd02;
+    color: #000000;
+  }
+  100% {
+    color: #ffffff;
+    background-color: #9102d5;
+  }
+}
 .icon-menu {
   display: none;
 }
@@ -870,6 +881,7 @@ input {
     border-radius: 1px;
     height: 0.125rem;
     background-color: #9102d4;
+    animation: header-btn-anim 5s linear infinite;
   }
   .icon-menu span {
     width: 100%;

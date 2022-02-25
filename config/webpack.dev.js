@@ -22,6 +22,7 @@ if (!pugPages.length) {
 		replace: [
 			{ regex: '<link rel="stylesheet" href="css/style.min.css">', to: '' },
 			{ regex: '../img', to: 'img' },
+			{ regex: '@url', to: '', },
 			{ regex: '@img', to: 'img' },
 			{ regex: 'NEW_PROJECT_NAME', to: rootFolder }
 		],

@@ -147,17 +147,11 @@
 		justify-content: space-between;
 		position: relative;
 		z-index: 6;
-
+		animation: header-btn-anim 5s linear infinite;
 		&::after {
 			@extend %ic;
 			content: "\e900";
 			font-size: rem(24);
-		}
-		@media (any-hover: hover) {
-			&:hover {
-				background-color: #b9fd02;
-				color: #000000;
-			}
 		}
 	}
 
@@ -268,6 +262,21 @@
 		transform: translateY(0px);
 	}
 }
+
+@keyframes header-btn-anim {
+	0% {
+		color: #ffffff;
+		background-color: #9102d5;
+	}
+	50% {
+		background-color: #b9fd02;
+		color: #000000;
+	}
+	100% {
+		color: #ffffff;
+		background-color: #9102d5;
+	}
+}
 //====================================================================================================
 
 //Burger
@@ -294,6 +303,7 @@
 			border-radius: 1px;
 			height: rem(2);
 			background-color: #9102d4;
+			animation: header-btn-anim 5s linear infinite;
 		}
 		span {
 			width: 100%;
