@@ -23,7 +23,7 @@
         &::before {
             content: "";
             background: url(@img/main-slider/sheep.png) center/contain no-repeat;
-            animation: slider-anim 5s linear infinite;
+            animation: slider-anim 15s linear infinite;
             pointer-events: none;
             width: percent(882, 556);
             height: percent(919, 626);
@@ -108,18 +108,22 @@
             border-image-slice: 20;
             z-index: 6;
         }
-        transition: transform 0.9s ease 0s, opacity 0.9s ease 0s, z-index 0.5s ease 0s;
+        transition: transform 0.8s ease 0s, opacity 0.5s ease 0s, z-index 0.5s ease 0s;
         @media (min-width: $mobile) {
             &:not([class*="active"]) {
                 transform: translateX(rem(-10)) scale(0.76);
+                opacity: 1;
             }
             &[class*="active"] {
                 transform: translateX(rem(51));
+                opacity: 1;
             }
             &[class*="next"] {
                 transform: scale(0.76) translateX(rem(51));
+                opacity: 1;
             }
             &[class*="prev"] {
+                transform: scale(0);
                 opacity: 0;
             }
         }
@@ -160,13 +164,13 @@
 
 @keyframes slider-anim {
     0% {
-        transform: translateY(00px);
+        transform: scale(1);
     }
     50% {
-        transform: translateY(20px);
+        transform: scale(1.2);
     }
     100% {
-        transform: translateY(0px);
+        transform: scale(1);
     }
 }
 

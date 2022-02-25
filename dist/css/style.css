@@ -995,7 +995,7 @@ input {
 .main-slider__img-ibg::before {
   content: "";
   background: url(../img/main-slider/sheep.png) center/contain no-repeat;
-  animation: slider-anim 5s linear infinite;
+  animation: slider-anim 15s linear infinite;
   pointer-events: none;
   width: 158.6330935252%;
   height: 146.8051118211%;
@@ -1090,7 +1090,7 @@ input {
   position: relative;
   z-index: 4;
   mix-blend-mode: inherit;
-  transition: transform 0.9s ease 0s, opacity 0.9s ease 0s, z-index 0.5s ease 0s;
+  transition: transform 0.8s ease 0s, opacity 0.5s ease 0s, z-index 0.5s ease 0s;
 }
 .main-slider__slide img {
   position: relative;
@@ -1117,14 +1117,18 @@ input {
 @media (min-width: 47.99875em) {
   .main-slider__slide:not([class*=active]) {
     transform: translateX(-0.625rem) scale(0.76);
+    opacity: 1;
   }
   .main-slider__slide[class*=active] {
     transform: translateX(3.1875rem);
+    opacity: 1;
   }
   .main-slider__slide[class*=next] {
     transform: scale(0.76) translateX(3.1875rem);
+    opacity: 1;
   }
   .main-slider__slide[class*=prev] {
+    transform: scale(0);
     opacity: 0;
   }
 }
@@ -1157,13 +1161,13 @@ input {
 
 @keyframes slider-anim {
   0% {
-    transform: translateY(0px);
+    transform: scale(1);
   }
   50% {
-    transform: translateY(20px);
+    transform: scale(1.2);
   }
   100% {
-    transform: translateY(0px);
+    transform: scale(1);
   }
 }
 .collection__container {

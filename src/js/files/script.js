@@ -48,11 +48,10 @@ window.onload = function () {
                             stroke="black" stroke-width="2" />
                     </g>
                     <defs>
-                        <pattern id="pattern${i}" patternContentUnits="objectBoundingBox" width="1" height="1">
-                            <use xlink:href="#image${i}"
-                            transform="translate(0 -0.109) scale(0.000777001 0.000933606)" />
+                        <pattern id="pattern${i}" width="1" height="1">
+                            <use xlink:href="#image${i}" />
                         </pattern>
-                        <image  width="1287" height="1931" id="image${i}" xlink:href="img/team/people/${i}.png" />
+                        <image  width="155%" height="105%" id="image${i}" xlink:href="img/team/people/${i}.png" />
                     </defs>
                 </svg>
         `)

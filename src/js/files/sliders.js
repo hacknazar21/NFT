@@ -47,21 +47,11 @@ function initSliders() {
 			//lazy: true,
 
 			// Эффекты
-			/*effect: 'creative',
-			creativeEffect: {
-				prev: {
-
-				},
-				next: {
-					scale: 0.76
-				}
-			},*/
 
 			autoplay: {
 				delay: 3000,
 				disableOnInteraction: false,
 			},
-
 			// Пагинация
 			/*
 			pagination: {
