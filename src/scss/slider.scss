@@ -48,21 +48,15 @@
         z-index: 4;
         min-width: 0;
         margin: 0 rem(10);
-        @media (min-width: $mobile) {
-            overflow: hidden;
-        }
     }
 
     &__slider {
         position: relative;
-        @media (min-width: $mobile) {
-            overflow: hidden;
-            margin: 0 auto;
-        }
+        margin: 0 auto;
+        overflow-x: hidden;
         @media (max-width: $mobile) {
             @include adaptiveValue("padding-left", 70, 50);
             @include adaptiveValue("padding-right", 70, 50);
-            margin: 0 auto;
         }
     }
 
@@ -84,16 +78,12 @@
     }
 
     &__wrapper {
-        @media (min-width: $mobile) {
-            transform: translateX(5%);
-        }
     }
 
     &__slide {
         position: relative;
         z-index: 4;
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        background-color: #0c0c0c;
+
         mix-blend-mode: inherit;
 
         img {
@@ -102,6 +92,8 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            object-position: center;
         }
         &::before {
             content: "";
@@ -115,6 +107,31 @@
             border-image: url(@img/main-slider/border.svg);
             border-image-slice: 20;
             z-index: 6;
+        }
+        transition: transform 0.9s ease 0s, opacity 0.9s ease 0s, z-index 0.5s ease 0s;
+        @media (min-width: $mobile) {
+            &:not([class*="active"]) {
+                transform: translateX(rem(-10)) scale(0.76);
+            }
+            &[class*="active"] {
+                transform: translateX(rem(51));
+            }
+            &[class*="next"] {
+                transform: scale(0.76) translateX(rem(51));
+            }
+            &[class*="prev"] {
+                opacity: 0;
+            }
+        }
+        @media (max-width: $mobile) {
+            &[class*="next"] {
+                transform: translateX(-93%) scale(0.913);
+                z-index: 0;
+            }
+            &[class*="prev"] {
+                transform: translateX(93%) scale(0.913);
+                z-index: -1;
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 .page {
     &__team {
         margin-top: rem(13);
+        @include adaptiveValue("margin-bottom", 182, 41);
         margin-bottom: rem(34);
     }
 }

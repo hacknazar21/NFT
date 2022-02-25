@@ -1021,24 +1021,10 @@ input {
   min-width: 0;
   margin: 0 0.625rem;
 }
-@media (min-width: 47.99875em) {
-  .main-slider__slider-box {
-    overflow: hidden;
-  }
-}
 .main-slider__slider {
   position: relative;
-}
-@media (min-width: 47.99875em) {
-  .main-slider__slider {
-    overflow: hidden;
-    margin: 0 auto;
-  }
-}
-@media (max-width: 47.99875em) {
-  .main-slider__slider {
-    margin: 0 auto;
-  }
+  margin: 0 auto;
+  overflow-x: hidden;
 }
 @media (max-width: 47.99875em) and (min-width: 105em) {
   .main-slider__slider {
@@ -1100,17 +1086,11 @@ input {
     padding: 0 0.625rem;
   }
 }
-@media (min-width: 47.99875em) {
-  .main-slider__wrapper {
-    transform: translateX(5%);
-  }
-}
 .main-slider__slide {
   position: relative;
   z-index: 4;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: #0c0c0c;
   mix-blend-mode: inherit;
+  transition: transform 0.9s ease 0s, opacity 0.9s ease 0s, z-index 0.5s ease 0s;
 }
 .main-slider__slide img {
   position: relative;
@@ -1118,6 +1098,8 @@ input {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  object-position: center;
 }
 .main-slider__slide::before {
   content: "";
@@ -1131,6 +1113,30 @@ input {
   border-image: url(../img/main-slider/border.svg);
   border-image-slice: 20;
   z-index: 6;
+}
+@media (min-width: 47.99875em) {
+  .main-slider__slide:not([class*=active]) {
+    transform: translateX(-0.625rem) scale(0.76);
+  }
+  .main-slider__slide[class*=active] {
+    transform: translateX(3.1875rem);
+  }
+  .main-slider__slide[class*=next] {
+    transform: scale(0.76) translateX(3.1875rem);
+  }
+  .main-slider__slide[class*=prev] {
+    opacity: 0;
+  }
+}
+@media (max-width: 47.99875em) {
+  .main-slider__slide[class*=next] {
+    transform: translateX(-93%) scale(0.913);
+    z-index: 0;
+  }
+  .main-slider__slide[class*=prev] {
+    transform: translateX(93%) scale(0.913);
+    z-index: -1;
+  }
 }
 .main-slider__buttons {
   display: flex;
@@ -1682,6 +1688,28 @@ input {
 .page__team {
   margin-top: 0.8125rem;
   margin-bottom: 2.125rem;
+}
+@media (min-width: 105em) {
+  .page__team {
+    margin-bottom: 11.375rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 105em) {
+  @supports (margin-bottom: clamp( 2.5625rem , 0.4889705882rem  +  10.3676470588vw , 11.375rem )) {
+    .page__team {
+      margin-bottom: clamp( 2.5625rem , 0.4889705882rem  +  10.3676470588vw , 11.375rem );
+    }
+  }
+  @supports not (margin-bottom: clamp( 2.5625rem , 0.4889705882rem  +  10.3676470588vw , 11.375rem )) {
+    .page__team {
+      margin-bottom: calc(2.5625rem + 8.8125 * (100vw - 20rem) / 85);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .page__team {
+    margin-bottom: 2.5625rem;
+  }
 }
 
 .card-team {
