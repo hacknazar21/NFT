@@ -1,18 +1,6 @@
 //====================================================================================================
 .footer {
     position: relative;
-    &__head-img-ibg {
-        padding-bottom: percent(576, 1920);
-        @media (min-width: $mobile) {
-            margin-bottom: rem(-90);
-            img {
-                object-fit: contain;
-            }
-        }
-        img {
-            max-width: 100%;
-        }
-    }
 
     &__container {
         position: relative;
@@ -32,6 +20,7 @@
         }
         @media (max-width: $tablet) {
             margin: 0 rem(10);
+            margin-bottom: rem(10);
         }
     }
 
@@ -89,21 +78,6 @@
                 }
             }
         }
-    }
-
-    &__head-mobile {
-        @media (max-width: $mobile) {
-            display: flex;
-            flex-direction: column-reverse;
-        }
-        display: none;
-    }
-
-    &__authors {
-        padding: rem(14) rem(15);
-        background: #17152a;
-        font-size: rem(14);
-        line-height: math.div(18, 14);
     }
 }
 

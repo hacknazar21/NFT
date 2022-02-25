@@ -59,7 +59,6 @@
             overflow: hidden;
             margin: 0 auto;
         }
-        max-width: percent(870, 975);
         @media (max-width: $mobile) {
             @include adaptiveValue("padding-left", 70, 50);
             @include adaptiveValue("padding-right", 70, 50);

@@ -68,10 +68,10 @@ body {
 	flex-direction: column;
 	overflow: hidden;
 	// Прижимаем footer
-	background: url(@img/background.png) scroll center / cover no-repeat;
+	background: url(@img/background.png) center / cover no-repeat;
 
 	@media (max-width: $tablet) {
-		background: url(@img/bg-mobile.png) scroll center / cover no-repeat;
+		background: url(@img/bg-mobile.png) center / cover no-repeat;
 	}
 	position: relative;
 	z-index: -1;
