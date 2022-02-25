@@ -4,23 +4,30 @@
 		margin: 0 10px;
 	}
 	&__container {
-		@media (max-width: $tablet) {
+		@media (max-width: $mobile) {
 			display: block;
 		}
 		display: flex;
 		justify-content: space-between;
-		min-height: rem(710);
-		@include adaptiveValue("min-height", 710, 380);
+		align-items: center;
+		@include adaptiveValue("min-height", 732, 150);
+		@media (max-width: $mobile) {
+			min-height: rem(370);
+		}
 		gap: rem(20);
 		position: relative;
-		clip-path: url(#header);
+		//clip-path: url(#header);
+		background-color: #0e0d0d;
+		@media (min-width: $mobile) {
+			background: url(@img/Header.png) top/contain no-repeat;
+		}
 		transform: translateY(-20px);
 
-		@media (max-width: $tablet) {
+		@media (max-width: $mobile) {
 			clip-path: url(#header-mobile);
 		}
 
-		background-color: #0e0d0d;
+		//background-color: #0e0d0d;
 		z-index: 3;
 
 		&::before {
@@ -33,8 +40,9 @@
 			left: 0;
 			transform: rotate(9.62deg) translateX(-20%);
 			background: url(@img/Topology.svg) left / cover no-repeat;
-
-			@media (max-width: $tablet) {
+			display: none;
+			@media (max-width: $mobile) {
+				display: block;
 				transform: rotate(9.62deg) translateX(0%);
 				background: url(@img/Topology.svg) 0% 50% no-repeat;
 				.menu-open & {
@@ -43,7 +51,7 @@
 			}
 			z-index: 5;
 		}
-		&::after {
+		/*&::after {
 			content: "";
 			position: absolute;
 			width: percent(1110, 1680);
@@ -56,7 +64,7 @@
 			@media (max-width: $tablet) {
 				display: none;
 			}
-		}
+		}*/
 	}
 
 	&__image-ibg {
@@ -71,19 +79,21 @@
 	}
 
 	&__main {
-		@include adaptiveValue("max-width", 420, 320, 1920, 990);
+		@include adaptiveValue("max-width", 420, 320);
+		flex: 0 0 percent(421, 1680);
+		@media (min-width: $tablet) {
+			margin-top: rem(-100);
+		}
+		@include adaptiveValue("padding-left", 80, 10, 1920, 720);
 
-		@include adaptiveValue("padding-top", 100, 20, 1920, 990);
-		width: 100%;
-		@include adaptiveValue("margin-left", 80, 10, 1920, 990);
-		@media (max-width: $tablet) {
+		@media (max-width: $mobile) {
 			width: 100%;
 			max-width: rem(294);
 			margin: 0 auto;
 			overflow: hidden;
 		}
 		position: relative;
-		&::after {
+		/*&::after {
 			content: "";
 			width: rem(189);
 			position: absolute;
@@ -94,13 +104,12 @@
 			background: url(@img/header-border.svg) 100% 100% no-repeat;
 			display: block;
 			z-index: 4;
-		}
+		}*/
 	}
 
 	&__text-block {
 		max-width: rem(420);
 		position: relative;
-		margin-top: rem(70);
 		z-index: 5;
 		@include adaptiveValue("margin-top", 90, 20, 1920, 990);
 		&::before {
@@ -117,6 +126,10 @@
 
 			animation: header-hft-anim 12s linear infinite;
 		}
+		@media (max-width: $mobile) {
+			text-align: center;
+			margin-top: calc(50% - rem(50));
+		}
 	}
 
 	&__title {
@@ -124,11 +137,11 @@
 		font-weight: bold;
 		line-height: math.div(50, 40);
 
-		@include adaptiveValue("font-size", 40, 25);
+		@include adaptiveValue("font-size", 40, 20);
 	}
 
 	&__text {
-		margin-bottom: rem(30);
+		@include adaptiveValue("margin-bottom", 30, 15, 1920, 720);
 	}
 
 	&__button {
@@ -153,11 +166,14 @@
 			content: "\e900";
 			font-size: rem(24);
 		}
+		@media (max-width: $mobile) {
+			margin-top: rem(23);
+		}
 	}
 
 	&__social-media {
 		display: flex;
-		@media (max-width: $tablet) {
+		@media (max-width: $mobile) {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -178,7 +194,7 @@
 		}
 		justify-content: space-between;
 		font-size: rem(21);
-		@include adaptiveValue("margin-top", 44, 20);
+		@include adaptiveValue("margin-top", 44, 15, 1920, 720);
 		color: #b10bff;
 		position: relative;
 		z-index: 6;
@@ -205,7 +221,7 @@
 			right: 0;
 			z-index: 0;
 
-			@media (max-width: $tablet) {
+			@media (max-width: $mobile) {
 				background: url(@img/kanion.png) 0% / contain no-repeat;
 
 				animation: tablet-header 25s linear infinite;
@@ -216,11 +232,11 @@
 			}
 			mix-blend-mode: screen;
 
-			@media (max-width: $tablet) {
+			@media (max-width: $mobile) {
 				display: block;
 			}
 		}
-		@media (max-width: $tablet) {
+		@media (max-width: $mobile) {
 			clip-path: url(#header-mobile);
 			position: relative;
 			padding-bottom: rem(400);
@@ -283,13 +299,13 @@
 
 .icon-menu {
 	display: none;
-	@media (max-width: $tablet) {
+	@media (max-width: $mobile) {
 		display: block;
 		right: 0;
 		top: rem(30);
 		position: absolute;
-		width: rem(30);
-		height: rem(18);
+		width: rem(14);
+		height: rem(10);
 		cursor: pointer;
 		z-index: 7;
 		span,
