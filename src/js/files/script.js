@@ -8,7 +8,11 @@ const pathMobile = document.querySelector('#header-mobile path');
 const svgTeam = document.querySelectorAll('.team__card');
 let minus;
 
+document.documentElement.classList.add('loading')
+
 window.onload = function () {
+    document.documentElement.classList.remove('loading')
+
     const containerWidth = 1680;
     let w = window.innerWidth;
     let divide = w / containerWidth;

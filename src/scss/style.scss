@@ -57,10 +57,84 @@ body {
 	// Сайт загружен
 	.loaded & {
 	}
+	.loading-text {
+		display: none;
+	}
+	.loading & {
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column-reverse;
+		align-items: center;
+		justify-content: center;
+		& .wrapper {
+			display: none;
+		}
+		& .loading-text {
+			position: relative;
+			display: block;
+			z-index: 502;
+			font-size: rem(40);
+			line-height: math.div(50, 40);
+			color: #b9fd02;
+			margin-left: rem(-30);
+			animation: loading-text-anim 2s linear infinite;
+		}
+		&::before {
+			content: "";
+			position: absolute;
+			z-index: 500;
+			background-color: #0a1c28;
+			display: block;
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		&::after {
+			content: "";
+			z-index: 501;
+			background: url(@img/load.svg) center/contain no-repeat;
+			display: block;
+			width: rem(198);
+			height: rem(203);
+			margin-bottom: rem(29);
 
+			animation: loading-anim 7s linear infinite;
+		}
+	}
 	position: relative;
 	z-index: -1;
 }
+
+//========================================================================================================================================================
+
+@keyframes loading-anim {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(180deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes loading-text-anim {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+//========================================================================================================================================================
+
 // Оболочка ============================================================================================================================================================================================================================================================================================================================================================================================================================================
 .wrapper {
 	min-height: 100%;
