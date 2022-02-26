@@ -47,7 +47,6 @@ function initSliders() {
 			//lazy: true,
 
 			// Эффекты
-
 			autoplay: {
 				delay: 3000,
 				disableOnInteraction: false,
@@ -79,6 +78,8 @@ function initSliders() {
 			breakpoints: {
 				320: {
 					slidesPerView: 1,
+					loopAdditionalSlides: 2,
+
 				},
 				768: {
 					slidesPerView: 2,

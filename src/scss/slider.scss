@@ -128,13 +128,20 @@
             }
         }
         @media (max-width: $mobile) {
+            transition: transform 0.8s ease 0s, z-index 0.5s ease 0s;
+
+            &:not([class*="active"]) {
+                opacity: 0;
+            }
             &[class*="next"] {
                 transform: translateX(-93%) scale(0.913);
                 z-index: 0;
+                opacity: 1;
             }
             &[class*="prev"] {
                 transform: translateX(93%) scale(0.913);
                 z-index: -1;
+                opacity: 1;
             }
         }
     }

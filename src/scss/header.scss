@@ -24,13 +24,14 @@
 		transform: translateY(-20px);
 
 		@media (max-width: $mobile) {
-			clip-path: url(#header-mobile);
+			background: url(@img/Header-mobile.png) top/contain no-repeat;
+			min-height: rem(767);
 		}
 
 		//background-color: #0e0d0d;
 		z-index: 3;
 
-		&::before {
+		/*&::before {
 			content: "";
 			position: absolute;
 			width: 100%;
@@ -50,7 +51,7 @@
 				}
 			}
 			z-index: 5;
-		}
+		}*/
 		/*&::after {
 			content: "";
 			position: absolute;
@@ -67,7 +68,7 @@
 		}*/
 	}
 
-	&__image-ibg {
+	/*&__image-ibg {
 		padding-bottom: rem(710);
 		width: 100%;
 		position: absolute;
@@ -76,7 +77,7 @@
 		img {
 			object-fit: cover;
 		}
-	}
+	}*/
 
 	&__main {
 		@include adaptiveValue("max-width", 420, 320);
@@ -93,18 +94,6 @@
 			overflow: hidden;
 		}
 		position: relative;
-		/*&::after {
-			content: "";
-			width: rem(189);
-			position: absolute;
-			top: 0;
-			left: 100%;
-
-			height: 100%;
-			background: url(@img/header-border.svg) 100% 100% no-repeat;
-			display: block;
-			z-index: 4;
-		}*/
 	}
 
 	&__text-block {
@@ -129,6 +118,10 @@
 		@media (max-width: $mobile) {
 			text-align: center;
 			margin-top: calc(50% - rem(50));
+		}
+		.menu-open & {
+			opacity: 0;
+			visibility: hidden;
 		}
 	}
 
@@ -180,7 +173,6 @@
 			width: 100%;
 			height: 100%;
 			align-items: center;
-			background-color: #0e0d0d;
 			font-size: rem(30);
 			opacity: 0;
 			visibility: collapse;
@@ -304,8 +296,8 @@
 		right: 0;
 		top: rem(30);
 		position: absolute;
-		width: rem(14);
-		height: rem(10);
+		width: rem(30);
+		height: rem(18);
 		cursor: pointer;
 		z-index: 7;
 		span,
