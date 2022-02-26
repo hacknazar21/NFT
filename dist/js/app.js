@@ -4355,10 +4355,11 @@
     const border_header = document.querySelector("#paint0_linear_28_83");
     const border_header_mobile = document.querySelector("#paint0_linear_28_84");
     const collection = document.querySelector(".collection");
+    document.querySelector(".footer");
     document.documentElement.classList.add("loading");
     window.onscroll = function() {
         let scrollTopProcent = window.pageYOffset / document.documentElement.offsetHeight * 100;
-        if (window.pageYOffset >= collection.offsetTop - 120) collection.classList.add("_show"); else collection.classList.remove("_show");
+        if (window.pageYOffset >= collection.offsetTop - 200) collection.classList.add("_show"); else collection.classList.remove("_show");
         if (scrollTopProcent > 100) scrollTopProcent = 100 - (scrollTopProcent - 100 * Math.floor(scrollTopProcent / 100));
         setParallaxItemsStyle(scrollTopProcent);
     };
