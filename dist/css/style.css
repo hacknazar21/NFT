@@ -1738,6 +1738,25 @@ input {
   }
 }
 
+.gallery .swiper-pagination {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  z-index: 5;
+  bottom: 0.625rem;
+  min-width: 5rem;
+  left: calc(50% - 2.5rem);
+}
+.gallery .swiper-pagination-bullet {
+  display: block;
+  width: 0.9375rem;
+  height: 0.9375rem;
+  border-radius: 50%;
+  background-color: #b9fd02;
+}
+.gallery .swiper-pagination-bullet-active {
+  background-color: #9102d5;
+}
 .gallery__container {
   overflow: hidden;
   padding: 0 0.9375rem;

@@ -4,6 +4,25 @@
     }
 }
 .gallery {
+    .swiper-pagination {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        z-index: 5;
+        bottom: rem(10);
+        min-width: rem(80);
+        left: calc(50% - rem(40));
+    }
+    .swiper-pagination-bullet {
+        display: block;
+        width: rem(15);
+        height: rem(15);
+        border-radius: 50%;
+        background-color: #b9fd02;
+    }
+    .swiper-pagination-bullet-active {
+        background-color: #9102d5;
+    }
     &__container {
         overflow: hidden;
         padding: 0 rem(15);
