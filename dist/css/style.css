@@ -1082,7 +1082,7 @@ input {
   margin-top: auto;
 }
 .footer__button {
-  background: #8b3db7;
+  background-color: #335ef8;
   margin-top: 1.125rem;
 }
 .footer__button._email {
@@ -1324,7 +1324,7 @@ input {
   box-sizing: border-box;
   backdrop-filter: blur(30px);
   /* Note: backdrop-filter has minimal browser support */
-  border-radius: 30px;
+  border-radius: 0.9375rem;
   padding: 3.125rem 5.25rem;
   background: url(../img/collection/bg.svg) no-repeat;
   min-height: 38.5625rem;

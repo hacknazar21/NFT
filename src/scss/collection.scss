@@ -7,7 +7,7 @@
         backdrop-filter: blur(30px);
         /* Note: backdrop-filter has minimal browser support */
 
-        border-radius: 30px;
+        border-radius: rem(15);
         @media (max-width: 1680px) {
             margin: 0 rem(10);
         }
