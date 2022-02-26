@@ -54,8 +54,7 @@
     &__slider {
         position: relative;
         margin: 0 auto;
-        overflow-x: hidden;
-        overflow-y: visible;
+        overflow: hidden;
         @media (max-width: $mobile) {
             @include adaptiveValue("padding-left", 70, 50);
             @include adaptiveValue("padding-right", 70, 50);

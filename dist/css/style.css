@@ -1163,8 +1163,7 @@ input {
 .main-slider__slider {
   position: relative;
   margin: 0 auto;
-  overflow-x: hidden;
-  overflow-y: visible;
+  overflow: hidden;
 }
 @media (max-width: 47.99875em) and (min-width: 105em) {
   .main-slider__slider {
