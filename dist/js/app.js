@@ -3967,6 +3967,8 @@
     const pathMobile = document.querySelector("#header-mobile path");
     const svgTeam = document.querySelectorAll(".team__card");
     const wrapper = document.querySelector(".wrapper");
+    const border_header = document.querySelector("#paint0_linear_28_83");
+    const border_header_mobile = document.querySelector("#paint0_linear_28_84");
     let minus;
     document.documentElement.classList.add("loading");
     window.onscroll = function() {
@@ -3979,6 +3981,7 @@
     }
     window.onload = function() {
         document.documentElement.classList.remove("loading");
+        headerAnim();
         const containerWidth = 1680;
         let w = window.innerWidth;
         let divide = w / containerWidth;
@@ -4001,6 +4004,25 @@
             pathMobile.style.transform = `translateX(${minus}px)`;
         }
     };
+    function headerAnim() {
+        let i = 0;
+        let flag = false;
+        if (window.screen.width > 768.98) setInterval((() => {
+            if (i > 2e3) flag = true; else if (i < 0) {
+                flag = false;
+                i = 1;
+            }
+            border_header.setAttribute("y2", i);
+            if (flag) i -= 10; else if (!flag) i += 10;
+        }), 10); else setInterval((() => {
+            if (i > 2e3) flag = true; else if (i < 0) {
+                flag = false;
+                i = 1;
+            }
+            border_header_mobile.setAttribute("y2", i);
+            if (flag) i -= 10; else if (!flag) i += 10;
+        }), 10);
+    }
     window["FLS"] = true;
     isWebp();
     menuInit();

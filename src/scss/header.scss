@@ -10,20 +10,25 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		@include adaptiveValue("min-height", 732, 350, 1920, 767.98);
+		@include adaptiveValue("height", 720, 300, 1680, 720);
+		width: percent(1900, 1920);
 		@media (max-width: $mobile) {
 			min-height: rem(370);
 		}
-		gap: rem(20);
 		position: relative;
 		//clip-path: url(#header);
 		background-color: #0e0d0d;
 		@media (min-width: $mobile) {
+			#header-mobile-border {
+				display: none;
+			}
 			background: url(@img/Header.png) top/contain no-repeat;
 		}
-		transform: translateY(-20px);
 
 		@media (max-width: $mobile) {
+			#header-border {
+				display: none;
+			}
 			background: url(@img/Header-mobile.png) top/contain no-repeat;
 			min-height: rem(767);
 		}
