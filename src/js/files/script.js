@@ -28,16 +28,7 @@ window.onload = function () {
     document.documentElement.classList.remove('loading');
     headerAnim();
 
-    const containerWidth = 1680;
-    let w = window.innerWidth;
-    let divide = w / containerWidth;
-    if (divide < 1 && w > 992) {
-        path.style.transform = `scale(${divide})`;
-    }
-    else if (w < 992) {
-        minus = (w - 370) / 2;
-        pathMobile.style.transform = `translateX(${minus}px)`;
-    }
+
     let i = 0;
 
     svgTeam.forEach(element => {
@@ -77,20 +68,7 @@ window.onload = function () {
     });
 
 };
-window.onresize = function () {
-    const containerWidth = 1680;
-    const headerHight = 710;
-    let w = window.innerWidth;
-    let divide = w / containerWidth;
-    if (divide < 1 && w > 992) {
-        path.style.transform = `scale(${divide})`;
-    }
-    else if (w < 992) {
-        minus = (w - 370) / 2;
-        pathMobile.style.transform = `translateX(${minus}px)`;
 
-    }
-};
 
 
 function headerAnim() {

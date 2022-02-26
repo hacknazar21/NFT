@@ -3801,9 +3801,133 @@
             })
         });
     }
+    function create_shadow_createShadow(params, $slideEl, side) {
+        const shadowClass = `swiper-slide-shadow${side ? `-${side}` : ""}`;
+        const $shadowContainer = params.transformEl ? $slideEl.find(params.transformEl) : $slideEl;
+        let $shadowEl = $shadowContainer.children(`.${shadowClass}`);
+        if (!$shadowEl.length) {
+            $shadowEl = dom(`<div class="swiper-slide-shadow${side ? `-${side}` : ""}"></div>`);
+            $shadowContainer.append($shadowEl);
+        }
+        return $shadowEl;
+    }
+    function EffectCreative(_ref) {
+        let {swiper, extendParams, on} = _ref;
+        extendParams({
+            creativeEffect: {
+                transformEl: null,
+                limitProgress: 1,
+                shadowPerProgress: false,
+                progressMultiplier: 1,
+                perspective: true,
+                prev: {
+                    translate: [ 0, 0, 0 ],
+                    rotate: [ 0, 0, 0 ],
+                    opacity: 1,
+                    scale: 1
+                },
+                next: {
+                    translate: [ 0, 0, 0 ],
+                    rotate: [ 0, 0, 0 ],
+                    opacity: 1,
+                    scale: 1
+                }
+            }
+        });
+        const getTranslateValue = value => {
+            if ("string" === typeof value) return value;
+            return `${value}px`;
+        };
+        const setTranslate = () => {
+            const {slides, $wrapperEl, slidesSizesGrid} = swiper;
+            const params = swiper.params.creativeEffect;
+            const {progressMultiplier: multiplier} = params;
+            const isCenteredSlides = swiper.params.centeredSlides;
+            if (isCenteredSlides) {
+                const margin = slidesSizesGrid[0] / 2 - swiper.params.slidesOffsetBefore || 0;
+                $wrapperEl.transform(`translateX(calc(50% - ${margin}px))`);
+            }
+            for (let i = 0; i < slides.length; i += 1) {
+                const $slideEl = slides.eq(i);
+                const slideProgress = $slideEl[0].progress;
+                const progress = Math.min(Math.max($slideEl[0].progress, -params.limitProgress), params.limitProgress);
+                let originalProgress = progress;
+                if (!isCenteredSlides) originalProgress = Math.min(Math.max($slideEl[0].originalProgress, -params.limitProgress), params.limitProgress);
+                const offset = $slideEl[0].swiperSlideOffset;
+                const t = [ swiper.params.cssMode ? -offset - swiper.translate : -offset, 0, 0 ];
+                const r = [ 0, 0, 0 ];
+                let custom = false;
+                if (!swiper.isHorizontal()) {
+                    t[1] = t[0];
+                    t[0] = 0;
+                }
+                let data = {
+                    translate: [ 0, 0, 0 ],
+                    rotate: [ 0, 0, 0 ],
+                    scale: 1,
+                    opacity: 1
+                };
+                if (progress < 0) {
+                    data = params.next;
+                    custom = true;
+                } else if (progress > 0) {
+                    data = params.prev;
+                    custom = true;
+                }
+                t.forEach(((value, index) => {
+                    t[index] = `calc(${value}px + (${getTranslateValue(data.translate[index])} * ${Math.abs(progress * multiplier)}))`;
+                }));
+                r.forEach(((value, index) => {
+                    r[index] = data.rotate[index] * Math.abs(progress * multiplier);
+                }));
+                $slideEl[0].style.zIndex = -Math.abs(Math.round(slideProgress)) + slides.length;
+                const translateString = t.join(", ");
+                const rotateString = `rotateX(${r[0]}deg) rotateY(${r[1]}deg) rotateZ(${r[2]}deg)`;
+                const scaleString = originalProgress < 0 ? `scale(${1 + (1 - data.scale) * originalProgress * multiplier})` : `scale(${1 - (1 - data.scale) * originalProgress * multiplier})`;
+                const opacityString = originalProgress < 0 ? 1 + (1 - data.opacity) * originalProgress * multiplier : 1 - (1 - data.opacity) * originalProgress * multiplier;
+                const transform = `translate3d(${translateString}) ${rotateString} ${scaleString}`;
+                if (custom && data.shadow || !custom) {
+                    let $shadowEl = $slideEl.children(".swiper-slide-shadow");
+                    if (0 === $shadowEl.length && data.shadow) $shadowEl = create_shadow_createShadow(params, $slideEl);
+                    if ($shadowEl.length) {
+                        const shadowOpacity = params.shadowPerProgress ? progress * (1 / params.limitProgress) : progress;
+                        $shadowEl[0].style.opacity = Math.min(Math.max(Math.abs(shadowOpacity), 0), 1);
+                    }
+                }
+                const $targetEl = effect_target_effectTarget(params, $slideEl);
+                $targetEl.transform(transform).css({
+                    opacity: opacityString
+                });
+                if (data.origin) $targetEl.css("transform-origin", data.origin);
+            }
+        };
+        const setTransition = duration => {
+            const {transformEl} = swiper.params.creativeEffect;
+            const $transitionElements = transformEl ? swiper.slides.find(transformEl) : swiper.slides;
+            $transitionElements.transition(duration).find(".swiper-slide-shadow").transition(duration);
+            effect_virtual_transition_end_effectVirtualTransitionEnd({
+                swiper,
+                duration,
+                transformEl,
+                allSlides: true
+            });
+        };
+        effect_init_effectInit({
+            effect: "creative",
+            swiper,
+            on,
+            setTranslate,
+            setTransition,
+            perspective: () => swiper.params.creativeEffect.perspective,
+            overwriteParams: () => ({
+                watchSlidesProgress: true,
+                virtualTranslate: !swiper.params.cssMode
+            })
+        });
+    }
     function initSliders() {
         if (document.querySelector(".main-slider-swiper")) new core(".main-slider-swiper", {
-            modules: [ Autoplay, Navigation ],
+            modules: [ Autoplay, Navigation, EffectCreative ],
             observer: true,
             observeParents: true,
             slidesPerView: 3,
@@ -3822,7 +3946,8 @@
             breakpoints: {
                 320: {
                     slidesPerView: 1,
-                    loopAdditionalSlides: 2
+                    loopAdditionalSlides: 2,
+                    allowTouchMove: false
                 },
                 768: {
                     slidesPerView: 2
@@ -3963,13 +4088,12 @@
     };
     const da = new DynamicAdapt("max");
     da.init();
-    const path = document.querySelector("#header path");
-    const pathMobile = document.querySelector("#header-mobile path");
+    document.querySelector("#header path");
+    document.querySelector("#header-mobile path");
     const svgTeam = document.querySelectorAll(".team__card");
     const wrapper = document.querySelector(".wrapper");
     const border_header = document.querySelector("#paint0_linear_28_83");
     const border_header_mobile = document.querySelector("#paint0_linear_28_84");
-    let minus;
     document.documentElement.classList.add("loading");
     window.onscroll = function() {
         let scrollTopProcent = window.pageYOffset / document.documentElement.offsetHeight * 100;
@@ -3982,27 +4106,11 @@
     window.onload = function() {
         document.documentElement.classList.remove("loading");
         headerAnim();
-        const containerWidth = 1680;
-        let w = window.innerWidth;
-        let divide = w / containerWidth;
-        if (divide < 1 && w > 992) path.style.transform = `scale(${divide})`; else if (w < 992) {
-            minus = (w - 370) / 2;
-            pathMobile.style.transform = `translateX(${minus}px)`;
-        }
         let i = 0;
         svgTeam.forEach((element => {
             i++;
             element.insertAdjacentHTML("afterbegin", `\n        <svg style="position: absolute; z-index: -1;" width="100%" height="100%" viewBox="0 0 266 343"\n                    fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\n                    <mask id="mask${i}" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="266"\n                        height="343">\n                        <path\n                            d="M1 313.5V14L9.10062 1H222.957L253.199 26V303.5L264 313.5L254.819 322H227.277L211.616 342H34.4825L1 313.5Z"\n                            fill="#C4C4C4" stroke="#9102D4" stroke-width="2" />\n                    </mask>\n                    <g mask="url(#mask${i})">\n                        <rect x="-5.4805" y="-3" width="264.62" height="318" fill="#C4C4C4" />\n                        <path\n                            d="M-80.0062 -4.00001C-80.0062 -12.8366 -72.8427 -20 -64.0062 -20H299.304C308.14 -20 315.304 -12.8366 315.304 -4V309H-80.0062V-4.00001Z"\n                            fill="url(#pattern${i})" />\n                        <path d="M198.955 -7.32325L216.212 -7.45068L261.87 30.0366L263.818 46.1151L198.955 -7.32325Z"\n                            fill="black" />\n                        <path d="M6 39.9999L1.00003 33.9999L1.00004 90.9999L6.00003 80.9999L6 39.9999Z" fill="black" />\n                        <path\n                            d="M19.3614 288H119.809L127.91 295.5H260.76L271.021 313L260.76 322.5L249.419 340L211.616 343H34.4826L-1.16016 315L19.3614 288Z"\n                            fill="#0E0D0D" stroke="black" />\n                        <path\n                            d="M1 313.5V14L9.10062 1H222.957L253.199 26V303.5L264 313.5L254.819 322H227.277L211.616 342H34.4825L1 313.5Z"\n                            stroke="black" stroke-width="2" />\n                    </g>\n                    <defs>\n                        <pattern id="pattern${i}" width="1" height="1">\n                            <use xlink:href="#image${i}" />\n                        </pattern>\n                        <image  width="155%" height="105%" id="image${i}" xlink:href="img/team/people/${i}.png" />\n                    </defs>\n                </svg>\n        `);
         }));
-    };
-    window.onresize = function() {
-        const containerWidth = 1680;
-        let w = window.innerWidth;
-        let divide = w / containerWidth;
-        if (divide < 1 && w > 992) path.style.transform = `scale(${divide})`; else if (w < 992) {
-            minus = (w - 370) / 2;
-            pathMobile.style.transform = `translateX(${minus}px)`;
-        }
     };
     function headerAnim() {
         let i = 0;
