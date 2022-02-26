@@ -9,11 +9,22 @@
     font-weight: 600;
 
     &__work {
+        position: absolute;
+        top: 45%;
+        left: -2%;
+        width: 100%;
+        opacity: 0;
+        text-align: center;
         font-family: Montserrat;
-        font-size: rem(10);
+        font-size: rem(14);
         line-height: math.div(12, 10);
         text-transform: uppercase;
         color: #335ef8;
+        transition: opacity 0.3s ease 0s;
+
+        .hover & {
+            opacity: 1;
+        }
     }
 
     &__name {
@@ -23,7 +34,9 @@
     }
     &__text {
         margin-left: rem(-30);
-        margin-bottom: rem(13);
+        min-height: rem(55);
+        display: flex;
+        align-items: center;
     }
 
     &__img-ibg {
@@ -50,6 +63,11 @@
         justify-items: center;
         gap: rem(30);
         margin-top: rem(30);
+        @media (max-width: $mobile) {
+            grid-template-columns: rem(263);
+            align-items: center;
+            justify-content: center;
+        }
     }
 
     &__card {
@@ -62,6 +80,16 @@
         justify-content: flex-end;
         margin: 0 auto;
         align-items: center;
+
+        image {
+            transition: opacity 0.3s ease 0s;
+        }
+        &.hover {
+            cursor: pointer;
+            image {
+                opacity: 0;
+            }
+        }
     }
     &__title {
         margin-bottom: rem(30);

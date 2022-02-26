@@ -8,7 +8,18 @@
 }
 .spolers {
     position: relative;
-
+    &__text {
+        p {
+            text-indent: rem(20);
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
+        }
+        ol li {
+            margin-left: rem(50);
+            margin-bottom: rem(10);
+        }
+    }
     &__cards-img-mobile {
         .spolers__cards-ibg {
             display: none;

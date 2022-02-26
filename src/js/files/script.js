@@ -38,10 +38,13 @@ window.onload = function () {
     headerAnim();
 
 
+
+
     let i = 0;
 
     svgTeam.forEach(element => {
         i++;
+
         element.insertAdjacentHTML('afterbegin', `
         <svg style="position: absolute; z-index: -1;" width="100%" height="100%" viewBox="0 0 266 343"
                     fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -70,10 +73,19 @@ window.onload = function () {
                             <stop offset="0.785219" stop-color="#001254" stop-opacity="0.567708"/>
                             <stop offset="1" stop-color="#335EF8"/>
                         </linearGradient>
-                        <image x="-30%" y="-9%"  width="150%" height="105%" id="image${i}" xlink:href="img/team/people/${i}.png" />
+                        <image x="-30%" y="-9%"  width="150%" height="105%" id="image${i}" xlink:href="img/team/people/${element.dataset.name}.png" />
                     </defs>
                 </svg>
         `)
+
+        element.addEventListener('mouseover', () => {
+            element.classList.add('hover');
+
+        })
+        element.addEventListener('mouseout', () => {
+            element.classList.remove('hover');
+
+        })
     });
 
 };

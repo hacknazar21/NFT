@@ -57,6 +57,19 @@
     }
 
     &__text {
+        font-family: Montserrat;
+        font-weight: normal;
+        font-size: rem(18);
+        line-height: math.div(20, 18);
+
+        text-indent: rem(20);
+
+        color: #bad2d8;
+        p {
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
+        }
     }
 
     &__info {
@@ -71,6 +84,7 @@
         font-weight: bold;
         @include adaptiveValue("font-size", 50, 18);
         line-height: 100%;
+        margin-bottom: rem(10);
     }
 
     &__info-text {
