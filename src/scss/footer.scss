@@ -4,18 +4,48 @@
 
     &__container {
         position: relative;
+        background: linear-gradient(0deg, rgba(9, 9, 9, 0.6), rgba(9, 9, 9, 0.6)),
+            radial-gradient(50% 50% at 50% 50%, #232121 0%, rgba(19, 19, 19, 0) 100%);
+        border: rem(2) solid #335ef8;
+        backdrop-filter: blur(rem(30));
+        border-radius: rem(15);
+        @media (min-width: $tablet) {
+        }
+        @media (max-width: 1680px) {
+            margin: 0 rem(10);
+        }
         &::before {
             content: "";
-            background: url(@img/footer/right-bg.png) right/contain no-repeat;
-            width: percent(1027, 1680);
-            height: rem(622);
+            background: url(@img/footer/right-bg.png) top/contain no-repeat;
+            width: percent(528, 1680);
+            height: rem(941);
             display: block;
             position: absolute;
-            right: 0;
-            top: 0;
+            right: 10%;
+            top: -40%;
             z-index: 2;
-            @media (max-width: $mobile) {
-                display: none;
+            display: none;
+
+            @media (min-width: $tablet) {
+                animation: footer-anim 10s linear infinite;
+
+                display: block;
+            }
+        }
+        &::after {
+            content: "";
+            background: url(@img/footer/bg.png) top/cover no-repeat;
+            border-radius: rem(15);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: -1;
+            mix-blend-mode: overlay;
+            @media (max-width: $tablet) {
+                background: url(@img/footer/bgm.png) top/cover no-repeat;
             }
         }
         @media (max-width: $tablet) {
@@ -25,19 +55,11 @@
     }
 
     &__text-box {
-        background: linear-gradient(0deg, rgba(9, 9, 9, 0.6), rgba(9, 9, 9, 0.6)),
-            radial-gradient(50% 50% at 50% 50%, #232121 0%, rgba(19, 19, 19, 0) 100%);
-        border: rem(2) solid #9a43b9;
-        box-sizing: border-box;
-        backdrop-filter: blur(30px);
-
-        border-radius: 30px;
-
         @include adaptiveValue("max-width", 1614, 330);
         position: relative;
         z-index: 1;
 
-        @include adaptiveValue("height", 617, 450);
+        @include adaptiveValue("height", 520, 450);
     }
 
     &__text-block {
@@ -56,29 +78,52 @@
     }
 
     &__text {
+        font-family: Montserrat;
+        font-weight: normal;
+        font-size: rem(14);
+        line-height: math.div(17, 14);
+        color: #e7e7fb;
+        p {
+            text-indent: rem(10);
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
+        }
+    }
+
+    &__form-actions {
+        margin-top: auto;
     }
 
     &__button {
         background: #8b3db7;
-        @media (min-width: $mobile) {
-            margin-top: auto;
-        }
-        margin-top: rem(10);
-        &._email {
-            display: none;
-            @media (max-width: $mobile) {
-                margin-top: auto;
-                background-color: #17152a;
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                display: block;
-                color: #fff;
 
-                &._form-error {
-                    border: 1px solid rgba(219, 14, 14, 0.5);
-                }
+        margin-top: rem(18);
+        &._email {
+            margin-top: auto;
+            background-color: #17152a;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: block;
+            color: #fff;
+            &._form-error {
+                border: 1px solid rgba(219, 14, 14, 0.5);
             }
         }
     }
 }
 
 //====================================================================================================
+
+@keyframes footer-anim {
+    0% {
+        top: -50%;
+    }
+    50% {
+        top: -60%;
+    }
+    100% {
+        top: -50%;
+    }
+}
+
+//========================================================================================================================================================
