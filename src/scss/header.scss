@@ -10,7 +10,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		@include adaptiveValue("min-height", 732, 150);
+		@include adaptiveValue("min-height", 732, 350, 1920, 767.98);
 		@media (max-width: $mobile) {
 			min-height: rem(370);
 		}

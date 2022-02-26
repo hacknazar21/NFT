@@ -475,26 +475,21 @@ input {
     display: block;
   }
 }
-@media (min-width: 105em) {
+@media (min-width: 120em) {
   .header__container {
     min-height: 45.75rem;
   }
 }
-@media (min-width: 20em) and (max-width: 105em) {
-  @supports (min-height: clamp( 9.375rem , 0.8161764706rem  +  42.7941176471vw , 45.75rem )) {
+@media (min-width: 47.99875em) and (max-width: 120em) {
+  @supports (min-height: clamp( 21.875rem , 5.9590241489rem  +  33.1591465426vw , 45.75rem )) {
     .header__container {
-      min-height: clamp( 9.375rem , 0.8161764706rem  +  42.7941176471vw , 45.75rem );
+      min-height: clamp( 21.875rem , 5.9590241489rem  +  33.1591465426vw , 45.75rem );
     }
   }
-  @supports not (min-height: clamp( 9.375rem , 0.8161764706rem  +  42.7941176471vw , 45.75rem )) {
+  @supports not (min-height: clamp( 21.875rem , 5.9590241489rem  +  33.1591465426vw , 45.75rem )) {
     .header__container {
-      min-height: calc(9.375rem + 36.375 * (100vw - 20rem) / 85);
+      min-height: calc(21.875rem + 23.875 * (100vw - 47.99875rem) / 72.00125);
     }
-  }
-}
-@media (max-width: 20em) {
-  .header__container {
-    min-height: 9.375rem;
   }
 }
 @media (max-width: 47.99875em) {
