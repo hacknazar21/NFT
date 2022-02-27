@@ -9,10 +9,13 @@
         border: rem(2) solid #335ef8;
         backdrop-filter: blur(rem(30));
         border-radius: rem(15);
+        margin-bottom: rem(192);
+
         @media (min-width: $tablet) {
         }
         @media (max-width: 1680px) {
-            margin: 0 rem(10);
+            margin-left: rem(10);
+            margin-right: rem(10);
         }
         &::before {
             content: "";
@@ -22,7 +25,7 @@
             display: block;
             position: absolute;
             right: 10%;
-            top: -40%;
+            bottom: 40%;
             z-index: 2;
             display: none;
 
@@ -116,13 +119,13 @@
 
 @keyframes footer-anim {
     0% {
-        top: -50%;
+        bottom: -80%;
     }
     50% {
-        top: -60%;
+        bottom: -50%;
     }
     100% {
-        top: -50%;
+        bottom: -80%;
     }
 }
 

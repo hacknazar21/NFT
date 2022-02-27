@@ -143,10 +143,10 @@ body {
 	overflow: hidden;
 	// Прижимаем footer
 	position: relative;
-	background: url(@img/background.png) center / 100% 101% no-repeat;
+	background: #50068a url(@img/background.png) 0% -100px / cover no-repeat;
 	transition: background-position 0.9s ease 0s;
 	@media (max-width: $tablet) {
-		background: url(@img/bg-mobile.png) center / 100% 101% no-repeat;
+		background: url(@img/bg-mobile.png) 0% -100px / cover no-repeat;
 	}
 	position: relative;
 	z-index: -1;

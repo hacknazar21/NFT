@@ -4400,15 +4400,15 @@
     document.querySelector(".footer");
     document.documentElement.classList.add("loading");
     window.onscroll = function() {
-        let scrollTopProcent = window.pageYOffset / document.documentElement.offsetHeight * 100;
+        let scrollTopProcent = window.pageYOffset / document.documentElement.offsetHeight * 100 - 100;
         if (window.pageYOffset >= collection.offsetTop - 200) collection.classList.add("_show"); else collection.classList.remove("_show");
         if (scrollTopProcent > 100) scrollTopProcent = 100 - (scrollTopProcent - 100 * Math.floor(scrollTopProcent / 100));
         setParallaxItemsStyle(scrollTopProcent);
     };
     function setParallaxItemsStyle(scrollTopProcent) {
-        wrapper.style.backgroundPosition = ` 0% ${scrollTopProcent}%`;
+        wrapper.style.backgroundPosition = ` 0% ${scrollTopProcent}px`;
     }
-    window.onload = function() {
+    window.onload = () => {
         document.documentElement.classList.remove("loading");
         headerAnim();
         let i = 0;
