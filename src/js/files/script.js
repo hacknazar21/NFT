@@ -36,18 +36,6 @@ function setParallaxItemsStyle(scrollTopProcent) {
 window.onload = function () {
     document.documentElement.classList.remove('loading');
     headerAnim();
-    function initClient() {
-        gapi.client.init({
-            'apiKey': 'AIzaSyA7A__-ePjMltCmQN8IRfsX8a-JMOhCkHo',
-            'clientId': '209566987982-b92daf90lt5h3ip064asn13l6840k5b0.apps.googleusercontent.com',
-            'scope': 'https://www.googleapis.com/auth/spreadsheets',
-            'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-        }).then(function () {
-            gapi.auth2.getAuthInstance().signIn();
-        });
-    }
-
-    gapi.load('client:auth2', initClient);
 
     let i = 0;
 

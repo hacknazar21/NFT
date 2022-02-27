@@ -168,6 +168,56 @@ export let formValidate = {
 		return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
 	}
 }
+
+function getFormData(form) {
+	var elements = form.elements;
+	var honeypot;
+
+	var fields = Object.keys(elements).filter(function (k) {
+		if (elements[k].name === "honeypot") {
+			honeypot = elements[k].value;
+			return false;
+		}
+		return true;
+	}).map(function (k) {
+		if (elements[k].name !== undefined) {
+			return elements[k].name;
+			// special case for Edge's html collection
+		} else if (elements[k].length > 0) {
+			return elements[k].item(0).name;
+		}
+	}).filter(function (item, pos, self) {
+		return self.indexOf(item) == pos && item;
+	});
+
+	var formData = {};
+	fields.forEach(function (name) {
+		var element = elements[name];
+
+		// singular form elements just have one value
+		formData[name] = element.value;
+
+		// when our element has multiple items, get their values
+		if (element.length) {
+			var data = [];
+			for (var i = 0; i < element.length; i++) {
+				var item = element.item(i);
+				if (item.checked || item.selected) {
+					data.push(item.value);
+				}
+			}
+			formData[name] = data.join(', ');
+		}
+	});
+
+	// add form-specific values into the data
+	formData.formDataNameOrder = JSON.stringify(fields);
+	formData.formGoogleSheetName = form.dataset.sheet || "responses"; // default sheet name
+	formData.formGoogleSendEmail
+		= form.dataset.email || ""; // no email by default
+
+	return { data: formData, honeypot: honeypot };
+}
 /* Отправка форм */
 export function formSubmit(options = { validate: true }) {
 	const forms = document.forms;
@@ -191,39 +241,35 @@ export function formSubmit(options = { validate: true }) {
 				e.preventDefault();
 				const formAction = form.getAttribute('action') ? form.getAttribute('action').trim() : '#';
 				const formMethod = form.getAttribute('method') ? form.getAttribute('method').trim() : 'GET';
-				const formData = new FormData(form);
-				var date = new Date();
-				//"stringValue": `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
-				//"stringValue": form.elements.email.value
+				var formData = getFormData(form);
 
-				var params = {
-					// The ID of the spreadsheet to update.
-					spreadsheetId: '1KEBc5kC6FHJYKhmBdKTj0QaKqjm743t0xfAcZCgP8CA',  // TODO: Update placeholder value.
+				var data = formData.data;
+				let appLink = "https://script.google.com/macros/s/AKfycbzT_YETRWRVe1Mqauy7huhH4s-n-duBK6Yttj8VXKwYZDiPiyc/exec";
+				var url = appLink;
+				var xhr = new XMLHttpRequest();
 
-					// The A1 notation of a range to search for a logical table of data.
-					// Values will be appended after the last row of the table.
-					range: 'A1:D1',  // TODO: Update placeholder value.
-
-					// How the input data should be interpreted.
-					valueInputOption: [form.elements.email.value, `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`],  // TODO: Update placeholder value.
+				xhr.open('POST', url);
+				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				xhr.onreadystatechange = function () {
+					if (xhr.status === 200) {
+						form.classList.remove('_sending');
+						formSent(form);
+					}
+					else {
+						alert("Ошибка");
+						form.classList.remove('_sending');
+					}
 				};
+				// url encode form data for sending as post data
+				var encoded = Object.keys(data).map(function (k) {
+					return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+				}).join('&');
+				xhr.send(encoded);
 
-				var valueRangeBody = {
-					// TODO: Add desired properties to the request body.
-				};
 
-				var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
-				console.log(request);
 				form.classList.add('_sending');
-				const response = 'ok';
-				if (response.ok) {
-					let responseResult = await response.json();
-					form.classList.remove('_sending');
-					formSent(form);
-				} else {
-					alert("Ошибка");
-					form.classList.remove('_sending');
-				}
+
+
 			} else if (form.hasAttribute('data-dev')) {	// Если режим разработки
 				e.preventDefault();
 				formSent(form);
