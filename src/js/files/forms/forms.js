@@ -213,7 +213,7 @@ export function formSubmit(options = { validate: true }) {
 				};
 
 				var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
-
+				console.log(request);
 				form.classList.add('_sending');
 				const response = 'ok';
 				if (response.ok) {
