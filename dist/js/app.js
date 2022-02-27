@@ -346,7 +346,6 @@
             return error;
         },
         validateInput(formRequiredItem) {
-            console.log("hi");
             let error = 0;
             if ("email" === formRequiredItem.dataset.required) {
                 formRequiredItem.value = formRequiredItem.value.replace(" ", "");
@@ -425,11 +424,31 @@
                     e.preventDefault();
                     const formAction = form.getAttribute("action") ? form.getAttribute("action").trim() : "#";
                     const formMethod = form.getAttribute("method") ? form.getAttribute("method").trim() : "GET";
-                    const formData = new FormData(form);
+                    new FormData(form);
+                    const ACCESS_TOKEN = "ya29.A0ARrdaM9PlHW1eJ89z7Y3Z5aaKGEOW1mEN-NPTKPVzT5bAxoTgxOa2Ls7h9LDhtYIqZurJKV-hgeVWMnrhBVbogikj6_U4327GR_NIewtiFG0HFTdmk_p4ZVzW2TO5dZvNcJvGTpZaSc3DtUOdCpnrDRhUq8S";
+                    const datajson = JSON.stringify({
+                        requests: [ {
+                            appendCells: {
+                                sheetId: 0,
+                                rows: [ {
+                                    values: [ {
+                                        userEnteredValue: {
+                                            stringValue: form.elements.email.value
+                                        }
+                                    } ]
+                                } ],
+                                fields: "*"
+                            }
+                        } ]
+                    });
                     form.classList.add("_sending");
                     const response = await fetch(formAction, {
                         method: formMethod,
-                        body: formData
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${ACCESS_TOKEN}`
+                        },
+                        body: datajson
                     });
                     if (response.ok) {
                         await response.json();
@@ -462,6 +481,7 @@
                 }
             }), 0);
             formValidate.formClean(form);
+            alert("Отправлено!");
             formLogging(`Форма отправлена!`);
         }
         function formLogging(message) {

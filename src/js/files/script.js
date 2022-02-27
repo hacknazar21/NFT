@@ -38,8 +38,6 @@ window.onload = function () {
     headerAnim();
 
 
-
-
     let i = 0;
 
     svgTeam.forEach(element => {
