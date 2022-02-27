@@ -43,10 +43,10 @@ window.onload = function () {
             'scope': 'https://www.googleapis.com/auth/spreadsheets',
             'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
         }).then(function () {
-            gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
-            updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            gapi.auth2.getAuthInstance().signIn();
         });
     }
+
     gapi.load('client:auth2', initClient);
 
     let i = 0;
