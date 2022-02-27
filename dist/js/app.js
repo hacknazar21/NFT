@@ -422,34 +422,19 @@
                 const ajax = form.hasAttribute("data-ajax");
                 if (ajax) {
                     e.preventDefault();
-                    const formAction = form.getAttribute("action") ? form.getAttribute("action").trim() : "#";
-                    const formMethod = form.getAttribute("method") ? form.getAttribute("method").trim() : "GET";
+                    form.getAttribute("action") && form.getAttribute("action").trim();
+                    form.getAttribute("method") && form.getAttribute("method").trim();
                     new FormData(form);
-                    const ACCESS_TOKEN = "ya29.A0ARrdaM9PlHW1eJ89z7Y3Z5aaKGEOW1mEN-NPTKPVzT5bAxoTgxOa2Ls7h9LDhtYIqZurJKV-hgeVWMnrhBVbogikj6_U4327GR_NIewtiFG0HFTdmk_p4ZVzW2TO5dZvNcJvGTpZaSc3DtUOdCpnrDRhUq8S";
-                    const datajson = JSON.stringify({
-                        requests: [ {
-                            appendCells: {
-                                sheetId: 0,
-                                rows: [ {
-                                    values: [ {
-                                        userEnteredValue: {
-                                            stringValue: form.elements.email.value
-                                        }
-                                    } ]
-                                } ],
-                                fields: "*"
-                            }
-                        } ]
-                    });
+                    var date = new Date;
+                    var params = {
+                        spreadsheetId: "1KEBc5kC6FHJYKhmBdKTj0QaKqjm743t0xfAcZCgP8CA",
+                        range: "A1:D1",
+                        valueInputOption: [ form.elements.email.value, `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}` ]
+                    };
+                    var valueRangeBody = {};
+                    gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
                     form.classList.add("_sending");
-                    const response = await fetch(formAction, {
-                        method: formMethod,
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${ACCESS_TOKEN}`
-                        },
-                        body: datajson
-                    });
+                    const response = "ok";
                     if (response.ok) {
                         await response.json();
                         form.classList.remove("_sending");
@@ -4389,6 +4374,18 @@
     window.onload = function() {
         document.documentElement.classList.remove("loading");
         headerAnim();
+        function initClient() {
+            gapi.client.init({
+                apiKey: "AIzaSyA7A__-ePjMltCmQN8IRfsX8a-JMOhCkHo",
+                clientId: "209566987982-b92daf90lt5h3ip064asn13l6840k5b0.apps.googleusercontent.com",
+                scope: "https://www.googleapis.com/auth/spreadsheets",
+                discoveryDocs: [ "https://sheets.googleapis.com/$discovery/rest?version=v4" ]
+            }).then((function() {
+                gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
+                updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            }));
+        }
+        gapi.load("client:auth2", initClient);
         let i = 0;
         svgTeam.forEach((element => {
             i++;

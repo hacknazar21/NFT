@@ -5,8 +5,10 @@ import { flsModules } from "../modules.js";
 import { isMobile, _slideUp, _slideDown, _slideToggle, FLS } from "../functions.js";
 // Модуль прокрутки к блоку
 import { gotoBlock } from "../scroll/gotoblock.js";
-//================================================================================================================================================================================================================================================================================================================================
 
+
+
+//================================================================================================================================================================================================================================================================================================================================
 /*
 Чтобы поле участвовало в валидации добавляем атрибут data-required
 Особые проверки:
@@ -190,37 +192,30 @@ export function formSubmit(options = { validate: true }) {
 				const formAction = form.getAttribute('action') ? form.getAttribute('action').trim() : '#';
 				const formMethod = form.getAttribute('method') ? form.getAttribute('method').trim() : 'GET';
 				const formData = new FormData(form);
-				const ACCESS_TOKEN = 'ya29.A0ARrdaM9PlHW1eJ89z7Y3Z5aaKGEOW1mEN-NPTKPVzT5bAxoTgxOa2Ls7h9LDhtYIqZurJKV-hgeVWMnrhBVbogikj6_U4327GR_NIewtiFG0HFTdmk_p4ZVzW2TO5dZvNcJvGTpZaSc3DtUOdCpnrDRhUq8S';
-				const datajson = JSON.stringify({
-					"requests": [{
-						"appendCells": {
-							"sheetId": 0,
-							"rows": [
-								{
-									"values": [
-										{
-											"userEnteredValue": {
-												"stringValue": form.elements.email.value
-											}
-										}
-									]
-								}
-							],
-							"fields": '*'
-						},
-					}]
-				})
-				form.classList.add('_sending');
-				const response = await fetch(formAction, {
+				var date = new Date();
+				//"stringValue": `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
+				//"stringValue": form.elements.email.value
 
-					method: formMethod,
-					headers: {
-						"Content-Type": "application/json",
-						//update this token with yours. 
-						Authorization: `Bearer ${ACCESS_TOKEN}`,
-					},
-					body: datajson
-				});
+				var params = {
+					// The ID of the spreadsheet to update.
+					spreadsheetId: '1KEBc5kC6FHJYKhmBdKTj0QaKqjm743t0xfAcZCgP8CA',  // TODO: Update placeholder value.
+
+					// The A1 notation of a range to search for a logical table of data.
+					// Values will be appended after the last row of the table.
+					range: 'A1:D1',  // TODO: Update placeholder value.
+
+					// How the input data should be interpreted.
+					valueInputOption: [form.elements.email.value, `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`],  // TODO: Update placeholder value.
+				};
+
+				var valueRangeBody = {
+					// TODO: Add desired properties to the request body.
+				};
+
+				var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+
+				form.classList.add('_sending');
+				const response = 'ok';
 				if (response.ok) {
 					let responseResult = await response.json();
 					form.classList.remove('_sending');
