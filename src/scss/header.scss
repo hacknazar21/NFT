@@ -8,7 +8,6 @@
 			display: block;
 		}
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
 		@include adaptiveValue("height", 720, 300, 1680, 720);
 		width: percent(1900, 1920);
@@ -16,81 +15,32 @@
 			min-height: rem(370);
 		}
 		position: relative;
-		//clip-path: url(#header);
-		background-color: #0e0d0d;
+
 		@media (min-width: $mobile) {
-			#header-mobile-border {
+			#header-bgm {
 				display: none;
 			}
-			background: url(@img/Header.png) top/contain no-repeat;
 		}
 
 		@media (max-width: $mobile) {
 			#header-border {
 				display: none;
 			}
-			background: url(@img/Header-mobile.png) top/contain no-repeat;
-			min-height: rem(767);
+			min-height: rem(696);
+			@include adaptiveValue("min-height", 696, 560, 390, 320);
 		}
 
-		//background-color: #0e0d0d;
 		z-index: 3;
 
-		/*&::before {
-			content: "";
-			position: absolute;
-			width: 100%;
-			max-width: rem(958);
-			height: 100%;
-			top: 0;
-			left: 0;
-			transform: rotate(9.62deg) translateX(-20%);
-			background: url(@img/Topology.svg) left / cover no-repeat;
-			display: none;
+		#header-bg {
 			@media (max-width: $mobile) {
-				display: block;
-				transform: rotate(9.62deg) translateX(0%);
-				background: url(@img/Topology.svg) 0% 50% no-repeat;
-				.menu-open & {
-					display: none;
-				}
-			}
-			z-index: 5;
-		}*/
-		/*&::after {
-			content: "";
-			position: absolute;
-			width: percent(1110, 1680);
-			height: 100%;
-			top: 0;
-			right: 0;
-			z-index: -1;
-			background: url(@img/kanion.png) scroll top / contain no-repeat;
-
-			@media (max-width: $tablet) {
 				display: none;
 			}
-		}*/
-	}
-
-	/*&__image-ibg {
-		padding-bottom: rem(710);
-		width: 100%;
-		position: absolute;
-		z-index: 0;
-		top: 0;
-		img {
-			object-fit: cover;
 		}
-	}*/
-
+	}
 	&__main {
 		@include adaptiveValue("max-width", 420, 320);
 		flex: 0 0 percent(421, 1680);
-		@media (min-width: $tablet) {
-			margin-top: rem(-100);
-		}
-		@include adaptiveValue("padding-left", 80, 10, 1920, 720);
 
 		@media (max-width: $mobile) {
 			width: 100%;
@@ -105,21 +55,7 @@
 		max-width: rem(420);
 		position: relative;
 		z-index: 5;
-		@include adaptiveValue("margin-top", 90, 20, 1920, 990);
-		&::before {
-			content: "";
-			display: block;
-			position: absolute;
-			top: -50%;
-			left: calc(50% - rem(75));
-			@include adaptiveValue("left", 20, 60, 1920, 390);
-			width: rem(150);
-			@include adaptiveValue("width", 250, 150, 1920, 390);
-			height: rem(100);
-			background: url(@img/NFT.svg) center / contain no-repeat;
-
-			animation: header-hft-anim 12s linear infinite;
-		}
+		margin-top: -20%;
 		@media (max-width: $mobile) {
 			text-align: center;
 			margin-top: calc(50% - rem(50));
@@ -130,12 +66,60 @@
 		}
 	}
 
-	&__title {
-		margin-bottom: rem(15);
+	&__subtitle {
 		font-weight: bold;
+		font-size: rem(40);
 		line-height: math.div(50, 40);
+		-webkit-text-fill-color: transparent;
+		-webkit-text-stroke: 1px #fff;
 
-		@include adaptiveValue("font-size", 40, 20);
+		margin-bottom: rem(30);
+		@media (max-width: $mobile) {
+			display: none;
+		}
+	}
+
+	&__title {
+		font-weight: bold;
+		span:last-child {
+			display: inline-block;
+		}
+		span:not(:last-child) {
+			display: none;
+		}
+		margin-bottom: rem(6);
+		@media (min-width: $mobile) {
+			@include adaptiveValue("font-size", 40, 0);
+			line-height: math.div(50, 40);
+			span:not(:last-child) {
+				display: inline-block;
+			}
+			span:last-child {
+				display: none;
+			}
+		}
+
+		font-size: rem(25);
+		line-height: math.div(32, 25);
+
+		&::after {
+			content: "";
+			display: inline-block;
+			margin-bottom: rem(-10);
+			width: rem(61);
+			height: rem(52);
+			background: url(@img/fingers.png) center/contain no-repeat;
+
+			@media (max-width: $mobile) {
+				background: url(@img/fingersm.png) center/contain no-repeat;
+				position: absolute;
+				top: -50%;
+				left: 0;
+				z-index: -1;
+				width: rem(282);
+				height: rem(242);
+			}
+		}
 	}
 
 	&__text {
@@ -147,7 +131,7 @@
 		@include adaptiveValue("font-size", 15, 14);
 		line-height: math.div(19, 15);
 		letter-spacing: 0.016em;
-		padding: rem(17) rem(19);
+		padding: rem(11) rem(19);
 		color: #ffffff;
 		background-color: #9102d5;
 		box-shadow: 0px 3.74372px 22.4623px rgba(145, 2, 212, 0.2);
@@ -171,12 +155,21 @@
 
 	&__social-media {
 		display: flex;
+		margin-top: -5%;
+		@media (min-width: $mobile) {
+			flex-direction: column;
+			@include adaptiveValue("margin-left", 27, 0);
+			@include adaptiveValue("margin-right", 54, 0);
+			height: percent(365, 720);
+		}
+
 		@media (max-width: $mobile) {
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
-			height: 100%;
+			padding: 0 rem(50);
+			height: 50%;
 			align-items: center;
 			font-size: rem(30);
 			opacity: 0;
@@ -190,19 +183,22 @@
 			}
 		}
 		justify-content: space-between;
-		font-size: rem(21);
-		@include adaptiveValue("margin-top", 44, 15, 1920, 720);
-		color: #b10bff;
+		font-size: rem(40);
+
+		color: #323131;
+		@media (max-width: $mobile) {
+			color: #fff;
+		}
 		position: relative;
 		z-index: 6;
 	}
 
 	&__social-item {
-		transition: transform 0.3s ease 0s;
+		transition: color 0.3s ease 0s;
 
 		@media (any-hover: hover) {
 			&:hover {
-				transform: scale(1.5);
+				color: rgba(174, 0, 255, 0.4);
 			}
 		}
 	}
@@ -241,55 +237,7 @@
 		}
 	}
 }
-@keyframes mobile-header {
-	0% {
-		background-position: 0%;
-	}
-	50% {
-		background-position: 100%;
-	}
-	100% {
-		background-position: 0%;
-	}
-}
-@keyframes tablet-header {
-	0% {
-		background-position: 10%;
-	}
-	50% {
-		background-position: 60%;
-	}
-	100% {
-		background-position: 10%;
-	}
-}
 
-@keyframes header-hft-anim {
-	0% {
-		transform: translateY(0px);
-	}
-	50% {
-		transform: translateY(-10px);
-	}
-	100% {
-		transform: translateY(0px);
-	}
-}
-
-@keyframes header-btn-anim {
-	0% {
-		color: #ffffff;
-		background-color: #9102d5;
-	}
-	50% {
-		background-color: #b9fd02;
-		color: #000000;
-	}
-	100% {
-		color: #ffffff;
-		background-color: #9102d5;
-	}
-}
 //====================================================================================================
 
 //Burger
@@ -298,11 +246,11 @@
 	display: none;
 	@media (max-width: $mobile) {
 		display: block;
-		right: 0;
+		right: rem(10);
 		top: rem(30);
 		position: absolute;
-		width: rem(30);
-		height: rem(18);
+		width: rem(14);
+		height: rem(10);
 		cursor: pointer;
 		z-index: 7;
 		span,

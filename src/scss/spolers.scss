@@ -1,13 +1,31 @@
 .page {
     &__spolers {
-        @include adaptiveValue("margin-bottom", 71, 64);
-        @include adaptiveValue("margin-top", 57, 49);
         position: relative;
         z-index: 1;
     }
 }
 .spolers {
     position: relative;
+
+    &__title {
+        font-weight: bold;
+
+        @include adaptiveValue("font-size", 200, 30);
+        line-height: math.div(257, 200);
+        @media (max-width: $mobile) {
+            color: #ffffff;
+            opacity: 0.2;
+            margin-top: rem(20);
+            margin-bottom: rem(13);
+        }
+        @media (min-width: $mobile) {
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 2px #fff;
+        }
+
+        text-align: center;
+    }
+
     &__text {
         p {
             text-indent: rem(20);

@@ -71,19 +71,12 @@
     }
 
     &__text {
-        margin-bottom: rem(72);
-        font-family: Montserrat;
-        font-weight: 300;
-        font-size: rem(18);
-        line-height: math.div(20, 18);
-        letter-spacing: 0.02em;
-        color: #e8e8ff;
-        max-width: rem(822);
+        @include adaptiveValue("margin-bottom", 72, 15);
+        max-width: rem(900);
         margin: 0 auto;
         text-align: center;
-        @media (max-width: $tablet) {
-            padding: 0 rem(10);
-        }
+        color: #e8e8ff;
+        padding: 0 rem(10);
     }
 
     &__wrapper {

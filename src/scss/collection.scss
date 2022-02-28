@@ -71,14 +71,11 @@
     }
 
     &__text {
-        font-family: Montserrat;
-        font-weight: normal;
-        font-size: rem(18);
-        line-height: math.div(20, 18);
+        letter-spacing: normal;
+        font-weight: 450;
 
-        text-indent: rem(20);
+        text-indent: rem(10);
 
-        color: #bad2d8;
         p {
             &:not(:last-child) {
                 margin-bottom: rem(10);
@@ -88,15 +85,20 @@
 
     &__info {
         display: flex;
-        gap: rem(50);
+        @include adaptiveValue("gap", 50, 41.5);
+        margin-top: auto;
+        margin-bottom: rem(40);
     }
 
     &__info-item {
+        @media (max-width: $mobile) {
+            text-align: center;
+        }
     }
 
     &__info-title {
         font-weight: bold;
-        @include adaptiveValue("font-size", 50, 18);
+        @include adaptiveValue("font-size", 50, 16);
         line-height: 100%;
         margin-bottom: rem(10);
     }
@@ -104,14 +106,12 @@
     &__info-text {
         font-family: Montserrat;
         font-weight: normal;
-        font-size: rem(16);
         line-height: math.div(20, 16);
         @include adaptiveValue("font-size", 16, 14);
     }
 
     &__button {
         background: #d40234;
-        margin-top: auto;
 
         @media (max-width: $tablet) {
             margin-top: rem(17);

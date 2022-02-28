@@ -1,0 +1,23 @@
+<svg width="370" height="701" viewBox="0 0 370 701" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<mask id="mask0_95_165" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="-99" width="370" height="798">
+<path d="M370 602.984V-99H0V602.984C0 612.883 5.84181 621.851 14.8974 625.851L172.183 695.338C180.347 698.944 189.653 698.944 197.817 695.338L355.103 625.851C364.158 621.851 370 612.883 370 602.984Z" fill="#C4C4C4"/>
+</mask>
+<g mask="url(#mask0_95_165)">
+<rect x="-17" y="-68" width="455" height="816" fill="url(#pattern0)"/>
+<path d="M370 281.484V0H0V281.484C0 291.383 5.84181 300.351 14.8974 304.351L172.183 373.838C180.347 377.444 189.653 377.444 197.817 373.838L355.103 304.351C364.158 300.351 370 291.383 370 281.484Z" fill="url(#paint0_radial_95_165)"/>
+<path d="M369.5 -65.5V602.984C369.5 612.685 363.775 621.473 354.901 625.394L197.615 694.88C189.58 698.43 180.42 698.43 172.385 694.88L15.0994 625.394C6.22498 621.473 0.5 612.685 0.5 602.984V-65.5H369.5Z" stroke="url(#paint1_linear_95_165)"/>
+</g>
+<defs>
+<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_95_165" transform="translate(-0.578164) scale(0.000864292 0.000481928)"/>
+</pattern>
+<radialGradient id="paint0_radial_95_165" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(185 -20.4999) rotate(90) scale(400 185)">
+<stop stop-color="#0E0D0D"/>
+<stop offset="1" stop-color="#1B1B1B"/>
+</radialGradient>
+<linearGradient id="paint1_linear_95_165" x1="185" y1="-66" x2="178" y2="696" gradientUnits="userSpaceOnUse">
+<stop stop-color="#9102D4"/>
+<stop offset="1" stop-color="#02D43D"/>
+</linearGradient>
+</defs>
+</svg>

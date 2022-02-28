@@ -4002,106 +4002,9 @@
             stop
         });
     }
-    function effect_init_effectInit(params) {
-        const {effect, swiper, on, setTranslate, setTransition, overwriteParams, perspective} = params;
-        on("beforeInit", (() => {
-            if (swiper.params.effect !== effect) return;
-            swiper.classNames.push(`${swiper.params.containerModifierClass}${effect}`);
-            if (perspective && perspective()) swiper.classNames.push(`${swiper.params.containerModifierClass}3d`);
-            const overwriteParamsResult = overwriteParams ? overwriteParams() : {};
-            Object.assign(swiper.params, overwriteParamsResult);
-            Object.assign(swiper.originalParams, overwriteParamsResult);
-        }));
-        on("setTranslate", (() => {
-            if (swiper.params.effect !== effect) return;
-            setTranslate();
-        }));
-        on("setTransition", ((_s, duration) => {
-            if (swiper.params.effect !== effect) return;
-            setTransition(duration);
-        }));
-    }
-    function effect_target_effectTarget(effectParams, $slideEl) {
-        if (effectParams.transformEl) return $slideEl.find(effectParams.transformEl).css({
-            "backface-visibility": "hidden",
-            "-webkit-backface-visibility": "hidden"
-        });
-        return $slideEl;
-    }
-    function effect_virtual_transition_end_effectVirtualTransitionEnd(_ref) {
-        let {swiper, duration, transformEl, allSlides} = _ref;
-        const {slides, activeIndex, $wrapperEl} = swiper;
-        if (swiper.params.virtualTranslate && 0 !== duration) {
-            let eventTriggered = false;
-            let $transitionEndTarget;
-            if (allSlides) $transitionEndTarget = transformEl ? slides.find(transformEl) : slides; else $transitionEndTarget = transformEl ? slides.eq(activeIndex).find(transformEl) : slides.eq(activeIndex);
-            $transitionEndTarget.transitionEnd((() => {
-                if (eventTriggered) return;
-                if (!swiper || swiper.destroyed) return;
-                eventTriggered = true;
-                swiper.animating = false;
-                const triggerEvents = [ "webkitTransitionEnd", "transitionend" ];
-                for (let i = 0; i < triggerEvents.length; i += 1) $wrapperEl.trigger(triggerEvents[i]);
-            }));
-        }
-    }
-    function EffectFade(_ref) {
-        let {swiper, extendParams, on} = _ref;
-        extendParams({
-            fadeEffect: {
-                crossFade: false,
-                transformEl: null
-            }
-        });
-        const setTranslate = () => {
-            const {slides} = swiper;
-            const params = swiper.params.fadeEffect;
-            for (let i = 0; i < slides.length; i += 1) {
-                const $slideEl = swiper.slides.eq(i);
-                const offset = $slideEl[0].swiperSlideOffset;
-                let tx = -offset;
-                if (!swiper.params.virtualTranslate) tx -= swiper.translate;
-                let ty = 0;
-                if (!swiper.isHorizontal()) {
-                    ty = tx;
-                    tx = 0;
-                }
-                const slideOpacity = swiper.params.fadeEffect.crossFade ? Math.max(1 - Math.abs($slideEl[0].progress), 0) : 1 + Math.min(Math.max($slideEl[0].progress, -1), 0);
-                const $targetEl = effect_target_effectTarget(params, $slideEl);
-                $targetEl.css({
-                    opacity: slideOpacity
-                }).transform(`translate3d(${tx}px, ${ty}px, 0px)`);
-            }
-        };
-        const setTransition = duration => {
-            const {transformEl} = swiper.params.fadeEffect;
-            const $transitionElements = transformEl ? swiper.slides.find(transformEl) : swiper.slides;
-            $transitionElements.transition(duration);
-            effect_virtual_transition_end_effectVirtualTransitionEnd({
-                swiper,
-                duration,
-                transformEl,
-                allSlides: true
-            });
-        };
-        effect_init_effectInit({
-            effect: "fade",
-            swiper,
-            on,
-            setTranslate,
-            setTransition,
-            overwriteParams: () => ({
-                slidesPerView: 1,
-                slidesPerGroup: 1,
-                watchSlidesProgress: true,
-                spaceBetween: 0,
-                virtualTranslate: !swiper.params.cssMode
-            })
-        });
-    }
     function initSliders() {
         if (document.querySelector(".gallery-swiper")) new core(".gallery-swiper", {
-            modules: [ Autoplay, Navigation, EffectFade, Pagination ],
+            modules: [ Autoplay, Navigation, Pagination ],
             observer: true,
             observeParents: true,
             slidesPerView: 1,
@@ -4110,7 +4013,6 @@
             speed: 800,
             loop: true,
             direction: "horizontal",
-            effect: "fade",
             autoplay: {
                 delay: 3e3,
                 disableOnInteraction: false
@@ -4239,7 +4141,9 @@
     const svgTeam = document.querySelectorAll(".team__card");
     const wrapper = document.querySelector(".wrapper__img-top");
     const border_header = document.querySelector("#paint0_linear_28_83");
-    const border_header_mobile = document.querySelector("#paint0_linear_28_84");
+    const border_header_mobile = document.querySelector("#paint1_linear_95_165");
+    const img_header_mobile = document.querySelector("#image0_95_165");
+    const img_header = document.querySelector("#image0_87_54");
     const collection = document.querySelector(".collection");
     const slides = document.querySelectorAll(".main-slider__slide");
     function onEntry(entry) {
@@ -4260,6 +4164,15 @@
     function setParallaxItemsStyle(scrollTopProcent) {
         wrapper.style.top = ` ${scrollTopProcent}%`;
     }
+    document.onclick = event => {
+        if (event.target.classList.contains("header__button")) {
+            event.preventDefault();
+            document.querySelector(".page__spolers").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+    };
     window.onload = () => {
         document.documentElement.classList.remove("loading");
         slidesAnim();
@@ -4318,24 +4231,54 @@
             }), 500);
         }), 1500);
     }
+    function convertRange(old_min, old_max, new_min, new_max, number) {
+        let old_range = old_max - old_min;
+        let new_range = new_max - new_min;
+        return (number - old_min) * new_range / old_range + new_min;
+    }
     async function headerAnim() {
         let i = 0;
         let flag = false;
-        if (window.screen.width > 768.98) await setInterval((() => {
-            if (i > 2e3) flag = true; else if (i < 0) {
+        if (window.screen.width > 1300) await setInterval((() => {
+            if (i > 2e3) {
+                flag = true;
+                i = 2e3;
+            } else if (i < 0) {
                 flag = false;
                 i = 1;
             }
             border_header.setAttribute("y2", i);
-            if (flag) i -= 10; else if (!flag) i += 10;
-        }), 10); else await setInterval((() => {
-            if (i > 2e3) flag = true; else if (i < 0) {
-                flag = false;
-                i = 1;
-            }
-            border_header_mobile.setAttribute("y2", i);
-            if (flag) i -= 10; else if (!flag) i += 10;
-        }), 10);
+            if (flag) i -= 5; else if (!flag) i += 5;
+            img_header.setAttribute("x", `${convertRange(1, 2e3, 0, 10, i)}%`);
+        }), 10); else if (window.screen.width < 1300 && window.screen.width > 768.98) {
+            await setInterval((() => {
+                if (i > 2e3) {
+                    flag = true;
+                    i = 2e3;
+                } else if (i < 0) {
+                    flag = false;
+                    i = 1;
+                }
+                border_header.setAttribute("y2", i);
+                if (flag) i -= 5; else if (!flag) i += 5;
+                img_header.setAttribute("x", `${convertRange(1, 2e3, 50, 60, i)}%`);
+            }), 10);
+            document.querySelector("#header_maskImage").setAttribute("fill-opacity", "0");
+        } else {
+            await setInterval((() => {
+                if (i > 2e3) {
+                    flag = true;
+                    i = 2e3;
+                } else if (i < 0) {
+                    flag = false;
+                    i = 1;
+                }
+                border_header_mobile.setAttribute("y2", i);
+                if (flag) i -= 5; else if (!flag) i += 5;
+                img_header_mobile.setAttribute("x", `${convertRange(1, 2e3, -80, 0, i)}%`);
+            }), 10);
+            await setInterval((() => {}), 10);
+        }
     }
     window["FLS"] = true;
     isWebp();

@@ -33,7 +33,7 @@ function initSliders() {
 		new Swiper('.gallery-swiper', { // Указываем скласс нужного слайдера
 			// Подключаем модули слайдера
 			// для конкретного случая
-			modules: [Autoplay, Navigation, EffectFade, Pagination],
+			modules: [Autoplay, Navigation, Pagination],
 			observer: true,
 			observeParents: true,
 			slidesPerView: 1,
@@ -48,7 +48,7 @@ function initSliders() {
 			//lazy: true,
 			direction: 'horizontal',
 			// Эффекты
-			effect: 'fade',
+
 
 			autoplay: {
 				delay: 3000,
