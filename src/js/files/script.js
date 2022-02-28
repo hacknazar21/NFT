@@ -151,8 +151,8 @@ function slidesAnim() {
                 slides[randomIndex].removeChild(slides[randomIndex].lastElementChild);
                 slides[randomIndex].firstElementChild.setAttribute('style', '');
             }, 500);
-        }, 600);
-    }, 1200);
+        }, 500);
+    }, 1500);
 }
 
 async function headerAnim() {

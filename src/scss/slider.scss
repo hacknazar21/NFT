@@ -9,7 +9,7 @@
         margin-top: rem(62);
     }
     &__img-ibg {
-        flex: 0 0 percent(580, 1680);
+        flex: 0 0 percent(570, 1680);
         position: relative;
         @media (max-width: $tablet) {
             padding-bottom: rem(500);
@@ -22,13 +22,15 @@
             object-position: center;
 
             z-index: 0;
-            left: -4%;
-            animation: slider-anim 5s linear infinite;
+            left: -5%;
+            animation: slider-ani-eifel 15s linear infinite;
         }
 
         &::before {
             content: "";
-            background: url(@img/main-slider/eifel-bg.png) center/contain no-repeat;
+            background: url(@img/main-slider/eifel-bgm.png) center/contain no-repeat;
+            animation: slider-anim 15s linear infinite;
+
             pointer-events: none;
             height: 100%;
             width: 100%;
@@ -38,7 +40,6 @@
             @media (max-width: $tablet) {
                 margin: 0 auto;
                 transform: scale(1);
-                background: url(@img/main-slider/eifel-bgm.png) center/contain no-repeat;
 
                 top: 0;
             }
@@ -59,7 +60,7 @@
         position: relative;
         margin: 0 auto;
         overflow: hidden;
-        max-height: rem(610);
+        max-height: rem(920);
         @media (max-width: $mobile) {
             max-height: rem(560);
         }
@@ -100,7 +101,9 @@
     &__slide {
         position: relative;
         z-index: 4;
-
+        border: 5px solid rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+        overflow: hidden;
         mix-blend-mode: inherit;
         &.transition {
             img {
@@ -115,22 +118,8 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            border: 1px solid rgba(255, 255, 255, 0.4);
             object-position: center;
         }
-        /*&::before {
-            content: "";
-            width: 100%;
-            height: 100%;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            border: 20px solid transparent;
-            border-image: url(@img/main-slider/border.svg);
-            border-image-slice: 20;
-            z-index: 6;
-        }*/
     }
 
     //========================================================================================================================================================
@@ -158,17 +147,24 @@
 
 @keyframes slider-anim {
     0% {
-        transform: rotate(0) scale(1.19);
-        top: 0%; //8.9deg
+        transform: scale(1);
     }
     50% {
-        transform: rotate(8.9deg) scale(0.93);
-        top: -20%;
+        transform: scale(1.19);
     }
     100% {
-        transform: rotate(0) scale(1.19);
-        top: 0%;
+        transform: scale(1);
     }
 }
-
+@keyframes slider-ani-eifel {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 //========================================================================================================================================================

@@ -1,20 +1,32 @@
 .collection {
+    position: relative;
+
+    &::before {
+        content: "";
+        width: 100%;
+        height: rem(733);
+        display: block;
+        position: absolute;
+        top: calc(50% - rem(366.5));
+        left: 0;
+        background: #a50505;
+        opacity: 0.56;
+        filter: blur(rem(200));
+    }
     &__container {
-        background: linear-gradient(0deg, rgba(9, 9, 9, 0.6), rgba(9, 9, 9, 0.6)),
+        @media (max-width: 1680px) {
+            margin: 0 rem(10);
+        }
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(@img/collection/bg.png),
             radial-gradient(50% 50% at 50% 50%, #232121 0%, rgba(19, 19, 19, 0) 100%);
         border: 2.03788px solid #ca003b;
         box-sizing: border-box;
         backdrop-filter: blur(30px);
         /* Note: backdrop-filter has minimal browser support */
 
-        border-radius: rem(15);
-        @media (max-width: 1680px) {
-            margin: 0 rem(10);
-        }
-
+        border-radius: 30px;
         padding: rem(50) rem(84);
 
-        background: url(@img/collection/bg.svg) no-repeat;
         min-height: rem(617);
         display: flex;
         flex-direction: column;
@@ -37,8 +49,6 @@
             transition: transform 0.8s ease 0s, opacity 1s ease 0s;
             transform: translateX(100%);
             opacity: 0;
-
-            transform-origin: "left bottom";
 
             ._show & {
                 opacity: 1;

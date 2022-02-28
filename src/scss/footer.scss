@@ -1,7 +1,18 @@
 //====================================================================================================
 .footer {
     position: relative;
-
+    &::before {
+        content: "";
+        width: 100%;
+        height: rem(733);
+        display: block;
+        position: absolute;
+        top: calc(50% - rem(366.5));
+        left: 0;
+        background: #b9fd02;
+        opacity: 0.56;
+        filter: blur(rem(200));
+    }
     &__img-ibg {
         position: absolute;
         width: percent(500, 1680);
@@ -70,7 +81,9 @@
     }
 
     &__text-box {
-        width: percent(800, 1680);
+        @media (min-width: $tablet) {
+            width: percent(800, 1680);
+        }
         position: relative;
         z-index: 1;
 
