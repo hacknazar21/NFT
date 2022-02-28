@@ -143,10 +143,10 @@ body {
 	overflow: hidden;
 	// Прижимаем footer
 	position: relative;
-	background: #50068a url(@img/background.png) 0% -100px / cover no-repeat;
-	transition: background-position 0.9s ease 0s;
+	background: url(@img/background.png) center / cover no-repeat;
+	transition: top 0.9s ease 0s;
 	@media (max-width: $tablet) {
-		background: url(@img/bg-mobile.png) 0% -100px / cover no-repeat;
+		background: url(@img/bg-mobile.png) center / cover no-repeat;
 	}
 	position: relative;
 	z-index: -1;
@@ -156,6 +156,12 @@ body {
 	// Фикс для слайдеров
 	> * {
 		min-width: 0;
+	}
+
+	&__img-top {
+		position: absolute;
+		top: -10%;
+		left: -10%;
 	}
 }
 // Ограничивающий контейнер ======================================================================================================================================================================================================================

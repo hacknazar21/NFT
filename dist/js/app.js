@@ -4099,163 +4099,7 @@
             })
         });
     }
-    function create_shadow_createShadow(params, $slideEl, side) {
-        const shadowClass = `swiper-slide-shadow${side ? `-${side}` : ""}`;
-        const $shadowContainer = params.transformEl ? $slideEl.find(params.transformEl) : $slideEl;
-        let $shadowEl = $shadowContainer.children(`.${shadowClass}`);
-        if (!$shadowEl.length) {
-            $shadowEl = dom(`<div class="swiper-slide-shadow${side ? `-${side}` : ""}"></div>`);
-            $shadowContainer.append($shadowEl);
-        }
-        return $shadowEl;
-    }
-    function EffectCreative(_ref) {
-        let {swiper, extendParams, on} = _ref;
-        extendParams({
-            creativeEffect: {
-                transformEl: null,
-                limitProgress: 1,
-                shadowPerProgress: false,
-                progressMultiplier: 1,
-                perspective: true,
-                prev: {
-                    translate: [ 0, 0, 0 ],
-                    rotate: [ 0, 0, 0 ],
-                    opacity: 1,
-                    scale: 1
-                },
-                next: {
-                    translate: [ 0, 0, 0 ],
-                    rotate: [ 0, 0, 0 ],
-                    opacity: 1,
-                    scale: 1
-                }
-            }
-        });
-        const getTranslateValue = value => {
-            if ("string" === typeof value) return value;
-            return `${value}px`;
-        };
-        const setTranslate = () => {
-            const {slides, $wrapperEl, slidesSizesGrid} = swiper;
-            const params = swiper.params.creativeEffect;
-            const {progressMultiplier: multiplier} = params;
-            const isCenteredSlides = swiper.params.centeredSlides;
-            if (isCenteredSlides) {
-                const margin = slidesSizesGrid[0] / 2 - swiper.params.slidesOffsetBefore || 0;
-                $wrapperEl.transform(`translateX(calc(50% - ${margin}px))`);
-            }
-            for (let i = 0; i < slides.length; i += 1) {
-                const $slideEl = slides.eq(i);
-                const slideProgress = $slideEl[0].progress;
-                const progress = Math.min(Math.max($slideEl[0].progress, -params.limitProgress), params.limitProgress);
-                let originalProgress = progress;
-                if (!isCenteredSlides) originalProgress = Math.min(Math.max($slideEl[0].originalProgress, -params.limitProgress), params.limitProgress);
-                const offset = $slideEl[0].swiperSlideOffset;
-                const t = [ swiper.params.cssMode ? -offset - swiper.translate : -offset, 0, 0 ];
-                const r = [ 0, 0, 0 ];
-                let custom = false;
-                if (!swiper.isHorizontal()) {
-                    t[1] = t[0];
-                    t[0] = 0;
-                }
-                let data = {
-                    translate: [ 0, 0, 0 ],
-                    rotate: [ 0, 0, 0 ],
-                    scale: 1,
-                    opacity: 1
-                };
-                if (progress < 0) {
-                    data = params.next;
-                    custom = true;
-                } else if (progress > 0) {
-                    data = params.prev;
-                    custom = true;
-                }
-                t.forEach(((value, index) => {
-                    t[index] = `calc(${value}px + (${getTranslateValue(data.translate[index])} * ${Math.abs(progress * multiplier)}))`;
-                }));
-                r.forEach(((value, index) => {
-                    r[index] = data.rotate[index] * Math.abs(progress * multiplier);
-                }));
-                $slideEl[0].style.zIndex = -Math.abs(Math.round(slideProgress)) + slides.length;
-                const translateString = t.join(", ");
-                const rotateString = `rotateX(${r[0]}deg) rotateY(${r[1]}deg) rotateZ(${r[2]}deg)`;
-                const scaleString = originalProgress < 0 ? `scale(${1 + (1 - data.scale) * originalProgress * multiplier})` : `scale(${1 - (1 - data.scale) * originalProgress * multiplier})`;
-                const opacityString = originalProgress < 0 ? 1 + (1 - data.opacity) * originalProgress * multiplier : 1 - (1 - data.opacity) * originalProgress * multiplier;
-                const transform = `translate3d(${translateString}) ${rotateString} ${scaleString}`;
-                if (custom && data.shadow || !custom) {
-                    let $shadowEl = $slideEl.children(".swiper-slide-shadow");
-                    if (0 === $shadowEl.length && data.shadow) $shadowEl = create_shadow_createShadow(params, $slideEl);
-                    if ($shadowEl.length) {
-                        const shadowOpacity = params.shadowPerProgress ? progress * (1 / params.limitProgress) : progress;
-                        $shadowEl[0].style.opacity = Math.min(Math.max(Math.abs(shadowOpacity), 0), 1);
-                    }
-                }
-                const $targetEl = effect_target_effectTarget(params, $slideEl);
-                $targetEl.transform(transform).css({
-                    opacity: opacityString
-                });
-                if (data.origin) $targetEl.css("transform-origin", data.origin);
-            }
-        };
-        const setTransition = duration => {
-            const {transformEl} = swiper.params.creativeEffect;
-            const $transitionElements = transformEl ? swiper.slides.find(transformEl) : swiper.slides;
-            $transitionElements.transition(duration).find(".swiper-slide-shadow").transition(duration);
-            effect_virtual_transition_end_effectVirtualTransitionEnd({
-                swiper,
-                duration,
-                transformEl,
-                allSlides: true
-            });
-        };
-        effect_init_effectInit({
-            effect: "creative",
-            swiper,
-            on,
-            setTranslate,
-            setTransition,
-            perspective: () => swiper.params.creativeEffect.perspective,
-            overwriteParams: () => ({
-                watchSlidesProgress: true,
-                virtualTranslate: !swiper.params.cssMode
-            })
-        });
-    }
     function initSliders() {
-        if (document.querySelector(".main-slider-swiper")) new core(".main-slider-swiper", {
-            modules: [ Autoplay, Navigation, EffectCreative ],
-            observer: true,
-            observeParents: true,
-            slidesPerView: 3,
-            spaceBetween: 0,
-            autoHeight: true,
-            speed: 800,
-            loop: true,
-            autoplay: {
-                delay: 3e3,
-                disableOnInteraction: false
-            },
-            navigation: {
-                prevEl: ".swiper-button-prev",
-                nextEl: ".swiper-button-next"
-            },
-            breakpoints: {
-                320: {
-                    slidesPerView: 1,
-                    loopAdditionalSlides: 2,
-                    allowTouchMove: false
-                },
-                768: {
-                    slidesPerView: 2
-                },
-                1268: {
-                    slidesPerView: 3
-                }
-            },
-            on: {}
-        });
         if (document.querySelector(".gallery-swiper")) new core(".gallery-swiper", {
             modules: [ Autoplay, Navigation, EffectFade, Pagination ],
             observer: true,
@@ -4393,23 +4237,32 @@
     document.querySelector("#header path");
     document.querySelector("#header-mobile path");
     const svgTeam = document.querySelectorAll(".team__card");
-    const wrapper = document.querySelector(".wrapper");
+    const wrapper = document.querySelector(".wrapper__img-top");
     const border_header = document.querySelector("#paint0_linear_28_83");
     const border_header_mobile = document.querySelector("#paint0_linear_28_84");
     const collection = document.querySelector(".collection");
-    document.querySelector(".footer");
+    const slides = document.querySelectorAll(".main-slider__slide");
+    function onEntry(entry) {
+        entry.forEach((change => {
+            if (change.isIntersecting) collection.classList.add("_show");
+        }));
+    }
+    let options = {
+        threshold: [ .5 ]
+    };
+    let observer = new IntersectionObserver(onEntry, options);
+    observer.observe(collection);
     document.documentElement.classList.add("loading");
     window.onscroll = function() {
-        let scrollTopProcent = window.pageYOffset / document.documentElement.offsetHeight * 100 - 100;
-        if (window.pageYOffset >= collection.offsetTop - 200) collection.classList.add("_show"); else collection.classList.remove("_show");
-        if (scrollTopProcent > 100) scrollTopProcent = 100 - (scrollTopProcent - 100 * Math.floor(scrollTopProcent / 100));
-        setParallaxItemsStyle(scrollTopProcent);
+        let scrollTopProcent = window.pageYOffset / document.documentElement.offsetHeight * 100;
+        setParallaxItemsStyle(-scrollTopProcent / 100);
     };
     function setParallaxItemsStyle(scrollTopProcent) {
-        wrapper.style.backgroundPosition = ` 0% ${scrollTopProcent}px`;
+        wrapper.style.top = ` ${scrollTopProcent}%`;
     }
     window.onload = () => {
         document.documentElement.classList.remove("loading");
+        slidesAnim();
         headerAnim();
         let i = 0;
         svgTeam.forEach((element => {
@@ -4423,17 +4276,59 @@
             }));
         }));
     };
-    function headerAnim() {
+    function slidesAnim() {
+        let srcBuffer = "";
+        function randomInteger(min, max) {
+            let rand = min + Math.random() * (max + 1 - min);
+            return Math.floor(rand);
+        }
+        setInterval((function() {
+            let src = [];
+            slides.forEach((slide => {
+                src.push(slide.querySelector("img").getAttribute("src"));
+            }));
+            const randomIndex = randomInteger(0, src.length - 1);
+            let randomIndexVisible;
+            if (window.innerWidth > 1565 || window.innerWidth < 990 && window.innerWidth > 960) randomIndexVisible = randomInteger(0, 5); else if (window.innerWidth < 1565 && window.innerWidth > 1035 || window.innerWidth < 960 && window.innerWidth > 770) randomIndexVisible = randomInteger(0, 3); else if (window.innerWidth < 770 && window.innerWidth > 750) randomIndexVisible = randomInteger(0, 1); else randomIndexVisible = 0;
+            if (randomIndexVisible == randomIndex) return;
+            setTimeout((function() {
+                slides[randomIndexVisible].classList.add("transition");
+                let image = document.createElement("img");
+                image.setAttribute("src", src[randomIndex]);
+                image.setAttribute("style", "position: absolute; top: 0; left: 0; width:100%; height:100%; z-index: 0; opacity: 1");
+                slides[randomIndexVisible].insertAdjacentElement("afterbegin", image);
+                setTimeout((function() {
+                    slides[randomIndexVisible].classList.remove("transition");
+                    slides[randomIndexVisible].removeChild(slides[randomIndexVisible].lastElementChild);
+                    slides[randomIndexVisible].firstElementChild.setAttribute("style", "");
+                }), 500);
+            }), 500);
+            setTimeout((function() {
+                srcBuffer = slides[randomIndexVisible].lastElementChild.getAttribute("src");
+                slides[randomIndex].classList.add("transition");
+                let image = document.createElement("img");
+                image.setAttribute("src", srcBuffer);
+                image.setAttribute("style", "position: absolute; top: 0; left: 0; width:100%; height:100%; z-index: 0; opacity: 1");
+                slides[randomIndex].insertAdjacentElement("afterbegin", image);
+                setTimeout((function() {
+                    slides[randomIndex].classList.remove("transition");
+                    slides[randomIndex].removeChild(slides[randomIndex].lastElementChild);
+                    slides[randomIndex].firstElementChild.setAttribute("style", "");
+                }), 500);
+            }), 600);
+        }), 1200);
+    }
+    async function headerAnim() {
         let i = 0;
         let flag = false;
-        if (window.screen.width > 768.98) setInterval((() => {
+        if (window.screen.width > 768.98) await setInterval((() => {
             if (i > 2e3) flag = true; else if (i < 0) {
                 flag = false;
                 i = 1;
             }
             border_header.setAttribute("y2", i);
             if (flag) i -= 10; else if (!flag) i += 10;
-        }), 10); else setInterval((() => {
+        }), 10); else await setInterval((() => {
             if (i > 2e3) flag = true; else if (i < 0) {
                 flag = false;
                 i = 1;

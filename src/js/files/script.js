@@ -6,36 +6,42 @@ import { flsModules } from "./modules.js";
 const path = document.querySelector('#header path');
 const pathMobile = document.querySelector('#header-mobile path');
 const svgTeam = document.querySelectorAll('.team__card');
-const wrapper = document.querySelector('.wrapper');
+const wrapper = document.querySelector('.wrapper__img-top');
 const border_header = document.querySelector('#paint0_linear_28_83');
 const border_header_mobile = document.querySelector('#paint0_linear_28_84');
 const collection = document.querySelector('.collection');
-const footer = document.querySelector('.footer');
+const slides = document.querySelectorAll('.main-slider__slide');
 
 let minus;
 
+function onEntry(entry) {
+    entry.forEach(change => {
+        if (change.isIntersecting) {
+            collection.classList.add('_show');
+        }
+    });
+}
+
+let options = {
+    threshold: [0.5]
+};
+let observer = new IntersectionObserver(onEntry, options);
+observer.observe(collection);
 document.documentElement.classList.add('loading')
 window.onscroll = function () {
-    let scrollTopProcent = window.pageYOffset / document.documentElement.offsetHeight * 100 - 100;
-    if (window.pageYOffset >= (collection.offsetTop - 200)) {
-        collection.classList.add('_show');
-    }
-    else {
-        collection.classList.remove('_show');
-    }
-    if (scrollTopProcent > 100) {
-        scrollTopProcent = 100 - (scrollTopProcent - (Math.floor(scrollTopProcent / 100) * 100));
-    }
-    setParallaxItemsStyle(scrollTopProcent);
 
+    let scrollTopProcent = window.pageYOffset / document.documentElement.offsetHeight * 100;
+    setParallaxItemsStyle(-scrollTopProcent / 100);
 
 };
 function setParallaxItemsStyle(scrollTopProcent) {
-    wrapper.style.backgroundPosition = ` 0% ${scrollTopProcent}px`;
+    wrapper.style.top = ` ${scrollTopProcent}%`;
 }
 
 window.onload = () => {
     document.documentElement.classList.remove('loading');
+    slidesAnim();
+
     headerAnim();
     let i = 0;
 
@@ -84,15 +90,76 @@ window.onload = () => {
 
         })
     });
+
+
 };
 
+function slidesAnim() {
 
+    let srcBuffer = '';
+    function randomInteger(min, max) {
+        // случайное число от min до (max+1)
+        let rand = min + Math.random() * (max + 1 - min);
+        return Math.floor(rand);
+    }
 
-function headerAnim() {
+    setInterval(function () {
+        let src = [];
+
+        slides.forEach(slide => {
+            src.push(slide.querySelector('img').getAttribute('src'));
+        });
+        const randomIndex = randomInteger(0, src.length - 1);
+        let randomIndexVisible;
+        if (window.innerWidth > 1565 || (window.innerWidth < 990 && window.innerWidth > 960))
+            randomIndexVisible = randomInteger(0, 5);
+        else if ((window.innerWidth < 1565 && window.innerWidth > 1035) || (window.innerWidth < 960 && window.innerWidth > 770))
+            randomIndexVisible = randomInteger(0, 3);
+        else if (window.innerWidth < 770 && window.innerWidth > 750)
+            randomIndexVisible = randomInteger(0, 1);
+        else
+            randomIndexVisible = 0;
+
+        if (randomIndexVisible == randomIndex) return;
+
+        setTimeout(function () {
+            slides[randomIndexVisible].classList.add('transition');
+
+            let image = document.createElement('img');
+            image.setAttribute('src', src[randomIndex]);
+            image.setAttribute('style', 'position: absolute; top: 0; left: 0; width:100%; height:100%; z-index: 0; opacity: 1');
+            slides[randomIndexVisible].insertAdjacentElement('afterbegin', image);
+            setTimeout(function () {
+                slides[randomIndexVisible].classList.remove('transition');
+                slides[randomIndexVisible].removeChild(slides[randomIndexVisible].lastElementChild);
+                slides[randomIndexVisible].firstElementChild.setAttribute('style', '');
+            }, 500);
+
+        }, 500);
+        setTimeout(function () {
+            srcBuffer = slides[randomIndexVisible].lastElementChild.getAttribute('src');
+
+            slides[randomIndex].classList.add('transition');
+
+            let image = document.createElement('img');
+            image.setAttribute('src', srcBuffer);
+            image.setAttribute('style', 'position: absolute; top: 0; left: 0; width:100%; height:100%; z-index: 0; opacity: 1');
+            slides[randomIndex].insertAdjacentElement('afterbegin', image);
+
+            setTimeout(function () {
+                slides[randomIndex].classList.remove('transition');
+                slides[randomIndex].removeChild(slides[randomIndex].lastElementChild);
+                slides[randomIndex].firstElementChild.setAttribute('style', '');
+            }, 500);
+        }, 600);
+    }, 1200);
+}
+
+async function headerAnim() {
     let i = 0;
     let flag = false;
     if (window.screen.width > 768.98)
-        setInterval(() => {
+        await setInterval(() => {
             if (i > 2000) flag = true;
             else if (i < 0) { flag = false; i = 1 };
             border_header.setAttribute('y2', i);
@@ -100,7 +167,7 @@ function headerAnim() {
             else if (!flag) i += 10;
         }, 10)
     else
-        setInterval(() => {
+        await setInterval(() => {
             if (i > 2000) flag = true;
             else if (i < 0) { flag = false; i = 1 };
             border_header_mobile.setAttribute('y2', i);

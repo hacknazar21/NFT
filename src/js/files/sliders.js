@@ -7,7 +7,7 @@
 // Подключаем слайдер Swiper из node_modules
 // При необходимости подключаем дополнительные модули слайдера, указывая их в {} через запятую
 // Пример: { Navigation, Autoplay }
-import Swiper, { Autoplay, Navigation, EffectFade, EffectCreative, Pagination } from 'swiper';
+import Swiper, { Autoplay, Navigation, EffectFade, EffectCreative, Pagination, Grid } from 'swiper';
 /*
 Основниые модули слайдера:
 Navigation, Pagination, Autoplay, 
@@ -27,74 +27,7 @@ import "../../scss/base/swiper.scss";
 function initSliders() {
 	// Перечень слайдеров
 	// Проверяем, есть ли слайдер на стронице
-	if (document.querySelector('.main-slider-swiper')) { // Указываем скласс нужного слайдера
-		// Создаем слайдер
-		new Swiper('.main-slider-swiper', { // Указываем скласс нужного слайдера
-			// Подключаем модули слайдера
-			// для конкретного случая
-			modules: [Autoplay, Navigation, EffectCreative],
-			observer: true,
-			observeParents: true,
-			slidesPerView: 3,
-			spaceBetween: 0,
-			autoHeight: true,
-			speed: 800,
 
-			//touchRatio: 0,
-			//simulateTouch: false,
-			loop: true,
-			//preloadImages: false,
-			//lazy: true,
-
-			// Эффекты
-			autoplay: {
-				delay: 3000,
-				disableOnInteraction: false,
-			},
-			// Пагинация
-			/*
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			*/
-
-			// Скроллбар
-			/*
-			scrollbar: {
-				el: '.swiper-scrollbar',
-				draggable: true,
-			},
-			*/
-
-			// Кнопки "влево/вправо"
-			navigation: {
-				prevEl: '.swiper-button-prev',
-				nextEl: '.swiper-button-next',
-			},
-
-			// Брейкпоинты
-
-			breakpoints: {
-				320: {
-					slidesPerView: 1,
-					loopAdditionalSlides: 2,
-					allowTouchMove: false,
-
-				},
-				768: {
-					slidesPerView: 2,
-				},
-				1268: {
-					slidesPerView: 3,
-				},
-			},
-			// События
-			on: {
-
-			}
-		});
-	}
 	if (document.querySelector('.gallery-swiper')) { // Указываем скласс нужного слайдера
 		// Создаем слайдер
 		new Swiper('.gallery-swiper', { // Указываем скласс нужного слайдера

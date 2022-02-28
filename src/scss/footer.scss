@@ -2,11 +2,26 @@
 .footer {
     position: relative;
 
+    &__img-ibg {
+        position: absolute;
+        width: percent(500, 1680);
+        height: rem(400);
+        position: absolute;
+        right: 5%;
+        top: calc(50% - rem(200));
+        z-index: 3;
+        display: none;
+        @media (min-width: $tablet) {
+            display: block;
+            animation: footer-anim 10s linear infinite;
+        }
+    }
+
     &__container {
         position: relative;
         background: linear-gradient(0deg, rgba(9, 9, 9, 0.6), rgba(9, 9, 9, 0.6)),
             radial-gradient(50% 50% at 50% 50%, #232121 0%, rgba(19, 19, 19, 0) 100%);
-        border: rem(2) solid #335ef8;
+        border: rem(2) solid #b9fd02;
         backdrop-filter: blur(rem(30));
         border-radius: rem(15);
         margin-bottom: rem(192);
@@ -19,19 +34,16 @@
         }
         &::before {
             content: "";
-            background: url(@img/footer/right-bg.png) top/contain no-repeat;
-            width: percent(528, 1680);
-            height: rem(941);
-            display: block;
+            background: url(@img/footer/sheep-bg.svg) top/contain no-repeat;
+            width: percent(500, 1680);
+            height: rem(400);
             position: absolute;
-            right: 10%;
-            bottom: 40%;
+            right: 5%;
+            top: calc(50% - rem(200));
             z-index: 2;
             display: none;
 
             @media (min-width: $tablet) {
-                animation: footer-anim 10s linear infinite;
-
                 display: block;
             }
         }
@@ -58,7 +70,7 @@
     }
 
     &__text-box {
-        @include adaptiveValue("max-width", 1614, 330);
+        width: percent(800, 1680);
         position: relative;
         z-index: 1;
 
@@ -99,8 +111,8 @@
     }
 
     &__button {
-        background-color: #335ef8;
-
+        background-color: #b9fd02;
+        color: #000;
         margin-top: rem(18);
         &._email {
             margin-top: auto;
@@ -119,13 +131,13 @@
 
 @keyframes footer-anim {
     0% {
-        bottom: -80%;
+        transform: scale(1);
     }
     50% {
-        bottom: -50%;
+        transform: scale(1.2);
     }
     100% {
-        bottom: -80%;
+        transform: scale(1);
     }
 }
 

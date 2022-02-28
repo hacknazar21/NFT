@@ -11,6 +11,7 @@
         @media (max-width: 1680px) {
             margin: 0 rem(10);
         }
+
         padding: rem(50) rem(84);
 
         background: url(@img/collection/bg.svg) no-repeat;
@@ -33,12 +34,15 @@
             right: 0;
             top: rem(-109);
             z-index: -1;
-            transition: transform 0.3s ease 0s;
-            transform: scaleY(0);
+            transition: transform 0.8s ease 0s, opacity 1s ease 0s;
+            transform: translateX(100%);
+            opacity: 0;
+
             transform-origin: "left bottom";
 
             ._show & {
-                transform: scaleY(1);
+                opacity: 1;
+                transform: translateX(0);
             }
             @media (max-width: $tablet) {
                 display: none;
