@@ -61,7 +61,7 @@ window.onload = () => {
         i++;
 
         element.insertAdjacentHTML('afterbegin', `
-        <svg style="position: absolute; z-index: -1;" width="100%" height="100%" viewBox="0 0 266 343"
+        <svg style="position: absolute; z-index: 0;" width="100%" height="100%" viewBox="0 0 266 343"
                     fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <mask id="mask${i * 100}" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="266"
                         height="343">
@@ -123,10 +123,12 @@ function slidesAnim() {
         });
         const randomIndex = randomInteger(0, src.length - 1);
         let randomIndexVisible;
-        if (window.innerWidth > 1565 || (window.innerWidth < 990 && window.innerWidth > 960))
+        if (window.innerWidth > 1565 || (window.innerWidth < 990 && window.innerWidth > 960) || (window.innerWidth < 765 && window.innerWidth > 385))
             randomIndexVisible = randomInteger(0, 5);
         else if ((window.innerWidth < 1565 && window.innerWidth > 1035) || (window.innerWidth < 960 && window.innerWidth > 770))
             randomIndexVisible = randomInteger(0, 3);
+        else if (window.innerWidth < 770 && window.innerWidth > 750)
+            randomIndexVisible = randomInteger(0, 1);
         else if (window.innerWidth < 770 && window.innerWidth > 750)
             randomIndexVisible = randomInteger(0, 1);
         else
@@ -187,7 +189,7 @@ async function headerAnim() {
             img_header.setAttribute('x', `${convertRange(1, 2000, 0, 10, i)}%`);
         }, 10)
     }
-    else if (window.screen.width < 1300 && window.screen.width > 768.98) {
+    else if (window.screen.width < 1300 && window.screen.width > 767) {
         await setInterval(() => {
             if (i > 2000) { flag = true; i = 2000; }
             else if (i < 0) { flag = false; i = 1 };

@@ -14,13 +14,13 @@
     line-height: math.div(50, 30);
     @include adaptiveValue("font-size", 30, 18);
     text-transform: uppercase;
-    padding: 0 rem(10);
 }
 .text {
     font-style: normal;
     font-weight: 300;
     line-height: math.div(20, 18);
     @include adaptiveValue("font-size", 16, 12);
+    padding: 0 rem(10);
 
     letter-spacing: 0.02em;
 

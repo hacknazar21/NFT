@@ -1,6 +1,9 @@
 .page-second {
     display: flex;
     align-items: center;
+    @media (max-width: $tablet) {
+        margin-top: rem(17);
+    }
     @media (min-width: $tablet) {
         width: 100vw;
     }
@@ -8,14 +11,7 @@
         flex-direction: column;
         gap: rem(20);
     }
-    &__logo {
-        font-weight: bold;
-        font-size: rem(20);
-        line-height: math.div(50, 20);
-        @media (min-width: $tablet) {
-            display: none;
-        }
-    }
+
     &__side {
         flex: 1 1 50%;
         @media (max-width: $tablet) {
@@ -71,21 +67,22 @@
         }
     }
 
-    &__title {
-        font-weight: bold;
-        @include adaptiveValue("font-size", 40, 20);
-        line-height: math.div(50, 40);
-        @include adaptiveValue("margin-bottom", 20, 0);
+    &__title-ibg {
         @media (max-width: $tablet) {
             padding: 0 rem(47);
             padding-top: rem(20);
-            line-height: math.div(50, 20);
         }
         @media (max-width: $mobile) {
             padding: rem(20);
-            padding-bottom: 0;
+            padding-bottom: rem(90);
         }
         text-align: center;
+        padding-bottom: rem(90);
+        position: relative;
+        img {
+            max-width: 100%;
+            object-fit: contain;
+        }
     }
 
     &__text {
@@ -109,6 +106,9 @@
         background: #9102d5;
         box-shadow: 0px 3.74372px 22.4623px rgba(145, 2, 212, 0.2);
         border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         @media (max-width: $tablet) {
             margin-top: auto;
         }
