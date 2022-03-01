@@ -1,5 +1,19 @@
 //====================================================================================================
 .header {
+	position: relative;
+	&::before {
+		content: "";
+		width: 100%;
+		height: rem(733);
+		display: block;
+		position: absolute;
+		top: calc(50% - rem(366.5));
+		left: 0;
+		background-color: #9102d4;
+		opacity: 0.56;
+		filter: blur(752.575px);
+		animation: anim-header 10s infinite linear;
+	}
 	@media (max-width: 376px) {
 		margin: 0 10px;
 	}
@@ -139,11 +153,15 @@
 		border-radius: 12px;
 		display: flex;
 		align-items: center;
-		transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
+		transition: background-color 0.3s ease 0s;
 		justify-content: space-between;
 		position: relative;
 		z-index: 6;
-		animation: header-btn-anim 5s linear infinite;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #5580ef;
+			}
+		}
 		&::after {
 			@extend %ic;
 			content: "\e900";
@@ -163,13 +181,14 @@
 			@include adaptiveValue("margin-right", 54, 0);
 			height: percent(365, 720);
 		}
-
+		@include adaptiveValue("padding-left", 250, 8, 768, 320);
+		@include adaptiveValue("padding-right", 250, 8, 768, 320);
 		@media (max-width: $mobile) {
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
-			padding: 0 rem(50);
+
 			height: 50%;
 			align-items: center;
 			font-size: rem(30);
@@ -240,6 +259,20 @@
 }
 
 //====================================================================================================
+
+@keyframes anim-header {
+	0% {
+		background-color: #9102d4;
+	}
+	50% {
+		background-color: #02a3fd;
+	}
+	100% {
+		background-color: #9102d4;
+	}
+}
+
+//========================================================================================================================================================
 
 //Burger
 

@@ -123,8 +123,11 @@ function slidesAnim() {
         });
         const randomIndex = randomInteger(0, src.length - 1);
         let randomIndexVisible;
-        if (window.innerWidth > 1565 || (window.innerWidth < 990 && window.innerWidth > 960) || (window.innerWidth < 765 && window.innerWidth > 385))
+        if (window.innerWidth > 1565 || (window.innerWidth < 990 && window.innerWidth > 960))
+            randomIndexVisible = randomInteger(0, 8);
+        else if (window.innerWidth < 765 && window.innerWidth > 385)
             randomIndexVisible = randomInteger(0, 5);
+
         else if ((window.innerWidth < 1565 && window.innerWidth > 1035) || (window.innerWidth < 960 && window.innerWidth > 770))
             randomIndexVisible = randomInteger(0, 3);
         else if (window.innerWidth < 770 && window.innerWidth > 750)

@@ -4202,7 +4202,7 @@
             }));
             const randomIndex = randomInteger(0, src.length - 1);
             let randomIndexVisible;
-            if (window.innerWidth > 1565 || window.innerWidth < 990 && window.innerWidth > 960 || window.innerWidth < 765 && window.innerWidth > 385) randomIndexVisible = randomInteger(0, 5); else if (window.innerWidth < 1565 && window.innerWidth > 1035 || window.innerWidth < 960 && window.innerWidth > 770) randomIndexVisible = randomInteger(0, 3); else if (window.innerWidth < 770 && window.innerWidth > 750) randomIndexVisible = randomInteger(0, 1); else if (window.innerWidth < 770 && window.innerWidth > 750) randomIndexVisible = randomInteger(0, 1); else randomIndexVisible = 0;
+            if (window.innerWidth > 1565 || window.innerWidth < 990 && window.innerWidth > 960) randomIndexVisible = randomInteger(0, 8); else if (window.innerWidth < 765 && window.innerWidth > 385) randomIndexVisible = randomInteger(0, 5); else if (window.innerWidth < 1565 && window.innerWidth > 1035 || window.innerWidth < 960 && window.innerWidth > 770) randomIndexVisible = randomInteger(0, 3); else if (window.innerWidth < 770 && window.innerWidth > 750) randomIndexVisible = randomInteger(0, 1); else if (window.innerWidth < 770 && window.innerWidth > 750) randomIndexVisible = randomInteger(0, 1); else randomIndexVisible = 0;
             if (randomIndexVisible == randomIndex) return;
             setTimeout((function() {
                 slides[randomIndexVisible].classList.add("transition");

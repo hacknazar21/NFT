@@ -37,6 +37,7 @@
         min-height: rem(55);
         display: flex;
         align-items: center;
+        z-index: 1;
     }
 
     &__img-ibg {
