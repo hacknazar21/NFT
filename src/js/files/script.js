@@ -6,18 +6,17 @@ import { flsModules } from "./modules.js";
 import smoothscroll from 'smoothscroll-polyfill';
 smoothscroll.polyfill();
 
-const path = document.querySelector('#header path');
-const pathMobile = document.querySelector('#header-mobile path');
+
 const svgTeam = document.querySelectorAll('.team__card');
 const wrapper = document.querySelector('.wrapper__img-top');
 const border_header = document.querySelector('#paint0_linear_28_83');
 const border_header_mobile = document.querySelector('#paint1_linear_95_165');
+const border_collection = document.querySelector('#gradient_collection');
 const img_header_mobile = document.querySelector('#image0_95_165');
 const img_header = document.querySelector('#image0_87_54');
 const collection = document.querySelector('.collection');
 const slides = document.querySelectorAll('.main-slider__slide');
 
-let minus;
 
 async function onEntry(entry) {
     entry.forEach(change => {
@@ -188,11 +187,15 @@ async function headerAnim() {
         await setInterval(() => {
             if (i > 2000) { flag = true; i = 2000; }
             else if (i < 0) { flag = false; i = 1 };
-            border_header.setAttribute('y2', i);
             if (flag) i -= 5;
             else if (!flag) i += 5;
+            border_header.setAttribute('y2', i);
 
             img_header.setAttribute('x', `${convertRange(1, 2000, 0, 10, i)}%`);
+            img_header.setAttribute('y', `${convertRange(1, 2000, 0, 10, i)}%`);
+            border_collection.setAttribute('x1', `${convertRange(1, 2000, -100, 100, i)}%`);
+            border_collection.setAttribute('y1', `${convertRange(1, 2000, -100, 100, i)}%`);
+            border_collection.setAttribute('y2', `${convertRange(1, 2000, -100, 100, i)}%`);
         }, 10)
     }
     else if (window.screen.width < 1300 && window.screen.width > 767) {
