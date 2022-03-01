@@ -1,12 +1,19 @@
-<svg width="577" height="568" viewBox="0 0 577 568" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M23.5407 260.397L5.51038 191.008V271.325L23.5407 260.397Z" fill="#B9FD02"/>
-<path d="M190.185 19.9929L171.608 0.869873L251.925 6.33361H198.38L190.185 19.9929Z" fill="#B9FD02"/>
-<path d="M226.245 551.614L217.503 558.171H339.345L336.066 551.614H226.245Z" fill="#B9FD02"/>
-<path d="M556.801 342.353L562.811 334.158V398.083L556.801 392.073V342.353Z" fill="#B9FD02"/>
-<path d="M434.413 26.003L413.105 13.4365H445.887L434.413 26.003Z" fill="#B9FD02"/>
-<path d="M5.46399 478.721V96.1667L101.313 12.8438H469.208L550.837 77.0586V485.279L469.191 558.217H95.305L5.46399 478.721Z" stroke="#B9FD02"/>
-<path d="M88.0128 5.78735L1.1394 77.3623V5.78735H88.0128Z" fill="#B9FD02" fill-opacity="0.2" stroke="#B9FD02"/>
-<path d="M498.885 558.171L558.986 500.801L575.924 558.171H498.885Z" fill="#B9FD02" fill-opacity="0.2" stroke="#B9FD02"/>
-<path d="M557.347 56.6L490.69 3.60181H557.347V56.6Z" fill="#B9FD02" fill-opacity="0.2" stroke="#B9FD02"/>
-<path d="M69.9825 566.913L1.68579 502.987V566.913H69.9825Z" fill="#B9FD02" fill-opacity="0.2" stroke="#B9FD02"/>
+<svg width="588" height="565" viewBox="0 0 588 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="293.82" cy="282.169" rx="293.82" ry="282.169" fill="url(#paint0_radial_117_23)"/>
+<path d="M84.7285 265.636L69.6934 210.068V274.387L84.7285 265.636Z" fill="#1DC7A8"/>
+<path d="M223.69 73.1168L208.199 57.8027L275.173 62.1782H230.524L223.69 73.1168Z" fill="#1DC7A8"/>
+<path d="M253.76 498.847L246.47 504.098H348.071L345.337 498.847H253.76Z" fill="#1DC7A8"/>
+<path d="M529.404 331.268L534.416 324.705V375.897L529.404 371.084V331.268Z" fill="#1DC7A8"/>
+<path d="M427.347 77.9298L409.578 67.8663H436.915L427.347 77.9298Z" fill="#1DC7A8"/>
+<path d="M144.597 504.035L69.7378 440.423V134.169L149.606 67.4912H456.339L524.348 118.87V445.675L456.321 504.035H144.597Z" stroke="#1DC7A8"/>
+<path d="M138.49 61.7407L66.0483 119.059V61.7407H138.49Z" fill="#1DC7A8" fill-opacity="0.2" stroke="#1DC7A8"/>
+<path d="M481.109 504.098L531.226 458.156L545.35 504.098H481.109Z" fill="#1DC7A8" fill-opacity="0.2" stroke="#1DC7A8"/>
+<path d="M529.86 102.432L474.275 59.9902H529.86V102.432Z" fill="#1DC7A8" fill-opacity="0.2" stroke="#1DC7A8"/>
+<path d="M123.455 511.098L66.5034 459.906V511.098H123.455Z" fill="#1DC7A8" fill-opacity="0.2" stroke="#1DC7A8"/>
+<defs>
+<radialGradient id="paint0_radial_117_23" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(293.82 282.169) rotate(90) scale(282.169 293.82)">
+<stop stop-color="#1DC7A8"/>
+<stop offset="1" stop-color="#1DC7A8" stop-opacity="0"/>
+</radialGradient>
+</defs>
 </svg>

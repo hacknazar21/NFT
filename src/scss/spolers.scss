@@ -2,6 +2,27 @@
     &__spolers {
         position: relative;
         z-index: 1;
+
+        &::before {
+            content: "";
+            width: rem(1915);
+            height: rem(1904);
+            position: absolute;
+            @media (min-width: $mobile) {
+                top: 0;
+                right: 0;
+                background: url(@img/spolers/bgsvg.svg) right/contain no-repeat;
+            }
+            z-index: -1;
+            @media (max-width: $mobile) {
+                background: url(@img/spolers/bgsvgm.svg) left/cover no-repeat;
+                width: percent(1680, 900);
+                height: rem(571);
+                bottom: 0;
+                right: 0;
+            }
+            pointer-events: none;
+        }
     }
 }
 .spolers {

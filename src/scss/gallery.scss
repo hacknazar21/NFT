@@ -78,6 +78,7 @@
     }
     &__slider {
         position: relative;
+        z-index: 1;
     }
 
     &__wrapper {

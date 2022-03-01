@@ -1750,6 +1750,30 @@ input {
   position: relative;
   z-index: 1;
 }
+.page__spolers::before {
+  content: "";
+  width: 119.6875rem;
+  height: 119rem;
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+@media (min-width: 47.99875em) {
+  .page__spolers::before {
+    top: 0;
+    right: 0;
+    background: url(../img/spolers/bgsvg.svg) right/contain no-repeat;
+  }
+}
+@media (max-width: 47.99875em) {
+  .page__spolers::before {
+    background: url(../img/spolers/bgsvgm.svg) left/cover no-repeat;
+    width: 186.6666666667%;
+    height: 35.6875rem;
+    bottom: 0;
+    right: 0;
+  }
+}
 
 .spolers {
   position: relative;
@@ -2127,6 +2151,7 @@ input {
 }
 .gallery__slider {
   position: relative;
+  z-index: 1;
 }
 .gallery__slide {
   display: flex;
