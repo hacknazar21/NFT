@@ -1,19 +1,7 @@
 //====================================================================================================
 .header {
 	position: relative;
-	&::before {
-		content: "";
-		width: 100%;
-		height: rem(733);
-		display: block;
-		position: absolute;
-		top: calc(50% - rem(366.5));
-		left: 0;
-		background-color: #9102d4;
-		opacity: 0.56;
-		filter: blur(752.575px);
-		animation: anim-header 10s infinite linear;
-	}
+
 	@media (max-width: 376px) {
 		margin: 0 10px;
 	}
@@ -259,18 +247,6 @@
 }
 
 //====================================================================================================
-
-@keyframes anim-header {
-	0% {
-		background-color: #9102d4;
-	}
-	50% {
-		background-color: #02a3fd;
-	}
-	100% {
-		background-color: #9102d4;
-	}
-}
 
 //========================================================================================================================================================
 

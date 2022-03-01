@@ -1,6 +1,7 @@
 //====================================================================================================
 .footer {
     position: relative;
+
     &__social {
         width: 100%;
         background: #000000;
@@ -11,19 +12,7 @@
         @include adaptiveValue("padding-top", 45, 23);
         @include adaptiveValue("padding-bottom", 30, 23);
     }
-    &::before {
-        content: "";
-        width: 100%;
-        height: rem(733);
-        display: block;
-        position: absolute;
-        top: calc(50% - rem(366.5));
-        left: 0;
-        background-color: #1dc7a8;
-        opacity: 0.56;
-        z-index: -1;
-        filter: blur(rem(200));
-    }
+
     &__img-ibg {
         position: absolute;
         width: percent(500, 1680);
@@ -44,10 +33,12 @@
         @media (min-width: $tablet) {
             background-color: rgba(9, 9, 9, 0.4);
         }
-        border: rem(2) solid #1dc7a8;
+        border: rem(2) solid;
+        animation: anim-border-footer 5s linear infinite;
         backdrop-filter: blur(rem(30));
         border-radius: rem(30);
         overflow: hidden;
+        z-index: 2;
         @include adaptiveValue("margin-bottom", 79, 36);
         @media (min-width: $tablet) {
         }
@@ -161,6 +152,8 @@
 //========================================================================================================================================================
 
 .social-footer {
+    position: relative;
+    z-index: 2;
     &__title {
         @include adaptiveValue("margin-bottom", 21, 11);
 
@@ -217,5 +210,15 @@
         transform: scale(1);
     }
 }
-
+@keyframes anim-border-footer {
+    0% {
+        border-color: #02a3fd;
+    }
+    50% {
+        border-color: #ca003b;
+    }
+    100% {
+        border-color: #02a3fd;
+    }
+}
 //========================================================================================================================================================

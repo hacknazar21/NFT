@@ -1,30 +1,19 @@
 .collection {
     position: relative;
 
-    &::before {
-        content: "";
-        width: 100%;
-        height: rem(733);
-        display: block;
-        position: absolute;
-        top: calc(50% - rem(366.5));
-        left: 0;
-        background-color: #a50505;
-        opacity: 0.56;
-        filter: blur(rem(200));
-    }
     &__container {
         @media (max-width: 1680px) {
             margin: 0 rem(10);
         }
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(@img/collection/bg.png),
             radial-gradient(50% 50% at 50% 50%, #232121 0%, rgba(19, 19, 19, 0) 100%);
-        border: 2.03788px solid #ca003b;
         box-sizing: border-box;
         backdrop-filter: blur(30px);
         /* Note: backdrop-filter has minimal browser support */
 
-        border-radius: 30px;
+        border-radius: rem(30); /*1*/
+        border: rem(2) solid;
+        animation: anim-border 5s ease infinite;
         padding: rem(50) rem(84);
 
         min-height: rem(617);
@@ -118,3 +107,17 @@
         }
     }
 }
+
+//========================================================================================================================================================
+@keyframes anim-border {
+    0% {
+        border-color: #ca003b;
+    }
+    50% {
+        border-color: #02a3fd;
+    }
+    100% {
+        border-color: #ca003b;
+    }
+}
+//========================================================================================================================================================

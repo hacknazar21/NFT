@@ -1,6 +1,7 @@
 .page {
     &__gallery {
         @include adaptiveValue("margin-bottom", 141, 37);
+        position: relative;
     }
 }
 .gallery {
@@ -110,7 +111,7 @@
             @media only screen and (orientation: portrait) {
                 border-radius: 5px;
             }
-            border: 1px solid #ffffff;
+            border: 1px solid;
         }
     }
 }
