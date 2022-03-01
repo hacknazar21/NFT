@@ -1,6 +1,15 @@
 .collection {
     position: relative;
-
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #9102d4;
+        filter: blur(300px);
+    }
     &__container {
         @media (max-width: 1680px) {
             margin: 0 rem(10);
@@ -93,7 +102,6 @@
     }
 
     &__info-text {
-        font-family: Montserrat;
         font-weight: normal;
         line-height: math.div(20, 16);
         @include adaptiveValue("font-size", 16, 14);

@@ -3,6 +3,9 @@ import { isMobile } from "./functions.js";
 // Подключение списка активных модулей
 import { flsModules } from "./modules.js";
 
+import smoothscroll from 'smoothscroll-polyfill';
+smoothscroll.polyfill();
+
 const path = document.querySelector('#header path');
 const pathMobile = document.querySelector('#header-mobile path');
 const svgTeam = document.querySelectorAll('.team__card');
@@ -16,7 +19,7 @@ const slides = document.querySelectorAll('.main-slider__slide');
 
 let minus;
 
-function onEntry(entry) {
+async function onEntry(entry) {
     entry.forEach(change => {
         if (change.isIntersecting) {
             collection.classList.add('_show');
@@ -40,11 +43,11 @@ function setParallaxItemsStyle(scrollTopProcent) {
     wrapper.style.top = ` ${scrollTopProcent}%`;
 }
 
-document.onclick = (event) => {
+document.onclick = async (event) => {
     if (event.target.classList.contains('header__button')) {
         event.preventDefault();
-        document.querySelector('.page__spolers').scrollIntoView({
-            behavior: 'smooth',
+        await document.querySelector('.page__spolers').scrollIntoView({
+            behavior: 'auto',
             block: 'start'
         });
     }
