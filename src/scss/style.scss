@@ -100,6 +100,7 @@ body {
 		&::after {
 			content: "";
 			z-index: 501;
+
 			background: url(@img/load.svg) center/contain no-repeat;
 			display: block;
 			width: rem(198);
@@ -107,6 +108,15 @@ body {
 			margin-bottom: rem(29);
 
 			animation: loading-anim 7s linear infinite;
+		}
+	}
+	.loading.nohoomans & {
+		&::before {
+			background-color: #000;
+		}
+		&::after {
+			background: url(@img/load.gif) center/contain no-repeat;
+			animation: none;
 		}
 	}
 	position: relative;

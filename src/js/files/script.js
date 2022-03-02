@@ -50,6 +50,13 @@ document.onclick = async (event) => {
             block: 'start'
         });
     }
+    else if (event.target.classList.contains('collection__button')) {
+        event.preventDefault();
+        await document.querySelector('.footer').scrollIntoView({
+            behavior: 'auto',
+            block: 'start'
+        });
+    }
 };
 
 window.onload = () => {

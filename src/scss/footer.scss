@@ -106,7 +106,8 @@
     }
 
     &__title {
-        @include adaptiveValue("margin-bottom", 40, 11);
+        @include adaptiveValue("margin-bottom", 30, 11);
+        @include adaptiveValue("font-size", 43, 30);
         @media (max-width: $mobile) {
             text-align: center;
         }

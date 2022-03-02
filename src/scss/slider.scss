@@ -2,12 +2,12 @@
 .main-slider {
     &__container {
         display: flex;
-        @include adaptiveValue("gap", 159, 0);
-        flex-direction: row-reverse;
+        @include adaptiveValue("gap", 100, 0);
+        flex-direction: row;
         @media (max-width: $tablet) {
             display: block;
         }
-        margin-top: rem(62);
+        margin-top: rem(32);
     }
     &__img-ibg {
         flex: 1 1 auto;
@@ -18,17 +18,18 @@
             margin-top: rem(30);
         }
         img {
-            height: percent(1188, 920);
+            height: 100%;
             width: 100%;
             object-fit: contain;
             object-position: center;
 
             z-index: 0;
-            top: -10%;
+            top: 0%;
+            left: -5%;
 
             @media (min-width: $tablet) {
                 animation: slider-ani-eifel 5s ease infinite;
-                top: -20%;
+                top: -5%;
                 left: -15%;
 
                 width: percent(622, 552);
@@ -72,7 +73,7 @@
         position: relative;
         margin: 0 auto;
         overflow: hidden;
-        max-height: rem(920);
+        max-height: rem(780);
         @media (max-width: $mobile) {
             max-height: rem(560);
         }
@@ -90,11 +91,16 @@
         padding: 0 rem(10);
         z-index: 1;
         position: relative;
+        p {
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
+        }
     }
 
     &__wrapper {
         display: grid;
-        grid-template-columns: repeat(auto-fit, rem(300));
+        grid-template-columns: repeat(auto-fit, rem(250));
         gap: rem(10);
         align-items: center;
         justify-content: center;
