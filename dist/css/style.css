@@ -2495,6 +2495,8 @@ input {
 }
 .side__text-box {
   max-width: 37.125rem;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   height: 100%;
 }

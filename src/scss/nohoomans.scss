@@ -56,7 +56,8 @@
 
     &__text-box {
         max-width: rem(594);
-
+        display: flex;
+        flex-direction: column;
         margin: 0 auto;
         @media (min-width: $tablet) {
             padding: rem(50) rem(20) rem(37) rem(20);
