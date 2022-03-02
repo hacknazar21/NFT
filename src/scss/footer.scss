@@ -24,7 +24,10 @@
         display: none;
         @media (min-width: $tablet) {
             display: block;
-            animation: footer-anim 10s linear infinite;
+            animation: footer-anim 5s ease infinite;
+        }
+        img {
+            object-fit: contain;
         }
     }
 
@@ -37,7 +40,6 @@
         animation: anim-border-footer 5s linear infinite;
         backdrop-filter: blur(rem(30));
         border-radius: rem(30);
-        overflow: hidden;
         z-index: 2;
         @include adaptiveValue("margin-bottom", 79, 36);
         @media (min-width: $tablet) {
@@ -49,6 +51,8 @@
         &::before {
             content: "";
             background: url(@img/footer/sheep-bg.svg) top/contain no-repeat;
+            animation: footer-anim-bg 5s ease infinite;
+
             width: percent(500, 1680);
             height: rem(400);
             position: absolute;
@@ -64,7 +68,7 @@
         &::after {
             content: "";
             background: url(@img/footer/bg.png) top/cover no-repeat;
-            border-radius: rem(15);
+            border-radius: rem(30);
             position: absolute;
             top: 0;
             left: 0;
@@ -220,13 +224,24 @@
 
 @keyframes footer-anim {
     0% {
-        transform: scale(1);
+        transform: scale(1.5);
+    }
+    50% {
+        transform: scale(2);
+    }
+    100% {
+        transform: scale(1.5);
+    }
+}
+@keyframes footer-anim-bg {
+    0% {
+        transform: scale(1.5);
     }
     50% {
         transform: scale(1.2);
     }
     100% {
-        transform: scale(1);
+        transform: scale(1.5);
     }
 }
 @keyframes anim-border-footer {

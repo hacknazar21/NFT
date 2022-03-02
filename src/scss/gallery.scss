@@ -92,16 +92,15 @@
         justify-content: center;
         overflow: hidden;
         position: relative;
-        padding-bottom: rem(700);
+        padding-bottom: percent(800, 1680);
+
         @media only screen and (orientation: portrait) {
-            padding-bottom: rem(600);
         }
         img {
             position: absolute;
             top: 0;
             left: 10px;
 
-            object-fit: cover;
             object-position: center;
             animation: anim-border-gallery 5s ease infinite;
 
