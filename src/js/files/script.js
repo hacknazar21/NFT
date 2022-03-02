@@ -192,10 +192,7 @@ async function headerAnim() {
             border_header.setAttribute('y2', i);
 
             img_header.setAttribute('x', `${convertRange(1, 2000, 0, 10, i)}%`);
-            img_header.setAttribute('y', `${convertRange(1, 2000, 0, 10, i)}%`);
-            border_collection.setAttribute('x1', `${convertRange(1, 2000, -100, 100, i)}%`);
-            border_collection.setAttribute('y1', `${convertRange(1, 2000, -100, 100, i)}%`);
-            border_collection.setAttribute('y2', `${convertRange(1, 2000, -100, 100, i)}%`);
+
         }, 10)
     }
     else if (window.screen.width < 1300 && window.screen.width > 767) {

@@ -8,9 +8,27 @@
 .card-team {
     font-weight: 600;
 
+    &__work-link {
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s ease 0s;
+        @media (any-hover: hover) {
+            &:hover {
+                color: #9102d4;
+            }
+        }
+        &::after {
+            @extend %ic;
+            content: "\e908";
+            font-size: rem(24);
+            margin-left: rem(10);
+        }
+    }
     &__work {
         position: absolute;
-        top: 45%;
+        top: 40%;
         left: -2%;
         width: 100%;
         opacity: 0;
@@ -20,7 +38,10 @@
         text-transform: uppercase;
         color: #335ef8;
         transition: opacity 0.3s ease 0s;
-
+        span {
+            display: block;
+            margin-bottom: rem(20);
+        }
         .hover & {
             opacity: 1;
         }

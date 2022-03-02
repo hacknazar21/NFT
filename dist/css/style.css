@@ -27,7 +27,7 @@
   font-weight: bold;
   font-style: normal;
 }
-.spollers__title::after, .header__button::after, [class*=_icon-]:before {
+.card-team__work-link::after, .spollers__title::after, .header__button::after, [class*=_icon-]:before {
   font-family: "icons";
   font-style: normal;
   font-weight: normal;
@@ -1230,30 +1230,7 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 2.5rem;
   gap: 2.5rem;
-}
-@media (min-width: 105em) {
-  .social-footer__box {
-    font-size: 2.5rem;
-  }
-}
-@media (min-width: 20em) and (max-width: 105em) {
-  @supports (font-size: clamp( 1.1875rem , 0.8786764706rem  +  1.5441176471vw , 2.5rem )) {
-    .social-footer__box {
-      font-size: clamp( 1.1875rem , 0.8786764706rem  +  1.5441176471vw , 2.5rem );
-    }
-  }
-  @supports not (font-size: clamp( 1.1875rem , 0.8786764706rem  +  1.5441176471vw , 2.5rem )) {
-    .social-footer__box {
-      font-size: calc(1.1875rem + 1.3125 * (100vw - 20rem) / 85);
-    }
-  }
-}
-@media (max-width: 20em) {
-  .social-footer__box {
-    font-size: 1.1875rem;
-  }
 }
 @media (min-width: 105em) {
   .social-footer__box {
@@ -1284,7 +1261,6 @@ input {
   position: relative;
   clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 20%);
   border: 1px solid #1dc7a8;
-  color: #1dc7a8;
   background-color: rgba(29, 199, 168, 0.4);
 }
 @media (min-width: 105em) {
@@ -1329,6 +1305,64 @@ input {
 @media (max-width: 20em) {
   .social-footer__item {
     height: 2.4375rem;
+  }
+}
+@media (min-width: 105em) {
+  .social-footer__item svg {
+    width: 2.5rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 105em) {
+  @supports (width: clamp( 1.1875rem , 0.8786764706rem  +  1.5441176471vw , 2.5rem )) {
+    .social-footer__item svg {
+      width: clamp( 1.1875rem , 0.8786764706rem  +  1.5441176471vw , 2.5rem );
+    }
+  }
+  @supports not (width: clamp( 1.1875rem , 0.8786764706rem  +  1.5441176471vw , 2.5rem )) {
+    .social-footer__item svg {
+      width: calc(1.1875rem + 1.3125 * (100vw - 20rem) / 85);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .social-footer__item svg {
+    width: 1.1875rem;
+  }
+}
+@media (min-width: 105em) {
+  .social-footer__item svg {
+    height: 2.5rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 105em) {
+  @supports (height: clamp( 1.1875rem , 0.8786764706rem  +  1.5441176471vw , 2.5rem )) {
+    .social-footer__item svg {
+      height: clamp( 1.1875rem , 0.8786764706rem  +  1.5441176471vw , 2.5rem );
+    }
+  }
+  @supports not (height: clamp( 1.1875rem , 0.8786764706rem  +  1.5441176471vw , 2.5rem )) {
+    .social-footer__item svg {
+      height: calc(1.1875rem + 1.3125 * (100vw - 20rem) / 85);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .social-footer__item svg {
+    height: 1.1875rem;
+  }
+}
+.social-footer__item svg path {
+  transition: fill 0.3s ease 0s;
+  fill: rgba(0, 0, 0, 0);
+}
+@media (any-hover: none) {
+  .social-footer__item svg path {
+    fill: #1dc7a8;
+  }
+}
+@media (any-hover: hover) {
+  .social-footer__item:hover svg path {
+    fill: #1dc7a8;
   }
 }
 .social-footer__item::after {
@@ -1711,12 +1745,28 @@ input {
   }
 }
 .collection__button {
-  background: #d40234;
+  background-color: #d40234;
+  transition: background-color 0.3s ease 0s;
+  text-transform: uppercase;
 }
 @media (max-width: 61.99875em) {
   .collection__button {
     margin-top: 1.0625rem;
   }
+}
+@media (any-hover: hover) {
+  .collection__button:hover {
+    background-color: #2e2d2d;
+  }
+  .collection__button:hover span:not(:last-child) {
+    display: none;
+  }
+  .collection__button:hover span:nth-child(2) {
+    display: block;
+  }
+}
+.collection__button span:nth-child(2) {
+  display: none;
 }
 
 @keyframes anim-border {
@@ -2214,9 +2264,26 @@ input {
 .card-team {
   font-weight: 600;
 }
+.card-team__work-link {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease 0s;
+}
+@media (any-hover: hover) {
+  .card-team__work-link:hover {
+    color: #9102d4;
+  }
+}
+.card-team__work-link::after {
+  content: "\e908";
+  font-size: 1.5rem;
+  margin-left: 0.625rem;
+}
 .card-team__work {
   position: absolute;
-  top: 45%;
+  top: 40%;
   left: -2%;
   width: 100%;
   opacity: 0;
@@ -2226,6 +2293,10 @@ input {
   text-transform: uppercase;
   color: #335ef8;
   transition: opacity 0.3s ease 0s;
+}
+.card-team__work span {
+  display: block;
+  margin-bottom: 1.25rem;
 }
 .hover .card-team__work {
   opacity: 1;
@@ -2409,6 +2480,7 @@ input {
 }
 .side__center {
   width: 100%;
+  height: 100%;
 }
 @media (min-width: 61.99875em) {
   .side__center {
@@ -2441,12 +2513,14 @@ input {
 .side__title-ibg {
   text-align: center;
   padding-bottom: 5.625rem;
+  margin-bottom: 0.625rem;
   position: relative;
 }
 @media (max-width: 61.99875em) {
   .side__title-ibg {
     padding: 0 2.9375rem;
     padding-top: 1.25rem;
+    flex: 0 0 3.75rem;
   }
 }
 @media (max-width: 47.99875em) {
@@ -2460,53 +2534,29 @@ input {
   object-fit: contain;
 }
 .side__text {
-  font-family: Montserrat;
   font-weight: 300;
   line-height: 1.25;
-  margin-bottom: 2.9375rem;
 }
 @media (min-width: 105em) {
-  .side__text {
-    font-size: 1rem;
-  }
-}
-@media (min-width: 20em) and (max-width: 105em) {
-  @supports (font-size: clamp( 0.875rem , 0.8455882353rem  +  0.1470588235vw , 1rem )) {
-    .side__text {
-      font-size: clamp( 0.875rem , 0.8455882353rem  +  0.1470588235vw , 1rem );
-    }
-  }
-  @supports not (font-size: clamp( 0.875rem , 0.8455882353rem  +  0.1470588235vw , 1rem )) {
-    .side__text {
-      font-size: calc(0.875rem + 0.125 * (100vw - 20rem) / 85);
-    }
-  }
-}
-@media (max-width: 20em) {
   .side__text {
     font-size: 0.875rem;
   }
 }
-@media (min-width: 105em) {
-  .side__text {
-    margin-bottom: 2.9375rem;
-  }
-}
 @media (min-width: 20em) and (max-width: 105em) {
-  @supports (margin-bottom: clamp( 0.00000625rem , -0.69116875rem  +  3.455875vw , 2.9375rem )) {
+  @supports (font-size: clamp( 0.75rem , 0.7205882353rem  +  0.1470588235vw , 0.875rem )) {
     .side__text {
-      margin-bottom: clamp( 0.00000625rem , -0.69116875rem  +  3.455875vw , 2.9375rem );
+      font-size: clamp( 0.75rem , 0.7205882353rem  +  0.1470588235vw , 0.875rem );
     }
   }
-  @supports not (margin-bottom: clamp( 0.00000625rem , -0.69116875rem  +  3.455875vw , 2.9375rem )) {
+  @supports not (font-size: clamp( 0.75rem , 0.7205882353rem  +  0.1470588235vw , 0.875rem )) {
     .side__text {
-      margin-bottom: calc(0.00000625rem + 2.9375 * (100vw - 20rem) / 85);
+      font-size: calc(0.75rem + 0.125 * (100vw - 20rem) / 85);
     }
   }
 }
 @media (max-width: 20em) {
   .side__text {
-    margin-bottom: 0.00000625rem;
+    font-size: 0.75rem;
   }
 }
 @media (max-width: 61.99875em) {
@@ -2528,11 +2578,7 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-@media (max-width: 61.99875em) {
-  .side__button {
-    margin-top: auto;
-  }
+  margin-top: auto;
 }
 .side_left {
   background: url(../img/nohoomans/left.png) center/cover no-repeat;

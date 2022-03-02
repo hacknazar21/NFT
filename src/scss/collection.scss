@@ -99,10 +99,28 @@
     }
 
     &__button {
-        background: #d40234;
+        background-color: #d40234;
+        transition: background-color 0.3s ease 0s;
+        text-transform: uppercase;
 
         @media (max-width: $tablet) {
             margin-top: rem(17);
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                span:not(:last-child) {
+                    display: none;
+                }
+                span:nth-child(2) {
+                    display: block;
+                }
+                background-color: #2e2d2d;
+            }
+        }
+
+        span:nth-child(2) {
+            display: none;
         }
     }
 }

@@ -166,8 +166,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: rem(40);
-        @include adaptiveValue("font-size", 40, 19);
+
         gap: rem(40);
         @include adaptiveValue("gap", 40, 8.5);
     }
@@ -181,7 +180,27 @@
         position: relative;
         clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 20%);
         border: 1px solid #1dc7a8;
-        color: #1dc7a8;
+        svg {
+            @include adaptiveValue("width", 40, 19);
+            @include adaptiveValue("height", 40, 19);
+        }
+        svg path {
+            transition: fill 0.3s ease 0s;
+            fill: rgba(0, 0, 0, 0);
+        }
+        @media (any-hover: none) {
+            svg path {
+                fill: #1dc7a8;
+            }
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                svg path {
+                    fill: #1dc7a8;
+                }
+            }
+        }
         background-color: rgba(29, 199, 168, 0.4);
 
         &::after {
