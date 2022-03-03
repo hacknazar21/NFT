@@ -14,17 +14,17 @@
     }
 
     &__img-ibg {
-        position: absolute;
-        width: percent(500, 1680);
-        height: rem(400);
-        position: absolute;
-        right: 5%;
-        top: calc(50% - rem(200));
-        z-index: 3;
-        display: none;
+        width: 100%;
+        height: rem(300);
+        z-index: 5;
         @media (min-width: $tablet) {
-            display: block;
+            width: percent(590, 1680);
+            height: rem(400);
+
             animation: footer-anim 5s ease infinite;
+            position: absolute;
+            right: 2%;
+            top: calc(50% - rem(200));
         }
         img {
             object-fit: contain;
@@ -42,7 +42,9 @@
         border-radius: rem(30);
         z-index: 2;
         @include adaptiveValue("margin-bottom", 79, 36);
-        @media (min-width: $tablet) {
+        @media (max-width: $tablet) {
+            display: flex;
+            flex-direction: column-reverse;
         }
         @media (max-width: 1680px) {
             margin-left: rem(10);
@@ -51,19 +53,22 @@
         &::before {
             content: "";
             background: url(@img/footer/sheep-bg.svg) top/contain no-repeat;
-            animation: footer-anim-bg 5s ease infinite;
-
-            width: percent(500, 1680);
-            height: rem(400);
-            position: absolute;
-            right: 5%;
-            top: calc(50% - rem(200));
-            z-index: 2;
-            display: none;
-
             @media (min-width: $tablet) {
-                display: block;
+                width: percent(500, 1680);
+                height: rem(400);
+                animation: footer-anim-bg 5s ease infinite;
+                right: 5%;
+                top: calc(50% - rem(200));
             }
+            width: 100%;
+            top: 0;
+            @media (max-width: $tablet) {
+                left: 0;
+            }
+            height: rem(300);
+            position: absolute;
+
+            z-index: 2;
         }
         &::after {
             content: "";
@@ -78,7 +83,8 @@
             z-index: 0;
             mix-blend-mode: overlay;
             @media (max-width: $tablet) {
-                background: linear-gradient(0deg, rgba(9, 9, 9, 0.6), rgba(9, 9, 9, 0.6)), url(@img/footer/bgm.png),
+                background: linear-gradient(0deg, rgba(9, 9, 9, 0.6), rgba(9, 9, 9, 0.6)),
+                    url(@img/footer/bgm.png) center/cover no-repeat,
                     radial-gradient(50% 50% at 50% 50%, #232121 0%, rgba(19, 19, 19, 0) 100%);
             }
         }
@@ -91,7 +97,7 @@
         position: relative;
         z-index: 1;
 
-        @include adaptiveValue("height", 520, 450);
+        @include adaptiveValue("height", 520, 369);
     }
 
     &__text-block {
@@ -107,7 +113,7 @@
 
     &__title {
         @include adaptiveValue("margin-bottom", 30, 11);
-        @include adaptiveValue("font-size", 43, 30);
+        @include adaptiveValue("font-size", 43, 17);
         @media (max-width: $mobile) {
             text-align: center;
         }

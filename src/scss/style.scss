@@ -75,21 +75,12 @@ body {
 		& .wrapper {
 			display: none;
 		}
-		& .loading-text {
-			position: relative;
-			display: block;
-			z-index: 502;
-			font-size: rem(40);
-			line-height: math.div(50, 40);
-			color: #b9fd02;
-			margin-left: rem(-30);
-			animation: loading-text-anim 2s linear infinite;
-		}
 		&::before {
 			content: "";
 			position: absolute;
 			z-index: 500;
-			background-color: #0a1c28;
+			background-color: #000;
+
 			display: block;
 			width: 100vw;
 			height: 100vh;
@@ -101,19 +92,14 @@ body {
 			content: "";
 			z-index: 501;
 
-			background: url(@img/load.svg) center/contain no-repeat;
+			background: url(@img/load-main.gif) center/contain no-repeat;
 			display: block;
-			width: rem(198);
-			height: rem(203);
+			width: rem(400);
+			height: rem(400);
 			margin-bottom: rem(29);
-
-			animation: loading-anim 7s linear infinite;
 		}
 	}
 	.loading.nohoomans & {
-		&::before {
-			background-color: #000;
-		}
 		&::after {
 			background: url(@img/load.gif) center/contain no-repeat;
 			animation: none;
