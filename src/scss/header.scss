@@ -60,7 +60,7 @@
 		margin-top: -20%;
 		@media (max-width: $mobile) {
 			text-align: center;
-			margin-top: calc(50% - rem(60));
+			margin-top: calc(50% - rem(100));
 		}
 		.menu-open & {
 			opacity: 0;
@@ -91,23 +91,6 @@
 
 		font-size: rem(20);
 		line-height: math.div(32, 20);
-
-		&::after {
-			content: "";
-			display: inline-block;
-
-			background: url(@img/fingers.png) center/contain no-repeat;
-
-			@media (max-width: $mobile) {
-				background: url(@img/fingersm.png) center/contain no-repeat;
-				position: absolute;
-				top: -50%;
-				left: 0;
-				z-index: -1;
-				width: rem(282);
-				height: rem(242);
-			}
-		}
 	}
 
 	&__text {

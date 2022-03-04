@@ -519,7 +519,7 @@ input {
 @media (max-width: 47.99875em) {
   .header__text-block {
     text-align: center;
-    margin-top: calc(50% - 3.75rem);
+    margin-top: calc(50% - 6.25rem);
   }
 }
 .menu-open .header__text-block {
@@ -570,22 +570,6 @@ input {
 @media (min-width: 47.99875em) and (max-width: 20em) {
   .header__title {
     font-size: 0.00000625rem;
-  }
-}
-.header__title::after {
-  content: "";
-  display: inline-block;
-  background: url(../img/fingers.png) center/contain no-repeat;
-}
-@media (max-width: 47.99875em) {
-  .header__title::after {
-    background: url(../img/fingersm.png) center/contain no-repeat;
-    position: absolute;
-    top: -50%;
-    left: 0;
-    z-index: -1;
-    width: 17.625rem;
-    height: 15.125rem;
   }
 }
 .header__text {
