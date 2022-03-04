@@ -183,6 +183,9 @@
                 document.documentElement.classList.add(className);
             }));
         }
+        function getHash() {
+            if (location.hash) return location.hash.replace("#", "");
+        }
         let _slideUp = (target, duration = 500, showmore = 0) => {
             if (!target.classList.contains("_slide")) {
                 target.classList.add("_slide");
@@ -435,7 +438,7 @@
                 }
             }
         }
-        let gotoblock_gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
+        let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
             const targetBlockElement = document.querySelector(targetBlock);
             if (targetBlockElement) {
                 let headerItem = "";
@@ -656,7 +659,7 @@
                 } else {
                     e.preventDefault();
                     const formError = form.querySelector("._form-error");
-                    if (formError && form.hasAttribute("data-goto-error")) gotoblock_gotoBlock(formError, true, 1e3);
+                    if (formError && form.hasAttribute("data-goto-error")) gotoBlock(formError, true, 1e3);
                 }
             }
             function formSent(form) {
@@ -4201,6 +4204,44 @@
             initSliders();
         }));
         let addWindowScrollEvent = false;
+        function pageNavigation() {
+            document.addEventListener("click", pageNavigationAction);
+            document.addEventListener("watcherCallback", pageNavigationAction);
+            function pageNavigationAction(e) {
+                if ("click" === e.type) {
+                    const targetElement = e.target;
+                    if (targetElement.closest("[data-goto]")) {
+                        const gotoLink = targetElement.closest("[data-goto]");
+                        const gotoLinkSelector = gotoLink.dataset.goto ? gotoLink.dataset.goto : "";
+                        const noHeader = gotoLink.hasAttribute("data-goto-header") ? true : false;
+                        const gotoSpeed = gotoLink.dataset.gotoSpeed ? gotoLink.dataset.gotoSpeed : 500;
+                        const offsetTop = gotoLink.dataset.gotoTop ? parseInt(gotoLink.dataset.gotoTop) : 0;
+                        gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+                        e.preventDefault();
+                    }
+                } else if ("watcherCallback" === e.type && e.detail) {
+                    const entry = e.detail.entry;
+                    const targetElement = entry.target;
+                    if ("navigator" === targetElement.dataset.watch) {
+                        document.querySelector(`[data-goto]._navigator-active`);
+                        let navigatorCurrentItem;
+                        if (targetElement.id && document.querySelector(`[data-goto="#${targetElement.id}"]`)) navigatorCurrentItem = document.querySelector(`[data-goto="#${targetElement.id}"]`); else if (targetElement.classList.length) for (let index = 0; index < targetElement.classList.length; index++) {
+                            const element = targetElement.classList[index];
+                            if (document.querySelector(`[data-goto=".${element}"]`)) {
+                                navigatorCurrentItem = document.querySelector(`[data-goto=".${element}"]`);
+                                break;
+                            }
+                        }
+                        if (entry.isIntersecting) navigatorCurrentItem ? navigatorCurrentItem.classList.add("_navigator-active") : null; else navigatorCurrentItem ? navigatorCurrentItem.classList.remove("_navigator-active") : null;
+                    }
+                }
+            }
+            if (getHash()) {
+                let goToHash;
+                if (document.querySelector(`#${getHash()}`)) goToHash = `#${getHash()}`; else if (document.querySelector(`.${getHash()}`)) goToHash = `.${getHash()}`;
+                goToHash ? gotoBlock(goToHash, true, 500, 20) : null;
+            }
+        }
         setTimeout((() => {
             if (addWindowScrollEvent) {
                 let windowScroll = new Event("windowScroll");
@@ -4334,21 +4375,6 @@
         function setParallaxItemsStyle(scrollTopProcent) {
             wrapper.style.top = ` ${scrollTopProcent}%`;
         }
-        document.onclick = async event => {
-            if (event.target.classList.contains("header__button")) {
-                event.preventDefault();
-                await document.querySelector(".page__spolers").scrollIntoView({
-                    behavior: "auto",
-                    block: "start"
-                });
-            } else if (event.target.classList.contains("collection__button")) {
-                event.preventDefault();
-                await document.querySelector(".footer").scrollIntoView({
-                    behavior: "auto",
-                    block: "start"
-                });
-            }
-        };
         window.onload = () => {
             document.documentElement.classList.remove("loading");
             slidesAnim();
@@ -4464,5 +4490,6 @@
             viewPass: false
         });
         formSubmit();
+        pageNavigation();
     })();
 })();

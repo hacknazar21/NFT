@@ -54,7 +54,7 @@
         }
         &::before {
             content: "";
-            background: url(@img/footer/sheep-bg.svg) top/contain no-repeat;
+            background: url(@img/footer/sheep-bg.svg) center/contain no-repeat;
             animation: footer-anim-bg-mobile 5s ease infinite;
 
             @media (min-width: $tablet) {

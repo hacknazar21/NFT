@@ -73,7 +73,7 @@
 
     &__info {
         display: flex;
-        @include adaptiveValue("gap", 50, 41.5);
+        @include adaptiveValue("gap", 50, 20);
         margin-top: auto;
         margin-bottom: rem(40);
     }

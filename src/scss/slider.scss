@@ -2,7 +2,7 @@
 .main-slider {
     &__container {
         display: flex;
-        @include adaptiveValue("gap", 100, 0);
+        @include adaptiveValue("gap", 100, 0, 1920, 1024);
         flex-direction: row;
         @media (max-width: $tablet) {
             display: block;
@@ -12,7 +12,7 @@
     &__img-ibg {
         flex: 1 1 auto;
         position: relative;
-        @media (max-width: $tablet) {
+        @media (max-width: em(1250)) {
             padding-bottom: rem(500);
             margin-bottom: rem(30);
             margin-top: rem(30);
@@ -25,10 +25,13 @@
 
             z-index: 0;
             top: 0%;
+            @media (min-width: $mobile) {
+                left: -2%;
+            }
             left: -5%;
+            animation: slider-ani-eifel 5s ease infinite;
 
-            @media (min-width: $tablet) {
-                animation: slider-ani-eifel 5s ease infinite;
+            @media (min-width: em(1250)) {
                 top: -5%;
                 left: -15%;
 
@@ -43,14 +46,15 @@
             pointer-events: none;
             height: 100%;
             width: 100%;
-            @media (min-width: $tablet) {
+            animation: slider-anim 5s ease infinite;
+
+            @media (min-width: em(1250)) {
                 max-width: rem(571);
-                animation: slider-anim 5s ease infinite;
             }
             position: absolute;
             top: 0;
             left: 0;
-            @media (max-width: $tablet) {
+            @media (max-width: em(1250)) {
                 margin: 0 auto;
                 transform: scale(1);
 
@@ -63,7 +67,7 @@
 
     &__slider-box {
         position: relative;
-        flex: 0 0 rem(920);
+        flex: 0 0 percent(920, 1680);
         z-index: 4;
         min-width: 0;
         margin: 0 rem(10);
@@ -178,4 +182,5 @@
         transform: scale(1);
     }
 }
+
 //========================================================================================================================================================

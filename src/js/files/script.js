@@ -42,22 +42,7 @@ function setParallaxItemsStyle(scrollTopProcent) {
     wrapper.style.top = ` ${scrollTopProcent}%`;
 }
 
-document.onclick = async (event) => {
-    if (event.target.classList.contains('header__button')) {
-        event.preventDefault();
-        await document.querySelector('.page__spolers').scrollIntoView({
-            behavior: 'auto',
-            block: 'start'
-        });
-    }
-    else if (event.target.classList.contains('collection__button')) {
-        event.preventDefault();
-        await document.querySelector('.footer').scrollIntoView({
-            behavior: 'auto',
-            block: 'start'
-        });
-    }
-};
+
 
 window.onload = () => {
     document.documentElement.classList.remove('loading');
