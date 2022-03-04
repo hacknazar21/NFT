@@ -934,6 +934,7 @@ input {
   width: 100%;
   height: 18.75rem;
   z-index: 5;
+  animation: footer-anim-mobile 5s ease infinite;
 }
 @media (min-width: 61.99875em) {
   .footer__img-ibg {
@@ -998,6 +999,7 @@ input {
 .footer__container::before {
   content: "";
   background: url(../img/footer/sheep-bg.svg) top/contain no-repeat;
+  animation: footer-anim-bg-mobile 5s ease infinite;
   width: 100%;
   top: 0;
   height: 18.75rem;
@@ -1398,6 +1400,28 @@ input {
     transform: scale(1.5);
   }
 }
+@keyframes footer-anim-mobile {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+@keyframes footer-anim-bg-mobile {
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
 @keyframes footer-anim-bg {
   0% {
     transform: scale(1.5);
@@ -1411,13 +1435,13 @@ input {
 }
 @keyframes anim-border-footer {
   0% {
-    border-color: #02a3fd;
+    border-color: #1dc7a8;
   }
   50% {
-    border-color: #9102d4;
+    border-color: #d300f5;
   }
   100% {
-    border-color: #02a3fd;
+    border-color: #1dc7a8;
   }
 }
 .main-slider__container {
@@ -1823,13 +1847,13 @@ input {
 
 @keyframes anim-border {
   0% {
-    border-color: #ca003b;
+    border-color: #ff0000;
   }
   50% {
-    border-color: #02a3fd;
+    border-color: #ffb800;
   }
   100% {
-    border-color: #ca003b;
+    border-color: #ff0000;
   }
 }
 .page__spolers {
@@ -2271,13 +2295,13 @@ input {
 
 @keyframes anim-border-gallery {
   0% {
-    border-color: #fff;
+    border-color: #ff0000;
   }
   50% {
-    border-color: #9102d4;
+    border-color: #ffb800;
   }
   100% {
-    border-color: #fff;
+    border-color: #ff0000;
   }
 }
 .page__team {

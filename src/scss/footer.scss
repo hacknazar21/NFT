@@ -17,6 +17,8 @@
         width: 100%;
         height: rem(300);
         z-index: 5;
+        animation: footer-anim-mobile 5s ease infinite;
+
         @media (min-width: $tablet) {
             width: percent(590, 1680);
             height: rem(400);
@@ -53,6 +55,8 @@
         &::before {
             content: "";
             background: url(@img/footer/sheep-bg.svg) top/contain no-repeat;
+            animation: footer-anim-bg-mobile 5s ease infinite;
+
             @media (min-width: $tablet) {
                 width: percent(500, 1680);
                 height: rem(400);
@@ -240,6 +244,28 @@
         transform: scale(1.5);
     }
 }
+@keyframes footer-anim-mobile {
+    0% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+@keyframes footer-anim-bg-mobile {
+    0% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
 @keyframes footer-anim-bg {
     0% {
         transform: scale(1.5);
@@ -253,13 +279,13 @@
 }
 @keyframes anim-border-footer {
     0% {
-        border-color: #02a3fd;
+        border-color: #1dc7a8;
     }
     50% {
-        border-color: #9102d4;
+        border-color: #d300f5;
     }
     100% {
-        border-color: #02a3fd;
+        border-color: #1dc7a8;
     }
 }
 //========================================================================================================================================================
