@@ -2,49 +2,22 @@
     &__spolers {
         position: relative;
         z-index: 1;
-
-        &::before {
-            content: "";
-            width: rem(1915);
-            height: rem(1904);
-            position: absolute;
-            @media (min-width: $mobile) {
-                top: 0;
-                right: 0;
-                background: url(@img/spolers/bgsvg.svg) right/contain no-repeat;
-            }
-            z-index: -1;
-            @media (max-width: $mobile) {
-                background: url(@img/spolers/bgsvgm.svg) left/cover no-repeat;
-                width: percent(1680, 900);
-                height: rem(571);
-                bottom: 0;
-                right: 0;
-            }
-            pointer-events: none;
-        }
     }
 }
 .spolers {
     position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 80%;
+        z-index: -1;
 
+        background: url(@img/spolers/bg.png) right/contain no-repeat;
+    }
     &__title {
-        font-weight: bold;
-
-        @include adaptiveValue("font-size", 200, 30);
-        line-height: math.div(257, 200);
-        @media (max-width: $mobile) {
-            color: #ffffff;
-            opacity: 0.2;
-            margin-top: rem(20);
-            margin-bottom: rem(13);
-        }
-        @media (min-width: $mobile) {
-            -webkit-text-fill-color: transparent;
-            -webkit-text-stroke: 2px #fff;
-        }
-
-        text-align: center;
     }
 
     &__text {
@@ -59,49 +32,7 @@
             margin-bottom: rem(10);
         }
     }
-    &__cards-img-mobile {
-        .spolers__cards-ibg {
-            display: none;
-            width: 100%;
-            height: rem(407);
-            margin: 0 auto;
-            max-width: none;
-            position: relative;
-            z-index: 0;
-            @media (max-width: $tablet) {
-                margin-top: rem(-57);
-                margin-bottom: rem(-190);
-            }
-            @media (max-width: $mobile) {
-                margin-top: rem(-100);
-                margin-bottom: rem(-200);
-            }
-            img {
-                max-width: 100%;
-                object-fit: contain;
-                object-position: center;
-            }
-        }
-    }
 
-    &__cards-ibg {
-        display: none;
-        flex: 0 0 rem(160);
-        transition: flex 0.3s ease 0s;
-        max-width: rem(388);
-        img {
-            object-fit: contain;
-            object-position: left;
-        }
-        animation: cards-anim 3s linear infinite;
-        .spoller-active & {
-            flex: 1 1 rem(400);
-        }
-
-        @media (max-width: $tablet) {
-            display: none;
-        }
-    }
     &__container {
         position: relative;
         @media (max-width: 1680px) {
@@ -111,11 +42,11 @@
             content: "";
 
             width: rem(2);
-            height: calc(100% - rem(16));
+            height: calc(100% - rem(20));
 
             position: absolute;
-            left: rem(7);
-            top: rem(8);
+            left: rem(22);
+            top: rem(15);
             background-color: #9102d4;
 
             display: inline-block;
@@ -135,16 +66,20 @@
     }
 
     &__title {
-        line-height: math.div(1, 1);
+        font-size: rem(25);
+        line-height: math.div(50, 25);
+
         text-align: left;
         width: 100%;
         transition: color 0.3s ease 0s;
         @media (any-hover: hover) {
             &:hover {
-                color: #a80df1;
+                color: #b9fd02;
             }
         }
-
+        &._spoller-active {
+            color: #b9fd02;
+        }
         display: flex;
 
         align-items: center;
@@ -186,6 +121,12 @@
         @include adaptiveValue("margin-left", 80, 30, 1920, 390);
         margin-top: rem(20);
         max-width: rem(674);
+        font-family: "Montserrat";
+        font-weight: 400;
+        font-size: rem(16);
+        line-height: math.div(20, 16);
+
+        color: #b7b7b7;
     }
 }
 @keyframes cards-anim {

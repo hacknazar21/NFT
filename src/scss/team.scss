@@ -3,6 +3,30 @@
         margin-top: rem(13);
         @include adaptiveValue("margin-bottom", 182, 41);
         margin-bottom: rem(34);
+        position: relative;
+        & > span {
+            display: block;
+            position: absolute;
+            width: 20%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.3;
+            &:first-child {
+                background: url(@img/team/01.png) center/contain no-repeat;
+                top: 0;
+                left: -8%;
+            }
+            &:nth-of-type(2) {
+                background: url(@img/team/02.png) top/contain no-repeat;
+                top: 0;
+                right: -8%;
+            }
+            &:last-child {
+                background: url(@img/team/03.png) bottom/contain no-repeat;
+                bottom: 0;
+                right: -5%;
+            }
+        }
     }
 }
 .card-team {
@@ -77,6 +101,7 @@
     }
 
     &__header {
+        text-align: center;
     }
     &__cards {
         display: grid;
@@ -113,13 +138,27 @@
         }
     }
     &__title {
-        margin-bottom: rem(30);
+        margin-bottom: rem(20);
+        font-weight: 700;
+        font-size: rem(30);
+        line-height: math.div(50, 30);
+        text-align: center;
+        color: #ffffff;
         &._decor-title {
+            &::before,
+            &::after {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 10px;
+                max-width: rem(610);
+                margin: 0 auto;
+            }
             &::before {
-                background: url(@img/team/title-top.svg) center 100% no-repeat;
+                background: url(@img/team/title-top.svg) center/contain no-repeat;
             }
             &::after {
-                background: url(@img/team/title-bottom.svg) center 100% no-repeat;
+                background: url(@img/team/title-bottom.svg) center/contain no-repeat;
             }
         }
     }
@@ -128,6 +167,7 @@
         margin: 0 auto;
         max-width: rem(747);
         color: #b6bcd1;
+        margin-bottom: rem(45);
         p {
             &:not(:last-child) {
                 margin-bottom: rem(20);

@@ -1,128 +1,170 @@
+.page {
+    &__collection {
+    }
+}
 .collection {
-    position: relative;
+    &__title {
+        margin-bottom: rem(-88);
+    }
 
     &__container {
-        position: relative;
-        @media (max-width: 1680px) {
-            margin: 0 rem(10);
-        }
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(@img/collection/bg.png),
-            radial-gradient(50% 50% at 50% 50%, #232121 0%, rgba(19, 19, 19, 0) 100%);
-        box-sizing: border-box;
-        backdrop-filter: blur(30px);
-        /* Note: backdrop-filter has minimal browser support */
-
-        border-radius: rem(30); /*1*/
-        border: rem(2) solid;
-        animation: anim-border 5s ease infinite;
-        padding: rem(50) rem(84);
-
-        min-height: rem(617);
         display: flex;
-        flex-direction: column;
-        @media (max-width: $tablet) {
-            background-size: cover;
-            background-position: center;
-            padding: rem(20);
-            min-height: fit-content;
-        }
-        &::after {
-            content: "";
-            background: url(@img/collection/01.png) right 100% no-repeat;
-            width: 100%;
-            height: rem(721);
-            display: block;
+        gap: rem(37);
+    }
+
+    &__item {
+        position: relative;
+        flex: 1 1 auto;
+        max-width: rem(1100);
+        padding: rem(20) rem(40);
+        background-color: rgba(145, 2, 212, 0.1);
+        border: 1px solid #9102d4;
+        text-align: center;
+    }
+
+    &__item-title {
+        font-weight: 700;
+        font-size: rem(30);
+        line-height: math.div(50, 30);
+        text-transform: uppercase;
+        margin-bottom: rem(20);
+    }
+
+    &__item-text {
+        font-weight: 400;
+        font-size: rem(16);
+        line-height: math.div(21, 16);
+        letter-spacing: 0.02em;
+        color: #e8e8ff;
+    }
+
+    &__item-img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: rem(120);
+        left: 0;
+        img {
+            top: 0;
+            left: 0;
             position: absolute;
-            right: 0;
-            top: rem(-109);
-            z-index: -1;
-            transition: transform 0.5s ease 0s, opacity 1s ease 0s;
-            transform: translateY(100%);
-            opacity: 0;
-
-            ._show & {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            @media (max-width: $tablet) {
-                display: none;
-            }
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
         }
     }
 
-    &__text-box {
-        max-width: rem(734);
-        @include adaptiveValue("margin-bottom", 130, 45);
+    &__menu {
     }
+
+    &__item-angles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        span {
+            position: absolute;
+            display: block;
+            width: rem(10);
+            height: rem(10);
+            background-color: #9102d4;
+            border-radius: 50%;
+        }
+        span:first-child {
+            top: calc(rem(0) - rem(5));
+            left: calc(rem(0) - rem(5));
+        }
+        span:nth-child(2) {
+            top: calc(rem(0) - rem(5));
+            right: calc(rem(0) - rem(5));
+        }
+        span:nth-child(3) {
+            bottom: calc(rem(0) - rem(5));
+            left: calc(rem(0) - rem(5));
+        }
+        span:last-child {
+            bottom: calc(rem(0) - rem(5));
+            right: calc(rem(0) - rem(5));
+        }
+    }
+}
+
+.menu-collection {
+    &__collection {
+    }
+
+    &__item {
+        &._color {
+            color: #9102d4;
+        }
+    }
+
+    &__content {
+    }
+
     &__title {
-        margin-bottom: rem(37);
+        font-size: rem(30);
+        line-height: math.div(50, 30);
+        display: flex;
+        align-items: center;
+        &::before {
+            content: "";
+            display: inline-block;
+            @include adaptiveValue("width", 110, 64);
+            @include adaptiveValue("height", 110, 64);
+
+            background: url(@img/collection/title.png) center/cover no-repeat;
+            animation: rotating 5s linear infinite;
+            margin-left: rem(-20);
+        }
     }
 
     &__text {
-        letter-spacing: normal;
-        font-weight: 450;
-
-        text-indent: rem(10);
-
-        p {
-            &:not(:last-child) {
-                margin-bottom: rem(10);
-            }
-        }
+        font-weight: 400;
+        font-size: rem(16);
+        line-height: math.div(21, 16);
+        letter-spacing: 0.02em;
+        color: #e8e8ff;
+        margin-bottom: rem(105);
     }
 
-    &__info {
-        display: flex;
-        @include adaptiveValue("gap", 50, 20);
-        margin-top: auto;
-        margin-bottom: rem(40);
+    &__btn {
+        text-align: center;
+        padding: rem(17) 0;
     }
-
-    &__info-item {
-        @media (max-width: $mobile) {
-            text-align: center;
-        }
-    }
-
-    &__info-title {
-        font-weight: bold;
-        @include adaptiveValue("font-size", 50, 16);
-        line-height: 100%;
+}
+.collection-btn {
+    &__title {
+        font-weight: 700;
+        font-size: rem(40);
+        line-height: math.div(50, 40);
+        text-transform: uppercase;
+        color: #ae02ff;
         margin-bottom: rem(10);
     }
 
-    &__info-text {
-        font-weight: normal;
+    &__text {
+        font-family: "Montserrat";
+        font-weight: 400;
+        font-size: rem(16);
         line-height: math.div(20, 16);
-        @include adaptiveValue("font-size", 16, 14);
-    }
-
-    &__button {
-        background-color: #d40234;
-        transition: background-color 0.3s ease 0s;
-        text-transform: uppercase;
-
-        @media (max-width: $tablet) {
-            margin-top: rem(17);
-        }
-        @media (any-hover: hover) {
-            &:hover {
-                background-color: #9102d5;
-            }
-        }
+        color: #ffffff;
     }
 }
-
-//========================================================================================================================================================
-@keyframes anim-border {
-    0% {
-        border-color: #ff0000;
+.menu-header {
+    &__footer {
     }
+
+    &__item {
+    }
+}
+@keyframes rotating {
     50% {
-        border-color: #ffb800;
+        transform: rotate(180deg);
     }
     100% {
-        border-color: #ff0000;
+        transform: rotate(360deg);
     }
 }
-//========================================================================================================================================================

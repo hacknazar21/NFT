@@ -5,52 +5,6 @@
     }
 }
 .gallery {
-    .swiper-pagination {
-        position: absolute;
-        display: flex;
-        justify-content: space-between;
-        z-index: 2;
-        span {
-            pointer-events: all;
-        }
-        bottom: rem(30);
-        min-width: rem(80);
-        left: calc(50% - rem(40));
-    }
-    .swiper-pagination-bullet {
-        display: block;
-        width: rem(9);
-        height: rem(9);
-        border-radius: 50%;
-        transition: background-color 0.3s ease 0s;
-        background-color: rgba(255, 255, 255, 0.5);
-        position: relative;
-        @media (any-hover: hover) {
-            &:hover {
-                cursor: pointer;
-            }
-        }
-        &::after {
-            transition: transform 0.3s ease 0s;
-            content: "";
-            display: block;
-            position: absolute;
-            top: calc(50% - rem(7.5));
-            border-radius: 50%;
-            left: calc(50% - rem(7.5));
-            width: rem(15);
-            height: rem(15);
-            border: 1px solid #ffffff;
-            transform: scale(0);
-        }
-    }
-    .swiper-pagination-bullet-active {
-        background-color: rgba(255, 255, 255, 1);
-
-        &::after {
-            transform: scale(1);
-        }
-    }
     &__container {
         overflow: hidden;
         padding: 0 rem(15);
@@ -60,26 +14,15 @@
         }
     }
     &__title {
-        font-weight: bold;
-
-        @include adaptiveValue("font-size", 200, 30);
-        line-height: math.div(257, 200);
-        @media (max-width: $mobile) {
-            color: #ffffff;
-            opacity: 0.2;
-            margin-top: rem(20);
-            margin-bottom: rem(13);
-        }
-        @media (min-width: $mobile) {
-            -webkit-text-fill-color: transparent;
-            -webkit-text-stroke: 2px #fff;
-        }
-
-        text-align: center;
+        margin-bottom: rem(-70);
     }
     &__slider {
         position: relative;
         z-index: 1;
+
+        padding: rem(10);
+        border: 1px solid #ffffff;
+        overflow: hidden;
     }
 
     &__wrapper {
@@ -107,22 +50,7 @@
             max-width: 100%;
             width: calc(100% - 20px);
             height: 100%;
-            border-radius: 30px;
-            @media only screen and (orientation: portrait) {
-                border-radius: 5px;
-            }
-            border: 2px solid;
+            border: 2px solid #ffffff;
         }
-    }
-}
-@keyframes anim-border-gallery {
-    0% {
-        border-color: #ff0000;
-    }
-    50% {
-        border-color: #ffb800;
-    }
-    100% {
-        border-color: #ff0000;
     }
 }

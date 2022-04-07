@@ -3,52 +3,17 @@ import { isMobile } from "./functions.js";
 // Подключение списка активных модулей
 import { flsModules } from "./modules.js";
 
-import smoothscroll from 'smoothscroll-polyfill';
-smoothscroll.polyfill();
-
 
 const svgTeam = document.querySelectorAll('.team__card');
-const wrapper = document.querySelector('.wrapper__img-top');
-const border_header = document.querySelector('#paint0_linear_28_83');
-const border_header_mobile = document.querySelector('#paint1_linear_95_165');
-const border_collection = document.querySelector('#gradient_collection');
-const img_header_mobile = document.querySelector('#image0_95_165');
-const img_header = document.querySelector('#image0_87_54');
-const collection = document.querySelector('.collection');
-const slides = document.querySelectorAll('.main-slider__slide');
 
 
-async function onEntry(entry) {
-    entry.forEach(change => {
-        if (change.isIntersecting) {
-            collection.classList.add('_show');
-        }
-    });
-}
-
-let options = {
-    threshold: [0.5]
-};
-let observer = new IntersectionObserver(onEntry, options);
-observer.observe(collection);
 document.documentElement.classList.add('loading')
-window.onscroll = function () {
-
-    let scrollTopProcent = window.pageYOffset / document.documentElement.offsetHeight * 100;
-    setParallaxItemsStyle(-scrollTopProcent / 100);
-
-};
-function setParallaxItemsStyle(scrollTopProcent) {
-    wrapper.style.top = ` ${scrollTopProcent}%`;
-}
 
 
 
 window.onload = () => {
     document.documentElement.classList.remove('loading');
-    slidesAnim();
 
-    headerAnim();
     let i = 0;
 
     svgTeam.forEach(element => {
@@ -100,7 +65,7 @@ window.onload = () => {
 
 };
 
-function slidesAnim() {
+/* function slidesAnim() {
 
     let srcBuffer = '';
     function randomInteger(min, max) {
@@ -164,54 +129,6 @@ function slidesAnim() {
             }, 500);
         }, 500);
     }, 1500);
-}
+} */
 
-function convertRange(old_min, old_max, new_min, new_max, number) {
-    let old_range = old_max - old_min
-    let new_range = new_max - new_min
-    return (((number - old_min) * new_range) / old_range) + new_min;
-}
 
-async function headerAnim() {
-    let i = 0;
-    let flag = false;
-    if (window.screen.width > 1300) {
-        await setInterval(() => {
-            if (i > 2000) { flag = true; i = 2000; }
-            else if (i < 0) { flag = false; i = 1 };
-            if (flag) i -= 5;
-            else if (!flag) i += 5;
-            border_header.setAttribute('y2', i);
-
-            img_header.setAttribute('x', `${convertRange(1, 2000, 0, 10, i)}%`);
-
-        }, 10)
-    }
-    else if (window.screen.width < 1300 && window.screen.width > 767) {
-        await setInterval(() => {
-            if (i > 2000) { flag = true; i = 2000; }
-            else if (i < 0) { flag = false; i = 1 };
-            border_header.setAttribute('y2', i);
-            if (flag) i -= 5;
-            else if (!flag) i += 5;
-
-            img_header.setAttribute('x', `${convertRange(1, 2000, 50, 60, i)}%`);
-        }, 10)
-        document.querySelector('#header_maskImage').setAttribute('fill-opacity', "0")
-    }
-
-    else {
-        await setInterval(() => {
-            if (i > 2000) { flag = true; i = 2000; }
-            else if (i < 0) { flag = false; i = 1; };
-            border_header_mobile.setAttribute('y2', i);
-            if (flag) i -= 5;
-            else if (!flag) i += 5;
-            img_header_mobile.setAttribute('x', `${convertRange(1, 2000, -80, 0, i)}%`);
-        }, 10)
-        await setInterval(() => {
-
-        }, 10)
-    }
-
-}
