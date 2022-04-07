@@ -485,6 +485,9 @@ input {
 .header__bg-slider .swiper-header {
   min-width: 0;
 }
+.header__bg-slider .swiper-wrapper {
+  animation: swiper-anim linear 30s infinite;
+}
 .header__slide-ibg {
   height: 220px;
   width: 220px;
@@ -560,6 +563,14 @@ input {
   }
 }
 
+@keyframes swiper-anim {
+  50% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 @keyframes header-menu-anim {
   50% {
     opacity: 1;
@@ -855,18 +866,6 @@ input {
   transform: rotate(-90deg);
 }
 
-.swiper-wrapper {
-  animation: swiper-anim linear 30s infinite;
-}
-
-@keyframes swiper-anim {
-  50% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
 @keyframes slider-anim {
   0% {
     transform: scale(0.9);

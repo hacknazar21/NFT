@@ -36,6 +36,7 @@
 			min-width: 0;
 		}
 		.swiper-wrapper {
+			animation: swiper-anim linear 30s infinite;
 		}
 		.swiper-slide {
 		}
@@ -144,7 +145,14 @@
 }
 .menu-item {
 }
-
+@keyframes swiper-anim {
+	50% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
 @keyframes header-menu-anim {
 	50% {
 		opacity: 1;
