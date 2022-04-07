@@ -104,21 +104,23 @@ function initSliders() {
 			slidesPerView: 'auto',
 			spaceBetween: 30,
 			autoHeight: false,
-			speed: 800,
-
+			speed: 3000,
+			freeMode: true,
+			freeModeMomentum: false,
 			//touchRatio: 0,
 			//simulateTouch: false,
-			loop: true,
+			loop: false,
 			//preloadImages: false,
 			//lazy: true,
 			direction: 'horizontal',
 			// Эффекты
 
 
-			autoplay: {
-				delay: 2000,
+			/* autoplay: {
+				delay: 1,
+				reverseDirection: true,
 				disableOnInteraction: false,
-			},
+			}, */
 
 			// Пагинация
 
@@ -136,10 +138,10 @@ function initSliders() {
 			*/
 
 			// Кнопки "влево/вправо"
-			navigation: {
+			/* navigation: {
 				prevEl: '.swiper-button-prev',
 				nextEl: '.swiper-button-next',
-			},
+			}, */
 
 			// Брейкпоинты
 			/*

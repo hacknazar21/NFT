@@ -4037,20 +4037,14 @@
             slidesPerView: "auto",
             spaceBetween: 30,
             autoHeight: false,
-            speed: 800,
-            loop: true,
+            speed: 3e3,
+            freeMode: true,
+            freeModeMomentum: false,
+            loop: false,
             direction: "horizontal",
-            autoplay: {
-                delay: 2e3,
-                disableOnInteraction: false
-            },
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true
-            },
-            navigation: {
-                prevEl: ".swiper-button-prev",
-                nextEl: ".swiper-button-next"
             },
             on: {}
         });
