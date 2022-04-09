@@ -98,9 +98,9 @@ function changeTV() {
             tvboxes[randomTV[0]].src = noisesrc;
             setTimeout(() => {
                 if (tvboxeswebp.length != 0) {
-                    tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[0]}.png`;
+                    tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[0]}.jpg`;
                 }
-                tvboxes[randomTV[0]].src = `img/header/slider/${randomGuys[0]}.png`;
+                tvboxes[randomTV[0]].src = `img/header/slider/${randomGuys[0]}.jpg`;
                 resolve()
             }, 1000)
         })
@@ -112,9 +112,9 @@ function changeTV() {
                     tvboxes[randomTV[1]].src = noisesrc;
                     setTimeout(() => {
                         if (tvboxeswebp.length != 0) {
-                            tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[1]}.png`;
+                            tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[1]}.jpg`;
                         }
-                        tvboxes[randomTV[1]].src = `img/header/slider/${randomGuys[1]}.png`;
+                        tvboxes[randomTV[1]].src = `img/header/slider/${randomGuys[1]}.jpg`;
                         resolve()
                     }, 1000)
                 })
@@ -126,9 +126,9 @@ function changeTV() {
                             tvboxes[randomTV[2]].src = noisesrc;
                             setTimeout(() => {
                                 if (tvboxeswebp.length != 0) {
-                                    tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[2]}.png`;
+                                    tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[2]}.jpg`;
                                 }
-                                tvboxes[randomTV[2]].src = `img/header/slider/${randomGuys[2]}.png`;
+                                tvboxes[randomTV[2]].src = `img/header/slider/${randomGuys[2]}.jpg`;
                                 resolve()
                             }, 1000)
                         })
@@ -139,9 +139,9 @@ function changeTV() {
                                 tvboxes[randomTV[3]].src = noisesrc;
                                 setTimeout(() => {
                                     if (tvboxeswebp.length != 0) {
-                                        tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[3]}.png`;
+                                        tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[3]}.jpg`;
                                     }
-                                    tvboxes[randomTV[3]].src = `img/header/slider/${randomGuys[3]}.png`;
+                                    tvboxes[randomTV[3]].src = `img/header/slider/${randomGuys[3]}.jpg`;
                                 }, 1000)
                             })
                     })

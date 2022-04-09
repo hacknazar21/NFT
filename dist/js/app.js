@@ -4201,9 +4201,9 @@
     da.init();
     const svgTeam = document.querySelectorAll(".team__card");
     document.documentElement.classList.add("loading");
-    changeTV();
     window.onload = () => {
         document.documentElement.classList.remove("loading");
+        changeTV();
         let i = 0;
         svgTeam.forEach((element => {
             i++;
@@ -4236,8 +4236,8 @@
                 if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = noisesrc;
                 tvboxes[randomTV[0]].src = noisesrc;
                 setTimeout((() => {
-                    if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[0]}.png`;
-                    tvboxes[randomTV[0]].src = `img/header/slider/${randomGuys[0]}.png`;
+                    if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[0]}.jpg`;
+                    tvboxes[randomTV[0]].src = `img/header/slider/${randomGuys[0]}.jpg`;
                     resolve();
                 }), 1e3);
             })).then((() => {
@@ -4245,8 +4245,8 @@
                     if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[1]].srcset = noisesrc;
                     tvboxes[randomTV[1]].src = noisesrc;
                     setTimeout((() => {
-                        if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[1]}.png`;
-                        tvboxes[randomTV[1]].src = `img/header/slider/${randomGuys[1]}.png`;
+                        if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[1]}.jpg`;
+                        tvboxes[randomTV[1]].src = `img/header/slider/${randomGuys[1]}.jpg`;
                         resolve();
                     }), 1e3);
                 })).then((() => {
@@ -4254,16 +4254,16 @@
                         if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[2]].srcset = noisesrc;
                         tvboxes[randomTV[2]].src = noisesrc;
                         setTimeout((() => {
-                            if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[2]}.png`;
-                            tvboxes[randomTV[2]].src = `img/header/slider/${randomGuys[2]}.png`;
+                            if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[2]}.jpg`;
+                            tvboxes[randomTV[2]].src = `img/header/slider/${randomGuys[2]}.jpg`;
                             resolve();
                         }), 1e3);
                     })).then((() => {
                         if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[3]].srcset = noisesrc;
                         tvboxes[randomTV[3]].src = noisesrc;
                         setTimeout((() => {
-                            if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[3]}.png`;
-                            tvboxes[randomTV[3]].src = `img/header/slider/${randomGuys[3]}.png`;
+                            if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[3]}.jpg`;
+                            tvboxes[randomTV[3]].src = `img/header/slider/${randomGuys[3]}.jpg`;
                         }), 1e3);
                     }));
                 }));
