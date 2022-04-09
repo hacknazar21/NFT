@@ -77,13 +77,22 @@
 		align-items: flex-end;
 		justify-content: flex-end;
 		img {
+			max-width: 100%;
+		}
+
+		@media (max-width: $tablet) {
+			position: absolute;
+			right: -30%;
+			width: 70%;
+			height: 100%;
+			z-index: -1;
 		}
 	}
 }
 
 .menu-header {
 	&__subtitle {
-		font-size: rem(18);
+		@include adaptiveValue("font-size", 18, 16);
 		line-height: math.div(50, 18);
 		color: #b9fd02;
 		margin-bottom: rem(20);
@@ -95,7 +104,7 @@
 		color: #9c9c9c;
 	}
 	&__title {
-		font-size: rem(40);
+		@include adaptiveValue("font-size", 40, 22);
 		line-height: math.div(50, 40);
 		color: #ffffff;
 		margin-bottom: rem(36);
@@ -103,7 +112,7 @@
 
 	&__text {
 		font-weight: 300;
-		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 14);
 		line-height: math.div(21, 16);
 		letter-spacing: 0.02em;
 		color: #9c9c9c;
@@ -113,20 +122,21 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		font-size: rem(18);
+		@include adaptiveValue("font-size", 18, 16);
 		line-height: math.div(50, 18);
 		color: #ae02ff;
 		&::after {
 			@extend %ic;
 			content: "\e900";
 			font-size: rem(35);
+			@include adaptiveValue("font-size", 35, 20);
 		}
 	}
 	&__social {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
-		font-size: rem(40);
+		@include adaptiveValue("font-size", 40, 20);
 	}
 
 	&__footer {
@@ -147,9 +157,6 @@
 }
 @keyframes swiper-anim {
 	50% {
-		transform: translateX(-100%);
-	}
-	100% {
 		transform: translateX(0);
 	}
 }

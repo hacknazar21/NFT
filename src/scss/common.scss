@@ -1,5 +1,8 @@
 .side-menu {
-    flex: 0 0 rem(598);
+    flex: 0 0 percent(600, 1752);
+    @media (max-width: $tablet) {
+        flex: 1 1 auto;
+    }
     background-color: #111111;
     ._menu-header-box {
         width: 100%;
@@ -14,10 +17,11 @@
         &._icon-mystic {
             flex: 1 1 auto;
             background: url(@img/mystic.svg) center/contain no-repeat;
-            margin: rem(20) rem(50);
-
+            @include adaptiveValue("margin-left", 50, 10);
+            @include adaptiveValue("margin-right", 50, 10);
             &.margin {
-                margin: rem(10) rem(30);
+                @include adaptiveValue("margin-left", 30, 6);
+                @include adaptiveValue("margin-right", 30, 6);
             }
         }
         &._right {
@@ -27,7 +31,7 @@
             border-left: 1px solid rgb(255, 255, 255, 0.3);
         }
         font-weight: 400;
-        font-size: rem(16);
+        @include adaptiveValue("font-size", 16, 14);
         line-height: math.div(50, 16);
         text-transform: uppercase;
         min-height: max-content;
@@ -36,7 +40,10 @@
     }
 
     [class*="__content"] {
-        padding: rem(40) rem(50);
+        @include adaptiveValue("padding-top", 40, 20);
+        @include adaptiveValue("padding-bottom", 40, 20);
+        @include adaptiveValue("padding-left", 50, 30);
+        @include adaptiveValue("padding-right", 50, 30);
         font-weight: 700;
         text-transform: uppercase;
     }
@@ -56,7 +63,7 @@
 }
 .section-title {
     font-weight: 700;
-    font-size: rem(200);
+    @include adaptiveValue("font-size", 200, 40);
     line-height: math.div(257, 200);
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);

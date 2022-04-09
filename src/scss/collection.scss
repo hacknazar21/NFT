@@ -4,17 +4,32 @@
 }
 .collection {
     &__title {
-        margin-bottom: rem(-88);
+        /* margin-bottom: rem(-88); */
     }
-
+    &__mobile-img {
+        display: contents;
+        @media (max-width: $tablet) {
+            display: block;
+            position: relative;
+            min-height: rem(500);
+            .collection__item-img {
+                top: 0;
+                left: 0;
+            }
+        }
+    }
     &__container {
         display: flex;
         gap: rem(37);
+        @media (max-width: $tablet) {
+            flex-direction: column;
+        }
     }
 
     &__item {
         position: relative;
         flex: 1 1 auto;
+
         max-width: rem(1100);
         padding: rem(20) rem(40);
         background-color: rgba(145, 2, 212, 0.1);
@@ -24,7 +39,7 @@
 
     &__item-title {
         font-weight: 700;
-        font-size: rem(30);
+        @include adaptiveValue("font-size", 30, 18);
         line-height: math.div(50, 30);
         text-transform: uppercase;
         margin-bottom: rem(20);
@@ -32,26 +47,25 @@
 
     &__item-text {
         font-weight: 400;
-        font-size: rem(16);
+        @include adaptiveValue("font-size", 16, 14);
         line-height: math.div(21, 16);
         letter-spacing: 0.02em;
         color: #e8e8ff;
     }
 
     &__item-img {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        top: rem(120);
-        left: 0;
-        img {
-            top: 0;
-            left: 0;
+        position: relative;
+        padding-bottom: 100%;
+
+        span {
+            display: block;
             position: absolute;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            object-position: center;
+            top: 0;
+            left: 0;
+            background: url(@img/collection/air.svg) center/contain no-repeat;
+            animation: scalable 15s linear infinite;
         }
     }
 
@@ -59,6 +73,7 @@
     }
 
     &__item-angles {
+        pointer-events: none;
         position: absolute;
         width: 100%;
         height: 100%;
@@ -89,6 +104,66 @@
             right: calc(rem(0) - rem(5));
         }
     }
+    &__item-tv {
+        img:first-child {
+            top: 0;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            z-index: 2;
+            pointer-events: none;
+        }
+        img:nth-child(2) {
+            position: absolute;
+            width: percent(204, 1018);
+            height: auto;
+            top: 0;
+
+            left: 32.5%;
+            top: 14%;
+            z-index: 1;
+        }
+        img:nth-child(3) {
+            position: absolute;
+            width: percent(176, 1018);
+            height: auto;
+            left: 22.5%;
+            top: 34%;
+            z-index: 1;
+            border-radius: 10px;
+        }
+        img:nth-child(4) {
+            position: absolute;
+            width: percent(220, 1018);
+            height: auto;
+            left: 51.5%;
+            top: 32%;
+            z-index: 1;
+            transform: rotate(12.52deg);
+            border-radius: 10px;
+        }
+        img:nth-child(5) {
+            position: absolute;
+            width: percent(300, 1018);
+            height: auto;
+            left: 12%;
+            top: 52%;
+            z-index: 1;
+            border-radius: 10px;
+        }
+        img:nth-child(6) {
+            position: absolute;
+            width: percent(250, 1018);
+            height: auto;
+            left: 58%;
+            top: 57%;
+            z-index: 1;
+            border-radius: 10px;
+        }
+    }
 }
 
 .menu-collection {
@@ -105,7 +180,7 @@
     }
 
     &__title {
-        font-size: rem(30);
+        @include adaptiveValue("font-size", 30, 18);
         line-height: math.div(50, 30);
         display: flex;
         align-items: center;
@@ -124,6 +199,7 @@
     &__text {
         font-weight: 400;
         font-size: rem(16);
+        @include adaptiveValue("font-size", 16, 14);
         line-height: math.div(21, 16);
         letter-spacing: 0.02em;
         color: #e8e8ff;
@@ -138,7 +214,7 @@
 .collection-btn {
     &__title {
         font-weight: 700;
-        font-size: rem(40);
+        @include adaptiveValue("font-size", 40, 20);
         line-height: math.div(50, 40);
         text-transform: uppercase;
         color: #ae02ff;
@@ -148,7 +224,7 @@
     &__text {
         font-family: "Montserrat";
         font-weight: 400;
-        font-size: rem(16);
+        @include adaptiveValue("font-size", 16, 14);
         line-height: math.div(20, 16);
         color: #ffffff;
     }
@@ -158,6 +234,15 @@
     }
 
     &__item {
+    }
+}
+
+@keyframes scalable {
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 @keyframes rotating {

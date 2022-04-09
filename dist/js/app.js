@@ -4046,7 +4046,11 @@
                 el: ".swiper-pagination",
                 clickable: true
             },
-            on: {}
+            on: {
+                reachBeginning: swiper => {
+                    swiper.slideTo(swiper.slides.length - 1);
+                }
+            }
         });
     }
     window.addEventListener("load", (function(e) {
@@ -4197,6 +4201,7 @@
     da.init();
     const svgTeam = document.querySelectorAll(".team__card");
     document.documentElement.classList.add("loading");
+    changeTV();
     window.onload = () => {
         document.documentElement.classList.remove("loading");
         let i = 0;
@@ -4211,6 +4216,54 @@
             }));
         }));
     };
+    function changeTV() {
+        const noisesrc = "img/collection/noise.gif";
+        const tvboxes = document.querySelectorAll(".collection__item-tv > img:nth-child(3), .collection__item-tv > img:nth-child(4),.collection__item-tv > img:nth-child(5),.collection__item-tv > img:nth-child(6)");
+        const countGuys = document.querySelectorAll(".header__wrapper > div").length;
+        setInterval((() => {
+            const randomTV = [];
+            const randomGuys = [];
+            while (randomTV.length != tvboxes.length) {
+                const rand = getRandomBetween(0, tvboxes.length - 1);
+                if (-1 == randomTV.indexOf(rand)) randomTV.push(rand);
+            }
+            while (randomGuys.length != tvboxes.length) {
+                const rand = getRandomBetween(1, countGuys);
+                if (-1 == randomGuys.indexOf(rand)) randomGuys.push(rand);
+            }
+            new Promise(((resolve, reject) => {
+                tvboxes[randomTV[0]].src = noisesrc;
+                setTimeout((() => {
+                    tvboxes[randomTV[0]].src = `img/header/slider/${randomGuys[0]}.png`;
+                    resolve();
+                }), 1e3);
+            })).then((() => {
+                new Promise(((resolve, reject) => {
+                    tvboxes[randomTV[1]].src = noisesrc;
+                    setTimeout((() => {
+                        tvboxes[randomTV[1]].src = `img/header/slider/${randomGuys[1]}.png`;
+                        resolve();
+                    }), 1e3);
+                })).then((() => {
+                    new Promise(((resolve, reject) => {
+                        tvboxes[randomTV[2]].src = noisesrc;
+                        setTimeout((() => {
+                            tvboxes[randomTV[2]].src = `img/header/slider/${randomGuys[2]}.png`;
+                            resolve();
+                        }), 1e3);
+                    })).then((() => {
+                        tvboxes[randomTV[3]].src = noisesrc;
+                        setTimeout((() => {
+                            tvboxes[randomTV[3]].src = `img/header/slider/${randomGuys[3]}.png`;
+                        }), 1e3);
+                    }));
+                }));
+            }));
+        }), 4050);
+    }
+    function getRandomBetween(min, max) {
+        return min + Math.floor(Math.random() * (max - min + 1));
+    }
     window["FLS"] = true;
     isWebp();
     menuInit();

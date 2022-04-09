@@ -156,7 +156,9 @@ function initSliders() {
 			},*/
 			// События
 			on: {
-
+				reachBeginning: (swiper) => {
+					swiper.slideTo(swiper.slides.length - 1)
+				}
 			}
 		});
 	}
