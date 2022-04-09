@@ -138,9 +138,9 @@
         }
     }
     &__title {
-        margin-bottom: rem(20);
+        @include adaptiveValue("margin-bottom", 20, 10);
         font-weight: 700;
-        font-size: rem(30);
+        @include adaptiveValue("font-size", 30, 18);
         line-height: math.div(50, 30);
         text-align: center;
         color: #ffffff;
@@ -167,7 +167,8 @@
         margin: 0 auto;
         max-width: rem(747);
         color: #b6bcd1;
-        margin-bottom: rem(45);
+        @include adaptiveValue("margin-bottom", 45, 10);
+
         p {
             &:not(:last-child) {
                 margin-bottom: rem(20);

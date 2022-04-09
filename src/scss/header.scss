@@ -41,7 +41,23 @@
 		.swiper-slide {
 		}
 	}
-
+	&__bg-slider-mobile {
+		@media (min-width: $tablet) {
+			display: none;
+		}
+		@media (max-width: $tablet) {
+			display: flex;
+			padding: rem(10) 0;
+			.swiper-header {
+				min-width: 0;
+			}
+			.swiper-wrapper {
+				animation: swiper-anim linear 40s infinite;
+			}
+			.swiper-slide {
+			}
+		}
+	}
 	&__slider {
 	}
 
@@ -54,6 +70,11 @@
 	&__slide-ibg {
 		height: 220px;
 		width: 220px;
+
+		@media (max-width: $tablet) {
+			height: 120px;
+			width: 120px;
+		}
 		img {
 			max-width: 100%;
 			border-radius: 5px;
@@ -81,11 +102,7 @@
 		}
 
 		@media (max-width: $tablet) {
-			position: absolute;
-			right: -30%;
-			width: 70%;
-			height: 100%;
-			z-index: -1;
+			display: none;
 		}
 	}
 }
@@ -95,19 +112,35 @@
 		@include adaptiveValue("font-size", 18, 16);
 		line-height: math.div(50, 18);
 		color: #b9fd02;
-		margin-bottom: rem(20);
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		@include adaptiveValue("margin-bottom", 20, 15);
 	}
 	&__item {
 		color: #9c9c9c;
+		&._arrow {
+			display: flex;
+			align-items: center;
+			gap: rem(5);
+			&::before {
+				@extend %ic;
+				@extend ._icon-arrow;
+
+				transform: rotate(90deg);
+			}
+			@media (min-width: $tablet) {
+				&::before {
+					display: none;
+				}
+			}
+		}
 	}
 	&__title {
 		@include adaptiveValue("font-size", 40, 22);
 		line-height: math.div(50, 40);
 		color: #ffffff;
-		margin-bottom: rem(36);
+		@include adaptiveValue("margin-bottom", 36, 20);
 	}
 
 	&__text {
@@ -117,12 +150,13 @@
 		letter-spacing: 0.02em;
 		color: #9c9c9c;
 		margin-bottom: rem(93);
+		@include adaptiveValue("margin-bottom", 93, 30);
 	}
 	&__btn {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		@include adaptiveValue("font-size", 18, 16);
+		@include adaptiveValue("font-size", 18, 14);
 		line-height: math.div(50, 18);
 		color: #ae02ff;
 		&::after {

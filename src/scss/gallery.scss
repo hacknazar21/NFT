@@ -7,11 +7,6 @@
 .gallery {
     &__container {
         overflow: hidden;
-        padding: 0 rem(15);
-        box-sizing: border-box;
-        @media (max-width: $mobile) {
-            padding: 0;
-        }
     }
     &__title {
         /*  margin-bottom: rem(-70); */
@@ -21,6 +16,8 @@
         z-index: 1;
 
         padding: rem(10);
+
+        @include adaptiveValue("padding", 10, 5);
         border: 1px solid #ffffff;
         overflow: hidden;
     }

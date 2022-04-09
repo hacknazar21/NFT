@@ -55,6 +55,10 @@
             transform-origin: center center;
             transform: translateY(rem(2)) rotate(90deg);
         }
+
+        @media (max-width: $tablet) {
+            display: none;
+        }
     }
 
     &__menu {
@@ -100,6 +104,22 @@
         }
     }
     &__item {
+        &._arrow {
+            display: flex;
+            align-items: center;
+            gap: rem(5);
+            &::before {
+                @extend %ic;
+                @extend ._icon-arrow;
+
+                transform: rotate(90deg);
+            }
+            @media (min-width: $tablet) {
+                &::before {
+                    display: none;
+                }
+            }
+        }
     }
 
     &__content {
