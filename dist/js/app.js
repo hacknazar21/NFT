@@ -4218,7 +4218,8 @@
     };
     function changeTV() {
         const noisesrc = "img/collection/noise.gif";
-        const tvboxes = document.querySelectorAll(".collection__item-tv > img:nth-child(3), .collection__item-tv > img:nth-child(4),.collection__item-tv > img:nth-child(5),.collection__item-tv > img:nth-child(6)");
+        const tvboxes = document.querySelectorAll(".collection__item-tv img:nth-child(3), .collection__item-tv > img:nth-child(4),.collection__item-tv > img:nth-child(5),.collection__item-tv > img:nth-child(6)");
+        const tvboxeswebp = document.querySelectorAll(".collection__item-tv source:nth-child(3), .collection__item-tv  source:nth-child(4),.collection__item-tv  source:nth-child(5),.collection__item-tv  source:nth-child(6)");
         const countGuys = document.querySelectorAll(".header__wrapper > div").length;
         setInterval((() => {
             const randomTV = [];
@@ -4232,28 +4233,36 @@
                 if (-1 == randomGuys.indexOf(rand)) randomGuys.push(rand);
             }
             new Promise(((resolve, reject) => {
+                if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = noisesrc;
                 tvboxes[randomTV[0]].src = noisesrc;
                 setTimeout((() => {
+                    if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[0]}.png`;
                     tvboxes[randomTV[0]].src = `img/header/slider/${randomGuys[0]}.png`;
                     resolve();
                 }), 1e3);
             })).then((() => {
                 new Promise(((resolve, reject) => {
+                    if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[1]].srcset = noisesrc;
                     tvboxes[randomTV[1]].src = noisesrc;
                     setTimeout((() => {
+                        if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[1]}.png`;
                         tvboxes[randomTV[1]].src = `img/header/slider/${randomGuys[1]}.png`;
                         resolve();
                     }), 1e3);
                 })).then((() => {
                     new Promise(((resolve, reject) => {
+                        if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[2]].srcset = noisesrc;
                         tvboxes[randomTV[2]].src = noisesrc;
                         setTimeout((() => {
+                            if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[2]}.png`;
                             tvboxes[randomTV[2]].src = `img/header/slider/${randomGuys[2]}.png`;
                             resolve();
                         }), 1e3);
                     })).then((() => {
+                        if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[3]].srcset = noisesrc;
                         tvboxes[randomTV[3]].src = noisesrc;
                         setTimeout((() => {
+                            if (0 != tvboxeswebp.length) tvboxeswebp[randomTV[0]].srcset = `img/header/slider/${randomGuys[3]}.png`;
                             tvboxes[randomTV[3]].src = `img/header/slider/${randomGuys[3]}.png`;
                         }), 1e3);
                     }));
