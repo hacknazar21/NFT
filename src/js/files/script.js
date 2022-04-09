@@ -10,11 +10,11 @@ const svgTeam = document.querySelectorAll('.team__card');
 document.documentElement.classList.add('loading')
 
 
-changeTV()
+
 window.onload = () => {
     document.documentElement.classList.remove('loading');
 
-
+    changeTV()
     let i = 0;
 
     svgTeam.forEach(element => {
