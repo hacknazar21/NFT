@@ -23,6 +23,7 @@
         @media (max-width: $tablet) {
             gap: 0;
             flex-direction: column;
+            padding: 0;
         }
     }
 
@@ -35,11 +36,16 @@
         background-color: rgba(145, 2, 212, 0.1);
         border: 1px solid #9102d4;
         text-align: center;
+        @media (max-width: $tablet) {
+            text-align: left;
+            padding: rem(17) rem(10);
+            margin-bottom: rem(50);
+        }
     }
 
     &__item-title {
         font-weight: 700;
-        @include adaptiveValue("font-size", 30, 18);
+        @include adaptiveValue("font-size", 30, 20);
         line-height: math.div(50, 30);
         text-transform: uppercase;
         margin-bottom: rem(20);
@@ -56,7 +62,9 @@
     &__item-img {
         position: relative;
         padding-bottom: 100%;
-
+        @media (max-width: $tablet) {
+            transform: translateX(-3px) scale(1.3);
+        }
         span {
             display: block;
             position: absolute;
@@ -118,50 +126,61 @@
         }
         img:nth-child(2) {
             position: absolute;
-            width: percent(204, 1018);
+            width: percent(190, 1018);
             height: auto;
             top: 0;
 
-            left: 32.5%;
-            top: 14%;
+            left: 41%;
+            top: 25%;
             z-index: 1;
         }
         img:nth-child(3) {
             position: absolute;
-            width: percent(176, 1018);
+            width: percent(200, 1018);
             height: auto;
-            left: 22.5%;
-            top: 34%;
+            left: 25.5%;
+            top: 45%;
             z-index: 1;
             border-radius: 10px;
         }
         img:nth-child(4) {
             position: absolute;
-            width: percent(220, 1018);
+            width: percent(200, 1018);
             height: auto;
-            left: 51.5%;
-            top: 32%;
+            left: 53.5%;
+            top: 45%;
             z-index: 1;
-            transform: rotate(12.52deg);
             border-radius: 10px;
         }
         img:nth-child(5) {
             position: absolute;
-            width: percent(300, 1018);
+            width: percent(200, 1018);
             height: auto;
-            left: 12%;
-            top: 52%;
+            left: 7%;
+            top: 65%;
             z-index: 1;
             border-radius: 10px;
+            transform: rotateX(5deg) rotateY(50deg);
         }
         img:nth-child(6) {
             position: absolute;
-            width: percent(250, 1018);
+            width: percent(200, 1018);
             height: auto;
-            left: 58%;
-            top: 57%;
+            left: 42%;
+            top: 62%;
             z-index: 1;
             border-radius: 10px;
+            transform: rotateX(5deg) rotateY(-30deg);
+        }
+        img:nth-child(7) {
+            position: absolute;
+            width: percent(200, 1018);
+            height: auto;
+            left: 71%;
+            top: 64%;
+            z-index: 1;
+            border-radius: 10px;
+            transform: rotateX(10deg) rotateY(-45deg);
         }
     }
 }
@@ -177,13 +196,17 @@
     }
 
     &__content {
+        @media (max-width: $tablet) {
+            padding: 0 rem(15) !important;
+        }
     }
 
     &__title {
-        @include adaptiveValue("font-size", 30, 18);
+        @include adaptiveValue("font-size", 30, 20);
         line-height: math.div(50, 30);
         display: flex;
         align-items: center;
+
         &::before {
             content: "";
             display: inline-block;
@@ -199,7 +222,7 @@
     &__text {
         font-weight: 400;
         font-size: rem(16);
-        @include adaptiveValue("font-size", 16, 14);
+        @include adaptiveValue("font-size", 16, 12);
         line-height: math.div(21, 16);
         letter-spacing: 0.02em;
         color: #e8e8ff;
@@ -209,6 +232,13 @@
     &__btn {
         text-align: center;
         padding: rem(17) 0;
+    }
+    &__footer {
+        @media (max-width: $tablet) {
+            & ._left {
+                display: none;
+            }
+        }
     }
 }
 .collection-btn {

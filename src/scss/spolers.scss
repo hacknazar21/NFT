@@ -106,12 +106,12 @@
             @include adaptiveValue("margin-left", 20, 10, 1920, 390);
         }
         &._spoller-active::after {
+            color: rgba(255, 255, 255, 1);
             transform: rotate(180deg);
-            color: #9102d4;
         }
         @media (any-hover: none) {
             &._spoller-active {
-                color: #a80df1;
+                color: #b9fd02;
             }
         }
     }

@@ -69,7 +69,7 @@ window.onload = () => {
 
 function changeTV() {
     const noisesrc = 'img/collection/noise.gif';
-    const tvboxes = document.querySelectorAll('.collection__item-tv img:nth-child(3), .collection__item-tv > img:nth-child(4),.collection__item-tv > img:nth-child(5),.collection__item-tv > img:nth-child(6)');
+    const tvboxes = document.querySelectorAll('.collection__item-tv img:nth-child(3), .collection__item-tv > img:nth-child(4),.collection__item-tv > img:nth-child(5),.collection__item-tv > img:nth-child(6), .collection__item-tv > img:nth-child(7)');
     const tvboxeswebp = document.querySelectorAll('.collection__item-tv source:nth-child(3), .collection__item-tv  source:nth-child(4),.collection__item-tv  source:nth-child(5),.collection__item-tv  source:nth-child(6)');
     const countGuys = document.querySelectorAll('.header__wrapper > div').length
 

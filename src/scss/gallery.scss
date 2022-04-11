@@ -18,8 +18,50 @@
         padding: rem(10);
 
         @include adaptiveValue("padding", 10, 5);
+
+        @media (max-width: $tablet) {
+            padding: 0;
+            border: none;
+        }
         border: 1px solid #ffffff;
         overflow: hidden;
+        .swiper-pagination-gallery {
+            position: absolute;
+            z-index: 5;
+            bottom: 10%;
+            left: 0%;
+            width: 100%;
+            justify-content: center;
+            display: flex;
+            gap: rem(12);
+            min-height: rem(9);
+        }
+        .swiper-pagination-bullet {
+            transition: background-color 0.3s ease 0s;
+            flex: 0 0 rem(9);
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+
+            position: relative;
+            &::before {
+                content: "";
+                position: absolute;
+                width: rem(15);
+                height: rem(15);
+                top: calc(50% - 7.5px);
+                left: calc(50% - 7.5px);
+                border: 1px solid #ffffff;
+                border-radius: 50%;
+                transition: transform 0.3s ease 0s;
+                transform: scale(0);
+            }
+            &-active {
+                background-color: rgba(255, 255, 255, 1);
+                &::before {
+                    transform: scale(1);
+                }
+            }
+        }
     }
 
     &__wrapper {
@@ -34,20 +76,25 @@
         position: relative;
         padding-bottom: percent(800, 1680);
 
-        @media only screen and (orientation: portrait) {
-        }
         img {
             position: absolute;
             top: 0;
             left: 10px;
 
             object-position: center;
-            animation: anim-border-gallery 5s ease infinite;
 
             max-width: 100%;
             width: calc(100% - 20px);
             height: 100%;
             border: 2px solid #ffffff;
+        }
+        @media only screen and (orientation: portrait) {
+            padding: 0;
+            padding-bottom: percent(583, 360);
+            img {
+                object-fit: cover;
+                border: none;
+            }
         }
     }
 }

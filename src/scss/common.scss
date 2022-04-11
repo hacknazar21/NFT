@@ -4,6 +4,16 @@
         flex: 1 1 auto;
     }
     background-color: #111111;
+
+    &.header__menu {
+        @media (max-width: $tablet) {
+            background: none;
+            ._menu-header-box {
+                display: none;
+            }
+        }
+    }
+
     ._menu-header-box {
         width: 100%;
         display: flex;
@@ -19,12 +29,12 @@
         }
         &._icon-mystic {
             flex: 1 1 auto;
-            background: url(@img/mystic.svg) center/contain no-repeat;
+            background: url(@img/mystic.gif) center/contain no-repeat;
             @include adaptiveValue("margin-left", 50, 10);
             @include adaptiveValue("margin-right", 50, 10);
             &.margin {
-                @include adaptiveValue("margin-left", 30, 6);
-                @include adaptiveValue("margin-right", 30, 6);
+                @include adaptiveValue("margin-left", 30, 50);
+                @include adaptiveValue("margin-right", 30, 50);
             }
         }
         &._right {
@@ -43,10 +53,10 @@
     }
 
     [class*="__content"] {
-        @include adaptiveValue("padding-top", 40, 20);
-        @include adaptiveValue("padding-bottom", 40, 20);
-        @include adaptiveValue("padding-left", 50, 30);
-        @include adaptiveValue("padding-right", 50, 30);
+        @include adaptiveValue("padding-top", 40, 0);
+        @include adaptiveValue("padding-bottom", 40, 0);
+        @include adaptiveValue("padding-left", 50, 0);
+        @include adaptiveValue("padding-right", 50, 0);
         font-weight: 700;
         text-transform: uppercase;
     }
@@ -69,11 +79,13 @@
 }
 .section-title {
     font-weight: 700;
-    @include adaptiveValue("font-size", 200, 40);
+    @include adaptiveValue("font-size", 200, 35);
     line-height: math.div(257, 200);
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
+    -webkit-text-stroke: 1.4px rgba(255, 255, 255, 0.2);
     text-align: center;
+    text-transform: uppercase;
+    margin-bottom: rem(10);
 }
 .arrow-anim-box {
     display: flex;
@@ -128,6 +140,37 @@
             }
             &:nth-child(4) {
                 animation-delay: 1.3s;
+            }
+        }
+    }
+}
+.social-mobile {
+    @media (max-width: $tablet) {
+        padding: rem(10) rem(15);
+        background-color: #111111;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+        .menu-social__link {
+            padding: rem(14) rem(12);
+            color: #ae00ff;
+            background-color: rgba(145, 2, 212, 0.4);
+            border: 1px solid #ae00ff;
+
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 20%);
+            &::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: -80%;
+                left: -67%;
+                border: 2px solid #ae00ff;
+                transform: rotate(46deg);
+                z-index: 2;
             }
         }
     }

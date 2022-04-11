@@ -42,12 +42,11 @@
 		}
 	}
 	&__bg-slider-mobile {
+		position: relative;
 		@media (min-width: $tablet) {
 			display: none;
 		}
 		@media (max-width: $tablet) {
-			display: flex;
-			padding: rem(10) 0;
 			.swiper-header {
 				min-width: 0;
 			}
@@ -102,12 +101,55 @@
 		}
 
 		@media (max-width: $tablet) {
-			display: none;
+			position: relative;
+			z-index: 1;
+			margin-top: rem(-100);
+			min-width: 100%;
 		}
+	}
+	&__top-mobile {
+		@media (max-width: $tablet) {
+			padding: rem(20) rem(50);
+			width: 100%;
+			height: 100%;
+			background-color: #111111;
+			border-bottom: 1px solid #ffffff;
+
+			._icon-mystic {
+				width: 100%;
+				background: url(@img/mystic.gif) center/contain no-repeat;
+				min-height: rem(20);
+				flex: 1 1 auto;
+			}
+		}
+	}
+	&__anim-mobile {
+		position: absolute;
+		display: flex;
+		width: 100%;
+		height: rem(31);
+		justify-content: space-between;
+		bottom: 0;
+		left: 0;
+		padding: 0 rem(15);
+		margin-bottom: rem(15);
+		& > div:first-child {
+			transform-origin: left top;
+			transform: translateY(calc(100%)) rotate(-90deg);
+		}
+		& > div:last-child {
+			width: auto;
+			padding: 0;
+		}
+	}
+	&__social-mobile {
 	}
 }
 
 .menu-header {
+	@media (max-width: $tablet) {
+		text-align: center;
+	}
 	&__subtitle {
 		@include adaptiveValue("font-size", 18, 16);
 		line-height: math.div(50, 18);
@@ -115,7 +157,10 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		@include adaptiveValue("margin-bottom", 20, 15);
+		@media (max-width: $tablet) {
+			display: block;
+		}
+		@include adaptiveValue("margin-bottom", 20, 0);
 	}
 	&__item {
 		color: #9c9c9c;
@@ -137,15 +182,15 @@
 		}
 	}
 	&__title {
-		@include adaptiveValue("font-size", 40, 22);
+		@include adaptiveValue("font-size", 40, 30);
 		line-height: math.div(50, 40);
 		color: #ffffff;
-		@include adaptiveValue("margin-bottom", 36, 20);
+		@include adaptiveValue("margin-bottom", 36, 32);
 	}
 
 	&__text {
 		font-weight: 300;
-		@include adaptiveValue("font-size", 16, 14);
+		@include adaptiveValue("font-size", 16, 11);
 		line-height: math.div(21, 16);
 		letter-spacing: 0.02em;
 		color: #9c9c9c;
@@ -164,6 +209,9 @@
 			content: "\e900";
 			font-size: rem(35);
 			@include adaptiveValue("font-size", 35, 20);
+		}
+		@media (max-width: $tablet) {
+			display: none;
 		}
 	}
 	&__social {

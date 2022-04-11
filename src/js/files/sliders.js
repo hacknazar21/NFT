@@ -58,7 +58,7 @@ function initSliders() {
 			// Пагинация
 
 			pagination: {
-				el: '.swiper-pagination',
+				el: '.swiper-pagination-gallery',
 				clickable: true,
 			},
 
