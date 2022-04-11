@@ -7,6 +7,34 @@
   font-style: normal;
 }
 @font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: PilatExtended;
+  font-display: swap;
+  src: url("../fonts/PilatExtended-Bold.woff2") format("woff2"), url("../fonts/PilatExtended-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: PilatExtended;
+  font-display: swap;
+  src: url("../fonts/PilatExtended-Light.woff2") format("woff2"), url("../fonts/PilatExtended-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
   font-family: PilatExtended;
   font-display: swap;
   src: url("../fonts/PilatExtended-Book.woff2") format("woff2"), url("../fonts/PilatExtended-Book.woff") format("woff");
@@ -16,15 +44,15 @@
 @font-face {
   font-family: PilatExtended;
   font-display: swap;
-  src: url("../fonts/PilatExtended-DemiBold.woff2") format("woff2"), url("../fonts/PilatExtended-DemiBold.woff") format("woff");
-  font-weight: 450;
+  src: url("../fonts/PilatExtended-Regular.woff2") format("woff2"), url("../fonts/PilatExtended-Regular.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: PilatExtended;
   font-display: swap;
-  src: url("../fonts/PilatExtended-Bold.woff2") format("woff2"), url("../fonts/PilatExtended-Bold.woff") format("woff");
-  font-weight: bold;
+  src: url("../fonts/PilatExtended-DemiBold.woff2") format("woff2"), url("../fonts/PilatExtended-DemiBold.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 .card-team__work-link::after, .spollers__title::after, .menu-footer__item._arrow::before, .menu-header__btn::after, .menu-header__item._arrow::before, [class*=_icon-]:before {
@@ -1862,10 +1890,14 @@ input {
   position: absolute;
   width: 18.6640471513%;
   height: auto;
-  top: 0;
   left: 41%;
-  top: 25%;
+  top: 23.5%;
   z-index: 1;
+}
+@media (max-width: 61.99875em) {
+  .collection__item-tv img:nth-child(2) {
+    top: 25%;
+  }
 }
 .collection__item-tv img:nth-child(3) {
   position: absolute;
@@ -1887,33 +1919,39 @@ input {
 }
 .collection__item-tv img:nth-child(5) {
   position: absolute;
-  width: 19.6463654224%;
+  width: 17.6817288802%;
   height: auto;
-  left: 7%;
-  top: 65%;
+  left: 8.5%;
+  top: 67%;
   z-index: 1;
   border-radius: 10px;
-  transform: rotateX(5deg) rotateY(50deg);
+  transform: rotateX(5deg) rotateY(46deg);
+}
+@media (max-width: 61.99875em) {
+  .collection__item-tv img:nth-child(5) {
+    top: 65.5%;
+    left: 8.5%;
+  }
 }
 .collection__item-tv img:nth-child(6) {
   position: absolute;
   width: 19.6463654224%;
   height: auto;
   left: 42%;
-  top: 62%;
+  top: 63%;
   z-index: 1;
   border-radius: 10px;
-  transform: rotateX(5deg) rotateY(-30deg);
+  transform: rotateX(10deg) rotateY(-30deg);
 }
 .collection__item-tv img:nth-child(7) {
   position: absolute;
-  width: 19.6463654224%;
+  width: 17.6817288802%;
   height: auto;
-  left: 71%;
-  top: 64%;
+  left: 72%;
+  top: 66%;
   z-index: 1;
   border-radius: 10px;
-  transform: rotateX(10deg) rotateY(-45deg);
+  transform: rotateX(10deg) rotateY(-40deg);
 }
 
 .menu-collection__item._color {

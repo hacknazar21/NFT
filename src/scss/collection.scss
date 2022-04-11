@@ -133,10 +133,11 @@
             position: absolute;
             width: percent(190, 1018);
             height: auto;
-            top: 0;
-
             left: 41%;
-            top: 25%;
+            top: 23.5%;
+            @media (max-width: $tablet) {
+                top: 25%;
+            }
             z-index: 1;
         }
         img:nth-child(3) {
@@ -159,33 +160,37 @@
         }
         img:nth-child(5) {
             position: absolute;
-            width: percent(200, 1018);
+            width: percent(180, 1018);
             height: auto;
-            left: 7%;
-            top: 65%;
+            left: 8.5%;
+            top: 67%;
+            @media (max-width: $tablet) {
+                top: 65.5%;
+                left: 8.5%;
+            }
             z-index: 1;
             border-radius: 10px;
-            transform: rotateX(5deg) rotateY(50deg);
+            transform: rotateX(5deg) rotateY(46deg);
         }
         img:nth-child(6) {
             position: absolute;
             width: percent(200, 1018);
             height: auto;
             left: 42%;
-            top: 62%;
+            top: 63%;
             z-index: 1;
             border-radius: 10px;
-            transform: rotateX(5deg) rotateY(-30deg);
+            transform: rotateX(10deg) rotateY(-30deg);
         }
         img:nth-child(7) {
             position: absolute;
-            width: percent(200, 1018);
+            width: percent(180, 1018);
             height: auto;
-            left: 71%;
-            top: 64%;
+            left: 72%;
+            top: 66%;
             z-index: 1;
             border-radius: 10px;
-            transform: rotateX(10deg) rotateY(-45deg);
+            transform: rotateX(10deg) rotateY(-40deg);
         }
     }
 }
