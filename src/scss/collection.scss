@@ -128,6 +128,7 @@
             object-position: center;
             z-index: 2;
             pointer-events: none;
+            transform: translateZ(20px);
         }
         img:nth-child(2) {
             position: absolute;
@@ -180,7 +181,7 @@
             top: 63%;
             z-index: 1;
             border-radius: 10px;
-            transform: rotateX(10deg) rotateY(-30deg);
+            transform: rotateX(7deg) rotateY(-30deg);
         }
         img:nth-child(7) {
             position: absolute;
@@ -278,6 +279,9 @@
 }
 
 @keyframes scalable {
+    0% {
+        transform: scale(1);
+    }
     50% {
         transform: scale(1.5);
     }
@@ -286,6 +290,9 @@
     }
 }
 @keyframes rotating {
+    0% {
+        transform: rotate(0deg);
+    }
     50% {
         transform: rotate(180deg);
     }

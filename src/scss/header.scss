@@ -239,13 +239,13 @@
 }
 @keyframes swiper-anim {
 	0% {
-		transform: translateX(0);
+		transform: translate3d(0, 0, 0);
 	}
 	50% {
-		transform: translateX(var(--x));
+		transform: translate3d(var(--x), 0, 0);
 	}
 	100% {
-		transform: translateX(0);
+		transform: translate3d(0, 0, 0);
 	}
 }
 @keyframes header-menu-anim {

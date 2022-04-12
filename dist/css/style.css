@@ -1252,13 +1252,13 @@ input {
 
 @keyframes swiper-anim {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translateX(var(--x));
+    transform: translate3d(var(--x), 0, 0);
   }
   100% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 @keyframes header-menu-anim {
@@ -1895,6 +1895,7 @@ input {
   object-position: center;
   z-index: 2;
   pointer-events: none;
+  transform: translateZ(20px);
 }
 .collection__item-tv img:nth-child(2) {
   position: absolute;
@@ -1951,7 +1952,7 @@ input {
   top: 63%;
   z-index: 1;
   border-radius: 10px;
-  transform: rotateX(10deg) rotateY(-30deg);
+  transform: rotateX(7deg) rotateY(-30deg);
 }
 .collection__item-tv img:nth-child(7) {
   position: absolute;
@@ -2149,6 +2150,9 @@ input {
 }
 
 @keyframes scalable {
+  0% {
+    transform: scale(1);
+  }
   50% {
     transform: scale(1.5);
   }
@@ -2157,6 +2161,9 @@ input {
   }
 }
 @keyframes rotating {
+  0% {
+    transform: rotate(0deg);
+  }
   50% {
     transform: rotate(180deg);
   }
