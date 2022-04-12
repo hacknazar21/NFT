@@ -899,9 +899,6 @@ input {
   .header__bg-slider-mobile .swiper-header {
     min-width: 0;
   }
-  .header__bg-slider-mobile .swiper-wrapper {
-    animation: swiper-anim linear 40s infinite;
-  }
 }
 .header__slide-ibg {
   height: 220px;
