@@ -1833,7 +1833,6 @@ input {
 }
 @media (max-width: 61.99875em) {
   .collection__item-img {
-    transform: scale(1.3);
     padding-bottom: 100%;
   }
 }

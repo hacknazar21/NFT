@@ -63,7 +63,6 @@
         position: relative;
         padding-bottom: 90%;
         @media (max-width: $tablet) {
-            transform: scale(1.3);
             padding-bottom: 100%;
         }
         span {
