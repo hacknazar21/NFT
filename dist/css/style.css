@@ -884,6 +884,7 @@ input {
   align-items: center;
 }
 .header__bg-slider .swiper-header {
+  --x: 0;
   min-width: 0;
 }
 .header__bg-slider .swiper-wrapper {

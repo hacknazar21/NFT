@@ -33,6 +33,7 @@
 		display: flex;
 		align-items: center;
 		.swiper-header {
+			--x: 0;
 			min-width: 0;
 		}
 		.swiper-wrapper {
