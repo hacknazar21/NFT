@@ -4048,7 +4048,7 @@
             },
             on: {
                 reachBeginning: swiper => {
-                    swiper.slideTo(swiper.slides.length - 1);
+                    swiper.el.style.setProperty("--x", `-${swiper.wrapperEl.scrollWidth - swiper.wrapperEl.clientWidth}px`);
                 }
             }
         });

@@ -787,18 +787,22 @@ input {
   width: 100%;
   padding: 1.5625rem 0rem;
   display: flex;
-  gap: 0.625rem;
 }
 .lines-anim-wrapper .lines-anim-box {
   height: 100%;
   display: flex;
-  gap: 0.375rem;
+}
+.lines-anim-wrapper .lines-anim-box:not(:last-child) {
+  margin-right: 0.625rem;
 }
 .lines-anim-wrapper .lines-anim-box span {
   display: block;
   flex: 0 0 0.125rem;
   height: 100%;
   background-color: #585858;
+}
+.lines-anim-wrapper .lines-anim-box span:not(:last-child) {
+  margin-right: 0.375rem;
 }
 .lines-anim-wrapper .lines-anim-box:not(:first-child) {
   opacity: 0;
@@ -1247,7 +1251,13 @@ input {
 }
 
 @keyframes swiper-anim {
+  0% {
+    transform: translateX(0);
+  }
   50% {
+    transform: translateX(var(--x));
+  }
+  100% {
     transform: translateX(0);
   }
 }

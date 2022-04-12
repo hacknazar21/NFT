@@ -118,14 +118,19 @@
     width: 100%;
     padding: rem(25) rem(0);
     display: flex;
-    gap: rem(10);
+
     .lines-anim-box {
         height: 100%;
         display: flex;
-        gap: rem(6);
+        &:not(:last-child) {
+            margin-right: rem(10);
+        }
         span {
             display: block;
             flex: 0 0 rem(2);
+            &:not(:last-child) {
+                margin-right: rem(6);
+            }
             height: 100%;
             background-color: #585858;
         }

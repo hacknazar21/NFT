@@ -238,7 +238,13 @@
 .menu-item {
 }
 @keyframes swiper-anim {
+	0% {
+		transform: translateX(0);
+	}
 	50% {
+		transform: translateX(var(--x));
+	}
+	100% {
 		transform: translateX(0);
 	}
 }
