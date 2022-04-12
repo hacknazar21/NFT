@@ -887,9 +887,6 @@ input {
   --x: 0;
   min-width: 0;
 }
-.header__bg-slider .swiper-wrapper {
-  animation: swiper-anim linear 30s infinite;
-}
 .header__bg-slider-mobile {
   position: relative;
 }

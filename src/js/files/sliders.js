@@ -158,6 +158,7 @@ function initSliders() {
 			on: {
 				reachBeginning: (swiper) => {
 					swiper.el.style.setProperty('--x', `-${swiper.wrapperEl.scrollWidth - swiper.wrapperEl.clientWidth}px`)
+					swiper.wrapperEl.style.setProperty("animation", "swiper-anim linear 30s infinite")
 				}
 			}
 		});
