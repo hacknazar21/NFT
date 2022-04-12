@@ -22,7 +22,7 @@ export const css = () => {
 				autoprefixer({
 					grid: true,
 					flexbox: true,
-					overrideBrowserslist: ["last 7 versions"],
+					overrideBrowserslist: ["last 5 versions", ">1%", "maintained node versions", "not dead"],
 					cascade: true
 				})
 			)
