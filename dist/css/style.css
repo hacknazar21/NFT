@@ -2850,6 +2850,12 @@ input {
   justify-content: space-between;
   position: relative;
 }
+@media (max-width: 29.99875em) {
+  .main-header {
+    margin: 0;
+    background-color: #111111;
+  }
+}
 .main-header__loading {
   flex: 0 0 3.6206896552%;
   background: url(../img/nohoomans/load.png) center/contain no-repeat;
@@ -2857,6 +2863,11 @@ input {
 @media (max-width: 61.99875em) {
   .main-header__loading {
     flex: 0 0 10%;
+  }
+}
+@media (max-width: 29.99875em) {
+  .main-header__loading {
+    display: none;
   }
 }
 .main-header__item {
@@ -2868,6 +2879,13 @@ input {
     position: absolute;
     width: 20.1149425287%;
     left: 39.9425287356%;
+  }
+}
+@media (max-width: 29.99875em) {
+  .main-header__item {
+    width: 100%;
+    height: 1.1875rem;
+    margin: 1.25rem 3.125rem;
   }
 }
 .main-header__social {
@@ -2936,6 +2954,11 @@ input {
   margin: 0 auto;
   position: relative;
 }
+@media (max-width: 29.99875em) {
+  .page-second {
+    background: url(../img/nohoomans/bgm.png) center/cover no-repeat;
+  }
+}
 .page-second__dots {
   position: absolute;
   width: 100%;
@@ -2968,6 +2991,14 @@ input {
     top: 0.625rem;
   }
 }
+@media (max-width: 29.99875em) {
+  .page-second__dots:last-child {
+    right: auto;
+    left: 0.625rem;
+    top: auto;
+    bottom: 0.625rem;
+  }
+}
 .page-second__dots:last-child span {
   animation-direction: alternate;
 }
@@ -2977,6 +3008,12 @@ input {
   background-color: #fff;
   border-radius: 50%;
   animation: header-menu-anim 2s linear infinite;
+}
+@media (max-width: 29.99875em) {
+  .page-second__dots span {
+    width: 0.25rem;
+    height: 0.25rem;
+  }
 }
 .page-second__dots span:first-child {
   animation-delay: 0.3s;
@@ -3067,6 +3104,11 @@ input {
 .side_right .side__title {
   text-align: right;
 }
+@media (max-width: 29.99875em) {
+  .side_right .side__title {
+    text-align: center;
+  }
+}
 .side__text-box {
   max-width: 90%;
   display: flex;
@@ -3097,9 +3139,14 @@ input {
     padding: 0.625rem;
   }
 }
+@media (max-width: 29.99875em) {
+  .side__text-box {
+    padding: 5.625rem 0;
+    text-align: center;
+  }
+}
 .side__title {
   font-weight: 450;
-  font-size: 3.75rem;
   line-height: 1.1666666667;
 }
 @media (min-width: 110.75em) {
@@ -3108,20 +3155,20 @@ input {
   }
 }
 @media (min-width: 20em) and (max-width: 110.75em) {
-  @supports (font-size: clamp( 1.5625rem , 1.0804063361rem  +  2.4104683196vw , 3.75rem )) {
+  @supports (font-size: clamp( 1.3125rem , 0.7753099174rem  +  2.6859504132vw , 3.75rem )) {
     .side__title {
-      font-size: clamp( 1.5625rem , 1.0804063361rem  +  2.4104683196vw , 3.75rem );
+      font-size: clamp( 1.3125rem , 0.7753099174rem  +  2.6859504132vw , 3.75rem );
     }
   }
-  @supports not (font-size: clamp( 1.5625rem , 1.0804063361rem  +  2.4104683196vw , 3.75rem )) {
+  @supports not (font-size: clamp( 1.3125rem , 0.7753099174rem  +  2.6859504132vw , 3.75rem )) {
     .side__title {
-      font-size: calc(1.5625rem + 2.1875 * (100vw - 20rem) / 90.75);
+      font-size: calc(1.3125rem + 2.4375 * (100vw - 20rem) / 90.75);
     }
   }
 }
 @media (max-width: 20em) {
   .side__title {
-    font-size: 1.5625rem;
+    font-size: 1.3125rem;
   }
 }
 @media (min-width: 110.75em) {
@@ -3149,10 +3196,14 @@ input {
 .side__title span {
   color: #9102d4;
 }
+@media (max-width: 29.99875em) {
+  .side__title {
+    margin-bottom: 0.625rem;
+  }
+}
 .side__text {
   font-family: "Montserrat";
   font-weight: 300;
-  font-size: 1.125rem;
   line-height: 1.2222222222;
 }
 @media (min-width: 110.75em) {
@@ -3161,20 +3212,20 @@ input {
   }
 }
 @media (min-width: 20em) and (max-width: 110.75em) {
-  @supports (font-size: clamp( 0.875rem , 0.8199035813rem  +  0.2754820937vw , 1.125rem )) {
+  @supports (font-size: clamp( 0.75rem , 0.6673553719rem  +  0.4132231405vw , 1.125rem )) {
     .side__text {
-      font-size: clamp( 0.875rem , 0.8199035813rem  +  0.2754820937vw , 1.125rem );
+      font-size: clamp( 0.75rem , 0.6673553719rem  +  0.4132231405vw , 1.125rem );
     }
   }
-  @supports not (font-size: clamp( 0.875rem , 0.8199035813rem  +  0.2754820937vw , 1.125rem )) {
+  @supports not (font-size: clamp( 0.75rem , 0.6673553719rem  +  0.4132231405vw , 1.125rem )) {
     .side__text {
-      font-size: calc(0.875rem + 0.25 * (100vw - 20rem) / 90.75);
+      font-size: calc(0.75rem + 0.375 * (100vw - 20rem) / 90.75);
     }
   }
 }
 @media (max-width: 20em) {
   .side__text {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
   }
 }
 .side__link {
@@ -3207,6 +3258,11 @@ input {
     font-size: 0.75rem;
   }
 }
+@media (max-width: 29.99875em) {
+  .side__link {
+    flex-direction: column;
+  }
+}
 .side__link::after {
   content: "";
   display: block;
@@ -3214,6 +3270,13 @@ input {
   height: 100%;
   margin-left: 0.625rem;
   background: url(../img/nohoomans/arrow.svg) center/contain no-repeat;
+}
+@media (max-width: 29.99875em) {
+  .side__link::after {
+    width: 100%;
+    height: 8px;
+    margin: 0;
+  }
 }
 
 .main-footer {
@@ -3224,6 +3287,24 @@ input {
   width: 100%;
   max-width: 108.75rem;
   margin: 1.5625rem auto;
+}
+@media (max-width: 29.99875em) {
+  .main-footer {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+  .main-footer > div:not(:last-child) {
+    display: none;
+  }
+  .main-footer > div:last-child {
+    flex: 1 1 auto;
+    background-color: #111111;
+    padding: 0.625rem 2.8125rem;
+  }
+  .main-footer > div:last-child a {
+    color: #fff;
+  }
 }
 .main-footer__name {
   flex: 1 1 auto;
