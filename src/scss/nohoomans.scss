@@ -1,151 +1,213 @@
-.page-second {
+.main-header {
+    width: 100%;
+    max-width: rem(1740);
+    padding: 0 rem(15);
+    margin: rem(25) auto;
     display: flex;
-    align-items: center;
-    @media (max-width: $tablet) {
-        margin-top: rem(17);
+    justify-content: space-between;
+    position: relative;
+    &__loading {
+        flex: 0 0 percent(63, 1740);
+        background: url(@img/nohoomans/load.png) center/contain no-repeat;
     }
-    @media (min-width: $tablet) {
-        width: 100vw;
+
+    &__item {
+        position: absolute;
+        width: percent(500, 1740);
+        left: calc(50% - percent(500, 1740) / 2);
+        height: 100%;
+        background: url(@img/mystic.gif) center/contain no-repeat;
     }
-    @media (max-width: $tablet) {
-        flex-direction: column;
-        gap: rem(20);
+
+    &__social {
+        flex: 0 0 percent(373, 1740);
+        display: flex;
+        justify-content: space-between;
+
+        .menu-social__link {
+            padding: rem(14) rem(12);
+            border: 1px solid #666666;
+
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 20%);
+            font-size: 20px;
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: -80%;
+                left: -67%;
+                border: 2px solid #666666;
+                transform: rotate(46deg);
+                z-index: 2;
+            }
+        }
+    }
+}
+
+.page-second {
+    width: 100%;
+    height: 100%;
+    max-width: rem(1710);
+    padding: 0 rem(15);
+    background: url(@img/nohoomans/bg.png) center/cover no-repeat;
+    margin: 0 auto;
+    position: relative;
+
+    &__dots {
+        position: absolute;
+        &:first-child {
+            left: rem(25);
+            top: rem(25);
+            span {
+                animation-direction: alternate-reverse;
+            }
+        }
+        &:last-child {
+            right: rem(25);
+            top: rem(25);
+            span {
+                animation-direction: alternate;
+            }
+        }
+        width: 100%;
+        max-width: rem(16);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: rem(3);
+        column-gap: rem(3);
+        span {
+            width: rem(8);
+            height: rem(8);
+            background-color: #fff;
+            border-radius: 50%;
+            animation: header-menu-anim 2s linear infinite;
+
+            &:first-child {
+                animation-delay: 0.3s;
+            }
+            &:nth-child(2) {
+                animation-delay: 0.6s;
+            }
+            &:nth-child(3) {
+                animation-delay: 0.9s;
+            }
+            &:nth-child(4) {
+                animation-delay: 1.2s;
+            }
+            &:nth-child(5) {
+                animation-delay: 1.5s;
+            }
+            &:last-child {
+                animation-delay: 1.8s;
+            }
+        }
     }
 
     &__side {
-        flex: 1 1 50%;
-        @media (max-width: $tablet) {
-            flex: 0 0 rem(370);
-            margin: 0 rem(10);
-        }
+        position: absolute;
+        display: flex;
+        align-items: flex-end;
+        height: 100%;
     }
-    &__social {
-        width: 100%;
-        @media (min-width: $tablet) {
-            position: absolute;
-            bottom: 0;
-            left: calc(50% - rem(296));
-        }
-        z-index: 2;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 120%;
+        height: 120%;
+        top: -20%;
+        left: -20%;
+        background: radial-gradient(50% 50% at 50% 50%, #454346 0%, rgba(64, 8, 90, 0) 100%);
+        z-index: -1;
     }
 }
 .side {
-    height: 100vh;
-    display: flex;
-    @media (min-width: $tablet) {
-        align-items: center;
+    &_left {
+        left: 0;
+        top: 0;
+        width: 50%;
     }
-    background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
-    @media (max-width: $tablet) {
-        border-radius: 5px;
 
-        overflow: hidden;
-    }
-    &__center {
-        @media (min-width: $tablet) {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(20px);
-        }
+    &_right {
+        right: 0;
+        top: 0;
+        width: 50%;
+        justify-content: flex-end;
 
-        width: 100%;
-        height: 100%;
-        @media (min-width: $tablet) {
-            max-height: rem(354);
+        .side__title {
+            text-align: right;
         }
     }
-
     &__text-box {
-        max-width: rem(594);
+        max-width: 90%;
         display: flex;
         flex-direction: column;
-        margin: 0 auto;
-        @media (min-width: $tablet) {
-            padding: rem(50) rem(20) rem(37) rem(20);
-        }
-        height: 100%;
-        @media (max-width: $tablet) {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+        height: 60%;
+        justify-content: space-between;
+        padding: rem(40);
     }
 
-    &__title-ibg {
-        @media (max-width: $tablet) {
-            padding: 0 rem(47);
-            padding-top: rem(20);
-            flex: 0 0 rem(60);
-        }
-        @media (max-width: $mobile) {
-            padding: rem(20);
-            padding-bottom: rem(90);
-        }
-        text-align: center;
-        padding-bottom: rem(90);
-        margin-bottom: rem(10);
-        position: relative;
-        img {
-            max-width: 100%;
-            object-fit: contain;
+    &__title {
+        font-weight: 450;
+        font-size: rem(60);
+        @include adaptiveValue("font-size", 60, 25);
+        line-height: math.div(70, 60);
+        span {
+            color: #9102d4;
         }
     }
 
     &__text {
+        font-family: "Montserrat";
         font-weight: 300;
-        @include adaptiveValue("font-size", 14, 12);
-        line-height: math.div(20, 16);
-
-        @media (max-width: $tablet) {
-            padding: 0 rem(47);
-            max-height: rem(200);
-            overflow: auto;
-        }
-        @media (max-width: $mobile) {
-            padding: 0 rem(40);
-        }
+        font-size: rem(18);
+        @include adaptiveValue("font-size", 18, 14);
+        line-height: math.div(22, 18);
     }
-    &__button {
-        background: #9102d5;
-        box-shadow: 0px 3.74372px 22.4623px rgba(145, 2, 212, 0.2);
-        border-radius: 5px;
+
+    &__link {
+        font-weight: 600;
+        font-size: rem(14);
+        line-height: math.div(50, 14);
+        @include adaptiveValue("font-size", 14, 12);
+        text-transform: uppercase;
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin-top: auto;
-        @media (max-width: $tablet) {
-        }
-    }
-    &_left {
-        background: url(@img/nohoomans/left.png) center/cover no-repeat;
-    }
-    &_right {
-        background: url(@img/nohoomans/right.png) center/cover no-repeat;
-        .side__button {
-            background: #2e2d2d;
+        &::after {
+            content: "";
+            display: block;
+            flex: 1 1 auto;
+            height: 100%;
+            margin-left: rem(10);
+            background: url(@img/nohoomans/arrow.svg) center/contain no-repeat;
         }
     }
 }
-.social-media {
+.main-footer {
     display: flex;
-    justify-content: space-evenly;
-    align-items: flex-end;
-    @media (min-width: $tablet) {
-        width: rem(592);
-        background: url(@img/nohoomans/social.svg) bottom/contain no-repeat;
-        padding-bottom: rem(10);
-    }
-    height: rem(70);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 rem(15);
+    width: 100%;
+    max-width: rem(1740);
+    margin: rem(25) auto;
+    &__name {
+        flex: 1 1 auto;
+        font-size: rem(14);
+        line-height: math.div(50, 14);
 
-    @media (max-width: $tablet) {
-        align-items: center;
+        text-transform: uppercase;
+
+        color: #666666;
     }
-    &__item {
-        font-size: rem(25);
-        transition: color 0.3s ease 0s;
-        @media (any-hover: hover) {
-            &:hover {
-                color: #ae00ff;
-            }
-        }
+    .lines-anim-wrapper {
+        flex: 0 0 percent(77, 1740);
+        height: rem(40);
+        padding: 0;
     }
 }
