@@ -234,7 +234,9 @@
         height: 60%;
         justify-content: space-between;
         padding: rem(40);
-        @include adaptiveValue("padding", 40, 10);
+        @media (min-width: $mobileSmall) {
+            @include adaptiveValue("padding", 40, 10);
+        }
         @media (max-width: $mobileSmall) {
             padding: rem(90) 0;
             text-align: center;

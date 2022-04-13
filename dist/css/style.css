@@ -3117,12 +3117,12 @@ input {
   justify-content: space-between;
   padding: 2.5rem;
 }
-@media (min-width: 110.75em) {
+@media (min-width: 29.99875em) and (min-width: 110.75em) {
   .side__text-box {
     padding: 2.5rem;
   }
 }
-@media (min-width: 20em) and (max-width: 110.75em) {
+@media (min-width: 29.99875em) and (min-width: 20em) and (max-width: 110.75em) {
   @supports (padding: clamp( 0.625rem , 0.2117768595rem  +  2.0661157025vw , 2.5rem )) {
     .side__text-box {
       padding: clamp( 0.625rem , 0.2117768595rem  +  2.0661157025vw , 2.5rem );
@@ -3134,7 +3134,7 @@ input {
     }
   }
 }
-@media (max-width: 20em) {
+@media (min-width: 29.99875em) and (max-width: 20em) {
   .side__text-box {
     padding: 0.625rem;
   }
