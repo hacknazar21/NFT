@@ -9,46 +9,61 @@
     &__loading {
         flex: 0 0 percent(63, 1740);
         background: url(@img/nohoomans/load.png) center/contain no-repeat;
+
+        @media (max-width: $tablet) {
+            flex: 0 0 10%;
+        }
     }
 
     &__item {
-        position: absolute;
-        width: percent(500, 1740);
-        left: calc(50% - percent(500, 1740) / 2);
+        @media (min-width: $tablet) {
+            position: absolute;
+            width: percent(500, 1740);
+            left: calc(50% - percent(500, 1740) / 2);
+        }
+
         height: 100%;
         background: url(@img/mystic.gif) center/contain no-repeat;
     }
 
     &__social {
         flex: 0 0 percent(373, 1740);
+        @include adaptiveValue("gap", 20, 10);
         display: flex;
         justify-content: space-between;
 
         .menu-social__link {
             padding: rem(14) rem(12);
-            border: 1px solid #666666;
-
+            border: 1.7px solid #666666;
+            padding: rem(10);
             overflow: hidden;
             position: relative;
             z-index: 1;
             clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 20%);
             font-size: 20px;
+            transition: background-color 1s ease-out 0s;
+            @media (any-hover: hover) {
+                &:hover {
+                    transition: 0s;
+                    background-color: #666666;
+                    color: #111111;
+                }
+            }
 
             &::after {
                 content: "";
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                top: -80%;
-                left: -67%;
-                border: 2px solid #666666;
-                transform: rotate(46deg);
+                top: -77%;
+                left: -77%;
+                background-color: #666666;
+                transform: rotate(-44deg);
                 z-index: 2;
             }
         }
     }
 }
-
 .page-second {
     width: 100%;
     height: 100%;
@@ -63,6 +78,10 @@
         &:first-child {
             left: rem(25);
             top: rem(25);
+            @media (max-width: $tablet) {
+                left: rem(10);
+                top: rem(10);
+            }
             span {
                 animation-direction: alternate-reverse;
             }
@@ -70,6 +89,10 @@
         &:last-child {
             right: rem(25);
             top: rem(25);
+            @media (max-width: $tablet) {
+                right: rem(10);
+                top: rem(10);
+            }
             span {
                 animation-direction: alternate;
             }
@@ -109,9 +132,26 @@
     }
 
     &__side {
-        position: absolute;
+        @media (min-width: $tablet) {
+            position: absolute;
+        }
         display: flex;
         align-items: flex-end;
+        justify-content: space-between;
+        transition: height 0.3s ease 0s;
+
+        @media (any-hover: hover) {
+            &:hover {
+                cursor: pointer;
+                height: 90%;
+                @media (max-width: $pc) {
+                    height: 40%;
+                }
+            }
+        }
+        @media (max-width: $pc) {
+            height: 60%;
+        }
         height: 100%;
     }
 
@@ -131,6 +171,12 @@
         left: 0;
         top: 0;
         width: 50%;
+        @media (max-width: $tablet) {
+            width: 100%;
+            height: 50%;
+            justify-content: center;
+            align-items: flex-start;
+        }
     }
 
     &_right {
@@ -138,7 +184,14 @@
         top: 0;
         width: 50%;
         justify-content: flex-end;
-
+        @media (max-width: $tablet) {
+            width: 100%;
+            height: 50%;
+            justify-content: center;
+            align-items: flex-start;
+            top: auto;
+            bottom: 0;
+        }
         .side__title {
             text-align: right;
         }
@@ -150,12 +203,14 @@
         height: 60%;
         justify-content: space-between;
         padding: rem(40);
+        @include adaptiveValue("padding", 40, 10);
     }
 
     &__title {
         font-weight: 450;
         font-size: rem(60);
         @include adaptiveValue("font-size", 60, 25);
+        @include adaptiveValue("margin-bottom", 0, 5);
         line-height: math.div(70, 60);
         span {
             color: #9102d4;
