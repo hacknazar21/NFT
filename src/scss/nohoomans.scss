@@ -18,8 +18,8 @@
     &__item {
         @media (min-width: $tablet) {
             position: absolute;
-            width: percent(500, 1740);
-            left: calc(50% - percent(500, 1740) / 2);
+            width: percent(350, 1740);
+            left: calc(50% - percent(350, 1740) / 2);
         }
 
         height: 100%;
